@@ -1,0 +1,45 @@
+---
+title: Connect to Source (SFTP/FTP)
+---
+
+Configuration reference for the Connect to Source block — polls an SFTP or FTP server and downloads files for processing.
+
+The Connect to Source block is always the first block in a dataflow. It specifies the external server where the source data file is located and controls how that file is retrieved and staged for processing.
+
+**Block type:** `sftp_pull`
+
+Polls an SFTP or FTP server, downloads files matching a filename pattern, validates constraints, and moves files to a processed directory.
+
+## Configuration fields
+
+| Field                        | Description                                                                                   |
+| :--------------------------- | :-------------------------------------------------------------------------------------------- |
+| Hostname *                  | URL of the SFTP/FTP server. Example: `data.capillarydata.com`                                 |
+| Username *                  | Username for server authentication                                                            |
+| Password *                  | Password for server authentication. Set to `null` when using SSH key authentication           |
+| Source Directory *          | Directory path where source files are located. Example: `/APAC2Cluster/A_Connect`             |
+| Filename Pattern *          | Regex pattern to match filenames. Example: `file.*.csv` matches any file starting with 'file' |
+| Processed Directory *       | Path where the file is moved after it has been picked up for processing                       |
+| Port                         | SFTP port (typically 22) or FTP port (typically 21)                                           |
+| Unzip Files                  | Enable to unzip compressed files before processing                                            |
+| API Error Filepath           | SFTP path where API error logs are saved. Applicable for data ingestion templates only        |
+| Search Directory Recursively | Searches all sub-folders under the Source Directory for matching files                        |
+| Private key                  | Base64-encoded SSH private key (OpenSSH format) for key-based authentication                  |
+| Key passphrase               | Optional passphrase for the SSH key. Set to `null` if not applicable                          |
+
+* Required field
+
+<Callout kind="info">
+
+Use unique source, processed, and API error directories for each dataflow. Sharing directories across multiple dataflows can cause files to be picked up by the wrong dataflow, leading to race conditions or misrouted error files.
+
+</Callout>
+
+## SSH key authentication
+
+In addition to password-based authentication, the Connect to Source block supports SSH key-based authentication. To use SSH:
+
+1. Generate an RSA key pair using `ssh-keygen -t rsa -b 4096`.
+2. Share the public key (`.pub` file) with the Capillary access team via a Jira ticket, including the user email, folder path, and required permissions.
+3. Base64-encode the private key and enter it in the **Private key** field.
+4. Set **Password** to `null` when a private key is provided.

@@ -1,0 +1,71 @@
+---
+title: Test and Preview across engagement channels
+---
+
+When you create new message content for a selected engagement channel, you can use the **Preview and Test**  to review how the message will appear before sending it to your audience. This feature is supported for all the [engagement channels](https://docs.capillarytech.com/docs/configure-campaign-level-settings#test-customers) except Line and WeChat.
+
+This helps you validate both the content and design across all supported engagement channels
+
+* **Preview**: View the email content and design before saving.
+* **Test message**: Send test messages from the email test message section to selected test customers or test groups to review the content and design before sending to the audience. Only users added as [test customers](https://docs.capillarytech.com/docs/configure-campaign-level-settings#test-customers) or included in a [test customer group](https://docs.capillarytech.com/docs/configure-campaign-level-settings#test-customers) can receive test messages.
+
+You can do this either from the [creatives](https://docs.capillarytech.com/docs/test-and-preview-across-engagement-channels#previewing-and-testing-the-message-content-from-creatives) or from the message creation flow [within a campaign](https://docs.capillarytech.com/docs/test-and-preview-across-engagement-channels#previewing-and-testing-the-message-content-within-a-campaign).
+
+## Previewing and testing the message content from creatives
+
+To preview and test a message content from the creatives, follow the steps below.
+
+1. From the **Engage+ homepage**, navigate to the **Creative** section and select the required [engagement channel](https://docs.capillarytech.com/docs/configure-campaign-level-settings#test-customers) to preview and test the message content.
+
+<Image width="600px" src="https://files.readme.io/99116e5e6969ebee47163140e38fcb6f7d09698864f2d11fd6bd0ce07bfc38a9-preview-and-test-google-docs.png" />
+
+2. On the engagement channel listing page, you can either navigate to an existing template or select **Create new.**
+
+<Image width="600px" src="https://files.readme.io/c852af05d91b90a22579918e0f79814e653252fadb5825ea5f8575403388aae4-image.png" />
+
+3. Select **[Create new](https://docs.capillarytech.com/docs/engagement-channels)** to create a new message template for the selected engagement channel and [add all required labels](https://docs.capillarytech.com/docs/supported-labels-for-engagement-channels) to it. You can also include the [custom tags](https://docs.capillarytech.com/docs/custom-tags) while creating the template.
+
+4. Select **Preview and test**. A modal appears that lists all tags and labels in the template.
+
+5. Include custom values against the tags and labels, perform the following:
+   1. An input form appears with input boxes for all the tags in the template content. Enter the value for the tags.
+   2. You can add the values automatically or manually.
+      * To fetch the values automatically, navigate to the customer search box and search for a registered customer by using mobile number, email, or external ID. Once a customer is selected, all user-specific tags are automatically filled with that customer's data. The customer should have the values defined in their profile for the fields to populate the values automatically. Otherwise, an error message will appear.
+
+        **Note**: Only registered customers can be searched and selected. If you search for an unregistered customer, a **No customers found** message is displayed.
+      * To add the values manually, enter the values for each tag. You can also select **Show JSON** and enter values for these tags in the JSON. Certain tags or labels are marked with an asterisk `*`,for example, `voucher_expiry_date` and `promotion_expiry_date`. The values for all asterisk `*` tags must be entered manually for them to appear in the preview.
+
+6. Select **Update preview**. The message content appears on the right with all tag values filled.
+
+7. To discard custom values, select **Discard custom values**. You can click either of the two layouts to view the message content in desktop or mobile views.
+
+<Image width="70% " src="https://files.readme.io/0ebd53d79f38d967d4074d68528c9ca07b3453a812122c3d855d149ff88a78ad-_Gif_2.gif" />
+
+8. After updating the preview, select **Send test messages**. You can select individual [test customers](https://docs.capillarytech.com/docs/configure-campaign-level-settings#/test-customers), test groups, or select multiple test groups to send messages. The available test users are retrieved from the test customer configurations defined at the organization level.
+9. Click **Send test message**. The message will be sent to the selected users.
+
+<Image width="60% " src="https://files.readme.io/f734cfbb50223c36fc35a86e60bed3ca73aeaf91b5324fca56cc603d0b906300-_Gif_3.gif" />
+
+<Callout kind="info">
+
+  **Note**
+
+  You can also use **Preview and Test** from the Engagement channel listing page. To preview,  select any engagement channel with existing templates, click the three-dot menu, and select **Preview and Test**. The Preview and Test modal appears, allowing you to preview and test the message directly.
+
+</Callout>
+
+## Previewing and testing the message content within a campaign.
+
+To preview and test a message content flow within a campaign, follow the steps below.
+
+1. From the **Engage+** homepage, navigate to the **Campaigns** section. You can either select an existing campaign or [create a New campaign](https://docs.capillarytech.com/docs/create-campaign).
+2. [Create a message](https://docs.capillarytech.com/docs/create-message#add-creative-campaign-message), navigate to the creatives section, and select **Add creative**.
+3. Select the required **engagement channel** to [preview and test](https://docs.capillarytech.com/docs/test-and-preview-across-engagement-channels#previewing-and-testing-the-message-content-from-creatives) the message content from the creatives.
+4. You can use **Preview and Test** during the message creation. After selecting the creative, click the three-dot menu and select **Preview and Test** to preview and test the message content.
+
+<Image width="600px" src="https://files.readme.io/e29ee486b942371478bc78eded9afb7cbc2b4350674a4577ba27230283c6f5d8-preview-and-test-google-docs_2.png" />
+
+5. [Schedule the message](https://docs.capillarytech.com/docs/schedule-message) and **Send for approval**.
+6. You can also use **Preview and Test** before the campaign is approved. On the Message Dashboard, in the Content section, the selected channel is displayed. Click Preview and Test on the right side to test the message.
+
+<Image width="600px" src="https://files.readme.io/41912ddc4550f192c0b03107efc0d0e98d55ae383e8e95a7f36a18093328dd26-preview-and-test-google-docs_3.png" />

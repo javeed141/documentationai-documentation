@@ -1,0 +1,192 @@
+---
+title: Getting Started
+---
+
+Databricks is Capillary's data warehouse which provides solutions like working on SQL queries, scheduling data exports on FTP, and visualizing data with the help of notebooks. Along with this databricks allow users to connect and share data across BI tools and different databases.
+
+## Notebooks in Databricks
+
+Notebooks are a common tool in data science and machine learning for developing code and presenting results. In Databricks, notebooks are the primary tool for creating data science and machine learning workflows and collaborating with colleagues. Databricks notebooks provide real-time coauthoring in multiple languages, automatic versioning, and built-in data visualizations.
+
+## Introduction to various tables in Databricks
+
+The tables in Databricks are grouped into the following categories:
+
+* Source tables
+
+* Fact tables
+
+* Dimension tables
+
+* Read API databases
+
+* Admin Read API databases
+
+The following table summarises each category, its data type, purpose, visibility, scope, and whether it contains personally identifiable information (PII):
+
+| Category          | Data type           | Purpose         | Visibility   | Scope          | Contains Personally Identifiable Information |
+| ----------------- | ------------------- | --------------- | ------------ | -------------- | -------------------------------------------- |
+| Source tables     | Raw OLTP copy       | Ingestion layer | Internal     | Cluster scoped | Yes                                          |
+| Fact tables       | Event metrics       | Reporting       | Read API     | Org scoped     | No (typically)                               |
+| Dimension tables  | Descriptive context | Reporting joins | Read API     | Org scoped     | Some (user dim)                              |
+| Read API DB       | Processed analytics | Consumer access | User visible | Org scoped     | Masked                                       |
+| Admin Read API DB | Secure storage      | PII control     | Restricted   | Org scoped     | Unmasked                                     |
+
+### **Source tables**
+
+Source tables are a near-exact copy of operational product databases. They act as the raw ingestion layer.
+
+#### **Characteristics**
+
+* Direct copy of OLTP tables (loyalty, coupons, transactions, etc.)
+
+* Minimal or no transformation
+
+* Cluster-scoped; region-based
+
+* Includes organization identifiers to separate organization/brand-level data
+
+* Used as input for downstream transformations
+
+* Not optimized for reporting
+
+#### **Refresh behavior**
+
+* Synced once daily after business hours
+
+* Not real-time
+
+<Callout kind="info">
+
+  OLTP and OLAP
+
+  * **OLTP (Online Transaction Processing)**
+    Handles day-to-day application operations such as API requests, imports, and user actions. OLTP systems process many small read and write operations and use highly normalized schemas to ensure data accuracy and fast single-record transactions. This represents the **production database where live data is first written**.
+  * **OLAP (Online Analytical Processing)**
+    Supports analytics and reporting workloads. OLAP systems run fewer but heavier queries that scan large datasets. These systems often use aggregated structures to make analysis faster. In this architecture, the **Databricks environment (for example, Read API tables and Source tables)** serves as the OLAP layer where processed data becomes queryable for analysis.
+
+</Callout>
+
+### **Fact tables**
+
+Fact tables store measurable events. They represent transactions or activities that occur in the system.
+
+**Characteristics**
+
+* Event-driven records (sales, redemptions, earn events, etc.)
+
+* Large volume
+
+* Optimized for aggregation and reporting
+
+* Linked to dimension tables via keys
+
+* Created through transformation workflows
+
+  **Examples**
+
+* Transaction events
+
+* Points issuance/redemption
+
+* Coupon usage
+
+* Bill line items
+
+  **Use cases**
+
+* Reporting metrics
+
+* Aggregations
+
+* KPIs
+
+* Dashboards
+
+### **Dimension tables**
+
+Dimension tables describe entities related to facts. They provide context to events.
+
+**Characteristics**
+
+* Denormalized descriptive data
+
+* Lower volume than fact tables
+
+* Frequently joined with facts
+
+* Designed for analytical queries
+
+**Examples**
+
+* User/customer profile
+
+* Store/location
+
+* Product
+
+* Date/time
+
+* Vendor
+
+The user dimension contains personally identifiable information (PII) and is subject to masking.
+
+### **Read API databases**
+
+Read API databases are organization-specific analytical environments that expose processed fact and dimension tables.
+
+**Characteristics**
+
+* One database per organization (org-scoped)
+
+* Contains transformed data only
+
+* Used by reporting and analytics consumers
+
+* Naming convention: read*api*`<org_id>`
+
+A Read API database is not a table type. It is a container that stores fact and dimension tables for a single organization.
+
+### **Admin Read API databases**
+
+Admin databases store tables that contain sensitive PII in a secure location.
+
+**Characteristics**
+
+* Stores the real unmasked version of sensitive tables
+
+* Primarily affects user/customer dimension tables
+
+* Access restricted via permissions
+
+* Invisible to most users
+
+* Supports data masking workflows
+
+### History-tracking user dimension table
+
+This is applicable for the **USHC cluster** and is implemented in the **user dimension table**.
+
+The table stores user attribute changes as historical records instead of overwriting previous values. For selected user attributes, each update creates a new record with a timestamp while preserving the earlier values.
+
+This approach maintains the full change history for a user.
+
+You can use this table to:
+
+* Reconstruct what a user’s data looked like at any point in time.
+* Audit how user attributes changed over time.
+* Run **“as-of date” analysis** for reporting and investigations.
+
+Because earlier values are retained, analytics queries can evaluate user attributes based on their value at a specific historical moment instead of only the latest state.
+
+## Accessing Databricks
+
+* To get access to databricks, contact Capillary access team.
+* For databricks org access, contact your manager.
+
+**Links:**
+
+* [India databrick](https://capillary-notebook-incrm.cloud.databricks.com/login.html?o=7354890886070942)
+* [EU databrick](https://capillary-notebook-eucrm.cloud.databricks.com)
+* [SG/Asia-2 databrick](https://capillary-notebook-asiacrm.cloud.databricks.com/)
+* [US databrick](https://capillary-notebook-uscrm.cloud.databricks.com/?o=893212941337564#)

@@ -1,0 +1,368 @@
+---
+title: Use Cases
+---
+
+These use cases demonstrate how to design loyalty promotions for different industry verticals, leveraging behavioral events, transactional data, and tiered rewards to drive specific member behaviors.
+
+## **Sports and entertainment**
+
+### Use Case: Weekly Quiz Promotion
+
+**Description:** Create a promotion to reward all customers in the United States and Canada with 100 reward points for completing a weekly race quiz.
+
+#### Prerequisites:
+
+* Create a behavioral event called `PlayRaceQuiz_2025`. When the customer completes the quiz, this behavioral event is triggered, and the customer earns the reward points.
+* Enable the extended field `country_of_residence` in the organisation. This is used to filter and issue the reward only for customers whose country of residence is the United States or Canada.
+
+#### Configuring the loyalty promotion
+
+1. Define the promotion details.
+
+   <Image width="80%" src="https://files.readme.io/5f35489859c6a9717c9beec9c2114b8c390923bec5984ec94800374403379318-image.png" />
+
+2. Define who is eligible - **All members of the program**.
+
+   <Image width="80%" src="https://files.readme.io/f1965ef408041608a4cbe38b8ca1c07c858625f593a7cbf0b20e02a567957c51-image.png" />
+
+3. Define the earning activities:
+   1. Select the activity type **Milestone**.
+   2. From the **Actions** dropdown, select the `PlayTrivia_2025` behavioral event.
+   3. Select **Add qualifying condition** and add the first condition:
+      * **Attribute:** `Customer attributes` - `Country of Residence`
+      * **Operator:** `Equals`
+      * **Value:** `United States`
+
+4. Select **Add qualifying condition** and add the second condition:
+   * **Attribute:** `Customer attributes` - `Country of Residence`
+   * **Operator:** `Equals`
+   * **Value:** `Canada`
+
+5. Define the cycle duration type, start on date, and the number of cycles.
+
+   <Image width="80%" src="https://files.readme.io/adc335330791e7cbef32c145f50ca595d20144860ba4cff89d2ded19097bd53e-image.png" />
+
+6. Define the milestone **Count** as **1**.
+
+   <Image width="80%" src="https://files.readme.io/410e3f00a492f14fec587672b85244441b5dcfada095f7359c80ab417ff5d87b-image.png" />
+
+7. Select **+ Add brand actions** and select **Issue Currency** and configure the following:
+
+   * **Currency**: Points
+   * **Proration type**: Fixed amount
+   * **Expiry type**: Never expires
+
+   <Image width="80%" src="https://files.readme.io/c34f7ab9c8126522852c38e712ef4f9cf0f1f09b91ac4a831c24d84219c8cb09-image.png" />
+
+8. Save and send the loyalty promotion for approval.
+
+9. Approve the loyalty promotion.
+
+***
+
+## **Retail**
+
+### Use Case: Bonus Points based on Milestone Range
+
+**Description:** Create a promotion to reward Gold-tier (tier 3) members with 10% of their milestone achievement value in points. Customers can spend up to $1000 and make up to five transactions. Points are issued once the customer makes three transactions or achieves the milestone. The promotion is available only for specific products and does not include gift cards.
+
+**Prerequisite:**
+
+* Create a loyalty program and define the tiers.
+* [Create an audience group](https://docs.capillarytech.com/docs/create-audience-group) of Gold Tier Members.
+
+#### Configuring the loyalty promotion
+
+1. Define the promotion details.
+
+   <Image width="80%" src="https://files.readme.io/01f2f2e84b5ac2c3e21d2b7abadf9b95adc423c961b4e0b298267c0bda1001a3-image.png" />
+
+2. Define who is eligible:
+   1. Select **Specific members**.
+   2. Select **Audience group** from the drop-down and select the audience group.
+
+      <Image width="80%" src="https://files.readme.io/24e6d5ae8e51802d48e33b7642e5f6539534b7b99d8c9b2cd415e2c1dbb37d6a-image.png" />
+
+3. Define the earning activities:
+
+   1. Select the activity type **Single**.
+   2. From the **Actions** dropdown, select **Makes a transaction**.
+   3. Select **Add qualifying condition** and add the first condition:
+      * **Attribute:** `Customer attributes` - `Slab Name`
+      * **Operator:** `Equals`
+      * **Value:** `Gold`
+   4. Select **Add qualifying condition** and add the second condition:
+      * **Attribute:** `Purchase attributes` - `Tender Code`
+      * **Operator:** `Does not equal`
+      * **Value:** `Giftcard`
+   5. Select **Add qualifying condition** and add the third condition:
+      * **Attributes:** `Purchase attributes` - `Basket items - SKU`
+      * **Operator:** `matches all of`
+      * **Value:** Enter the SKU values of the products that are a part of the loyalty promotion
+   6. Define the milestone conditions: `Transactions` - `Net Amount` - `1000` USD
+
+   <Image width="80%" src="https://files.readme.io/11ecb2ca150e665922e7c83580a88ebbb6f6cf28e67e787e2c57025e76295648-image.png" />
+
+4. Select **+ Add brand actions** and select **Issue Currency** and configure the following:
+
+   * **Currency**: Points
+   * **Proration type**: Proportional to value
+   * **Proportion type**: Achieved
+   * **Earn rate:** 10%
+   * **Expiry type**: Fixed expiry
+
+   <Image width="80%" src="https://files.readme.io/b217f3d307e724498ff5399fb9ffe7f965605644724894e3d785f309e176c8c8-image.png" />
+
+5. Define the limits:
+   Maximum allowed `count of activities` issuing `Points` is `3` `per member`.
+
+   <Image width="80%" src="https://files.readme.io/a89f9302fb76e42f3944b3becff829081dc8dba80b9363550a2df2d94091d59a-image.png" />
+
+<br />
+
+6. Save and send the loyalty promotion for approval.
+
+7. Approve the loyalty promotion.
+
+***
+
+## **Automotive**
+
+### Use Case: Earn points on purchasing exclusive line-items
+
+**Description:** Create a promotion to reward customers with points (10% of transaction value) based on the total value of "Sheetz" line items purchased during in-store transactions.
+
+The promotion also includes the following conditions:
+
+* To be eligible for the rewards, the customer must provide data sharing consent.
+* Customers who purchase using their membership card will earn a coupon as a bonus.
+* The points earned are limited to a maximum of 5000 points per customer per month.
+
+#### Prerequisites:
+
+* Enable the extended field `membership_card_swiped` in the organisation. This is used to check if the customer has swiped their membership.
+* Enable the extended field `data_sharing_consent` in the organisation. This is used to check if the customer has consented to sharing their data.
+
+#### Configuring the loyalty promotion
+
+1. Define the promotion details.
+
+   <Image width="80%" src="https://files.readme.io/b3933f1ea0b04020accbb06f39f18003637625596ca7cfff696f7d3b0fc1b06d-image.png" />
+
+2. Define who is eligible - Select **All members of the program**.
+
+   <Image width="80%" src="https://files.readme.io/10be5856cdc3c1dcd7fb57115ccd6f40d6038f4feb915059b516b02fc6aa6b78-image.png" />
+
+3. Define the earning activity for customers who swipe using their membership card.
+   1. Select the activity type **Single**.
+   2. From the **Actions** dropdown, select **Makes a transaction**.
+   3. Select **Add qualifying condition** and add the first condition:
+      * **Attribute:** `Purchase attributes` - `Lineitem type`
+      * **Operator:** `Equals`
+      * **Value:** `sheetz`
+   4. Select **Add qualifying condition** and add the second condition:
+      * **Attribute:** `Customer attributes` - `Data Sharing Consent`
+      * **Operator:** `Equals`
+      * **Value:** `1`
+
+4. Select **Add qualifying condition** and add the third condition:
+
+   * **Attribute:** `Purchase attributes` - `Membership Card Swiped`
+   * **Operator:** `Equals`
+   * **Value:** `0`
+
+   <Image width="80%" src="https://files.readme.io/84611c8e53ca6b860f503ffce2ba4c4824272e23f8f8a2b1b57c8aaefa8393ed-image.png" />
+
+5. Select **+ Add brand actions** and select **Issue Currency,** and configure the currency to issue.
+
+   * **Currency**: Points
+   * **Proration type**: Proportional to value
+   * **Proportion type**: Transaction value
+   * **Value:** 10%
+   * **Expiry type**: Never expires
+
+   <Image width="80%" src="https://files.readme.io/a0adb36a98eba49e1c34ca19626d0aa4d5158505f81c65944853263e398c11be-image.png" />
+
+6. Select **+ Add more** to add another brand action and select **Issue Coupon,** and select the coupon to be issued.
+
+   <Image width="80%" src="https://files.readme.io/67e1026eff4018c2c0fc7784de4c80ccf72d951a4d9d8735bab0019aa126876d-image.png" />
+
+7. Select **Add Activity** to add a new activity group.
+
+8. Define the second earning activity for customers who do not use their membership card.
+
+   1. Select the activity type **Single**.
+   2. From the **Actions** dropdown, select **Makes a transaction**.
+   3. Select **Add qualifying condition** and add the first condition:
+      * **Attribute:** `Purchase attributes` - `Lineitem type`
+      * **Operator:** `Equals`
+      * **Value:** `sheetz`
+   4. Select **Add qualifying condition** and add the second condition:
+      * **Attribute:** `Customer attributes` - `Data Sharing Consent`
+      * **Operator:** `Equals`
+      * **Value:** `1`
+   5. Select **Add qualifying condition** and add the third condition:
+      * **Attribute:** `Purchase attributes` - `Membership Card Swiped`
+      * **Operator:** `Equals`
+      * **Value:** `0`
+
+   <Image width="80%" src="https://files.readme.io/42f3a21a9a6c6b7975a076b1e57d243f5c4a8fff5552934c041360b3758eb930-image.png" />
+
+9. Select **+ Add brand actions** and select **Issue Currency,** and configure the currency to issue.
+
+   * **Currency**: Points
+   * **Proration type**: Proportional to value
+   * **Proportion type**: Transaction value
+   * **Value:** 10%
+   * **Expiry type**: Never expires
+
+   <Image width="80%" src="https://files.readme.io/05cf51bf68a60a1bd430256aed4100a9146a09f486afc6713673368164908f8f-image.png" />
+
+10. Save and send the loyalty promotion for approval.
+
+11. Approve the loyalty promotion.
+
+***
+
+## **Conglomerate**
+
+### Use Case: Scratch and Win Coupons
+
+**Description:** Create a promotion to reward customers for winning discount coupons with a chance to win a grand prize of 5000 points.
+To be eligible for the sweepstakes, the customer must make a minimum purchase $50 in the last three months and opt in for the sweepstakes on the mobile app or website. The sweepstakes are limited to only the first 10,000 customers.
+
+#### Prerequisites:
+
+* Create a behavioral event called `ScratchandWin_2025`. When a customer scratches the scratch card, a random offer is unlocked.
+
+#### Configuring the loyalty promotion
+
+1. Define the promotion details.
+
+   <Image width="80%" src="https://files.readme.io/43415604da1c99712ed07d5a283f1fd33bf775d41c265a76cfe22527ceacf0f4-image.png" />
+
+2. Define who is eligible:
+
+   1. Select the activity type **Single**.
+   2. From the **Actions** dropdown, select **Makes a transaction**.
+   3. Select **Add qualifying condition** and add the first condition:
+      * **Attribute:** `Purchase attributes` - `Value`
+      * **Operator:** `Greater Than or Equal`
+      * **Value:** `50`
+   4. Select **Add more** and add the second condition:
+      * **Attribute:** `Purchase attributes` - `Date`
+      * **Operator:** `Is Between`
+      * **Attribute:** `Month`
+      * **Values:** `September` and `December`
+   5. Define the enrolment expiry and limits:
+      * **Member enrolment will expire:** `along with the promotion end date`
+      * **Maximum times a member can be enrolled:** `1`
+      * **Maximum times one enrolment can be redeemed:** `1`
+      * **Maximum enrolment allowed for this promotion:** `limited` to `10000`
+
+   <Image width="80%" src="https://files.readme.io/9d64a2609fbd522edd59be0a4f55a8aec1c5b14c2ed2162d88b87400a95161ce-image.png" />
+
+3. Define the opt-in criteria and limits.
+
+   <Image width="80%" src="https://files.readme.io/3378795a6e68613b5e08c67a158ad85fe5ee7df96a946e8637729ecbc3ee0f4e-image.png" />
+
+   <br />
+
+4. Define the earning activities:
+   1. Select the activity type **Single**.
+   2. From the **Actions** dropdown, select the behavioral event (`scratchandwin_2025`).
+   3. Select **Add qualifying condition** and add the first condition:
+      * **Attribute:** `Activity attributes` - `reward`
+      * **Operator:** `Equals`
+      * **Value:** `one`
+   4. Select **+ Add brand actions** and select **Issue Coupon,** and configure the coupon to be issued.
+
+5. Select **Add Activity** to begin configuring a new activity. Configure the coupons to issue for the `reward` values `two, three, four, five, and six` by following step 4.
+
+6. Save and send the loyalty promotion for approval.
+
+7. Approve the loyalty promotion.
+
+***
+
+## **Hospitality**
+
+### **Use Case: Double Points on Thanksgiving Reservations with Opt-in**
+
+**Description:** Create a promotion to reward members with 1000 bonus points for eligible hotel transactions during the Thanksgiving promotional period. Members must opt in by making a qualifying reservation within the defined window. Points are issued for eligible transactions that meet coupon, booking package, and SKU conditions and expire on a fixed date.
+
+**Prerequisites:**
+
+* Create the Reservation behavioral event.
+* Create and configure the External Coupon Codes: CRS, WEB, PMS.
+* Create and configure the Booking Packages: AP14BKG1, AP7BKG1, AP21BKG1.
+* Create and configure the Basket Item SKU: model_id_001.
+* Ensure transaction data includes External Coupon Code, Booking Package, and Basket Item SKU attributes.
+
+#### Configuring the loyalty promotion
+
+1. **Define the promotion details**
+   1. Set the promotion name and description.
+   2. Set the timezone to Asia/Kolkata (IST).
+   3. Set the promotion duration from 11 Jan 2026 11:59 to 31 Jan 2026 11:59.
+   4. Select Activity based promotion.
+
+2. Select **All members of the program**.
+
+3. **Define the opt-in criteria**
+   1. Select Activity based opt-in.
+   2. Select the opt-in activity as Reservation.
+   3. Add qualifying conditions:
+      * **Attribute 1**
+        * **Attribute:** `Time Span Start`
+        * **Operator:** `Is On Or After Value`
+        * **Value:** `11 Jan 2026`
+      * **Attribute 2**
+        * **Attribute:** `Time Span Start`
+        * **Operator:** `Is On Or Before Value`
+        * **Value:** `24 Jan 2026 12:00 PM`
+      * **Attribute 3**
+        * **Attribute:** `Res Status`
+        * **Operator:** `Equals`
+        * **Value:** `Commit`
+      * **Attribute 4**
+        * **Attribute:** `Res Status Sub`
+        * **Operator:** `Is One Of Value`
+        * **Value:** `Reserved, In-house`
+
+4. **Define the opt-in expiry and limits**
+   1. Member opt-in will expire along with the promotion end date.
+   2. Maximum times a member can opt in: 100.
+
+5. **Define the earning activities**
+   1. Select the activity type **Single**.
+   2. From the Actions dropdown, select **Makes a transaction**.
+   3. Add qualifying conditions:
+      * **Attribute 1**
+        * **Attribute:** `Purchase attributes – External Coupon Code`
+        * **Operator:** `Is One Of Value`
+        * **Value:** `CRS, WEB, PMS`
+      * **Attribute 2**
+        * **Attribute:** `Purchase attributes – Booking Package`
+        * **Operator:** `Is None Of Value`
+        * **Value:** `AP14BKG1, AP7BKG1, AP21BKG1`
+      * **Attribute 3**
+        * **Attribute:** `Purchase attributes – Basket items – SKU`
+        * **Operator:** `Matches any of`
+        * **Value:** `model_id_001`
+
+6. **Configure the brand action**
+   1. Select + Add brand actions and select Issue Currency.
+   2. Configure the currency issuance:
+      * Currency: `Points`
+      * Points to issue: `Fixed amount`
+      * Amount: `1000 Points`
+      * Same for all tiers: `Enabled`
+      * Expiry type: `Fixed expiry`
+      * Expiry date: `28 Feb 2026`
+      * Issuance timing: `Immediate`
+      * Rounding strategy: `Actual`
+
+7. **Finalize the promotion**
+   1. Save and send the loyalty promotion for approval.
+   2. Approve the loyalty promotion.

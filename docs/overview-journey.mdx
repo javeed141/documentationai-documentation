@@ -1,0 +1,162 @@
+---
+title: Overview
+---
+
+A Journey is an automated workflow that defines a set of actions for a specific audience. It guides customers through different paths, which are automatically determined based on their behaviours or interactions at each stage.
+
+<Callout kind="info" title="Note">
+
+By default, Journey is not enabled for all the orgs. Raise a ticket to the Capillary Product Support team to enable this feature for your org.
+
+</Callout>
+
+## Use case
+
+A brand wants to promote its new membership program to increase the number of loyal customers. They want to target customers whose lifetime purchase value is greater than 1000$. A marketer wants to nudge the customers to make a purchase and avail the membership.
+
+**Customer journey plan**
+
+1. Identify the customers whose lifetime purchase is above 1000$.
+2. Send an SMS to customers informing them about the ongoing opportunity to become a member of their target segment.
+3. Wait for 30 days for customers to make a purchase.
+4. If customers have made the purchase, share a congratulations email to the customer along with a 30% off coupon on their next purchase, and also share the benefits of membership.
+5. If customers have not made the purchase, send them a reminder message about the ongoing membership campaign.
+   Wait for another 15 days and end the campaign.
+
+With Journey, you can use building blocks and configure the above flow at one place
+
+<Image alt="Journey UI depicting a sample workflow" src="https://files.readme.io/4e349c1-small-journey_intro.png" />
+
+## Core concepts
+
+Journeys are composed of specific key concepts that define how customers enter, progress through, and exit a personalised engagement flow. Understanding these concepts helps you design effective, automated customer experiences.
+
+### Entry trigger
+
+Entry triggers are rules or conditions that determine which customers are eligible to start a journey. Customers can enter based on:
+
+* **[Transactional events](https://docs.capillarytech.com/docs/configure-journey#/user-events-trigger):** Actions like completing a purchase, redeeming a coupon, or earning points. For example, a journey could start when a customer completes a transaction above a certain value.
+* **[Behavioural events](https://docs.capillarytech.com/docs/configure-journey#/behavioral-events):** Non-transactional actions such as cart abandonment, product views, or registration. For instance, a journey might begin when a customer adds items to their cart but doesn’t check out.
+* **[Audience lists](https://docs.capillarytech.com/docs/configure-journey#/audience-list-trigger):** Predefined groups created in Audience Manager using filters like demographics, purchase history, or engagement patterns. For example, you might target all high-value customers who haven’t shopped in the last three months.
+
+You can also define conditions to refine further which customers qualify. This allows for highly targeted and personalized engagement, ensuring only relevant customers enter the journey.
+
+### Exit trigger
+
+[Exit Trigger](https://docs.capillarytech.com/docs/configure-journey#/step-4-configure-exit-trigger-optional) is a rule or condition that determines when a customer should leave a journey. Customers exit when they meet a specific condition or perform an action that makes further communication irrelevant. For example, if a journey is designed to encourage a customer to buy a product, and the customer completes the purchase, the exit trigger will remove them from the journey so they don’t continue to receive related messages.
+
+### Schedule (Start and End)
+
+[The Schedule (Start and End)](https://docs.capillarytech.com/docs/configure-journey#/step-3-schedule-the-journey) determines the exact time frame during which a journey is active and can process customers.
+
+It controls when the journey begins:
+
+* You can set the journey to start immediately after approval (so it goes live as soon as it’s approved), or
+* Choose a specific start date to align with campaign launches, business events, or seasonal promotions.
+
+It controls when the journey ends:
+
+* The journey can be set to never end (making it an ongoing, always-available flow), or
+* End on a specific date (useful for time-bound campaigns or limited offers).
+
+### Entry and re-entry rules
+
+[Entry and Re-entry rules](https://docs.capillarytech.com/docs/configure-journey#/entry-settings) control how many times a customer can enter the same journey.  You can choose from:
+
+* **Only once**: The customer can enter the journey a single time. After they complete or exit the journey, they cannot re-enter, even if they meet the entry conditions again. This is useful for one-time journeys, such as onboarding or membership welcome flows.
+* **More than once**: The customer can enter the journey multiple times, with no set limit. This is suitable for scenarios where the same action (like cart abandonment) can happen repeatedly, and you want to engage the customer each time.
+* **Specific number of times**: The customer can enter the journey up to a defined number of times. For example, you might allow a customer to participate in a cashback offer up to three times during a campaign period.
+
+### Building blocks
+
+Journeys are built using visual building blocks that define each step in the flow.  They are grouped into three main categories:
+
+* [Engagement Blocks](https://docs.capillarytech.com/docs/engagement-building-block#/)
+  1. Purpose: Deliver messages to customers through various channels.You can add incentives (offers, points, badges, etc.) to messages.
+  2. Supported Channels: Email, SMS, WhatsApp, M-Push, Line, Viber, Zalo, and In-app messaging.
+  3. This also supports A/B testing, allowing you to experiment with different message variants, creatives, or incentives to determine which performs best before sending to the broader audience.
+* [Flow Control Blocks](https://docs.capillarytech.com/docs/flow-control-building-block#/)
+  1. Purpose: Manage the logic, timing, and routing of customers within the journey.
+  2. Types:
+     * Wait Blocks: Pause progression for a set time or until a specific event occurs.
+     * Decision Split: Route customers down different paths based on defined conditions.
+     * Random Split: Randomly assign customers to different paths for testing or distribution.
+     * Join: Merge multiple paths into a single flow.
+     * Jump: Move customers from one journey to another, enabling modular and reusable journey designs.
+* [Action Blocks](https://docs.capillarytech.com/docs/action-building-block#/)
+
+  i. Purpose: Perform backend actions or integrations without direct customer communication.
+
+  ii. Types:
+
+  * Issue Incentive: Reward customers with points, offers, badges, loyalty promotions or vouchers without sending a message.
+  * Webhook: Send or receive data from external systems in real time (e.g., trigger a coupon in a third-party system).
+    Each block helps you define how the customers navigate through the journey.
+
+### Audience and Segment Filtering
+
+[Audience and segment filtering](https://docs.capillarytech.com/docs/configure-journey#/audience-list-trigger) allows you to target or branch customers within a journey based on who they are or what they’ve done. It’s used when you want to ensure that only relevant customers move ahead to the next step or enter a particular path.
+
+**Example**
+A brand wants to promote a premium membership offer only to high-value customers.
+
+* In the Entry trigger, they add a condition: “Lifetime transaction amount > ₹10,000.” This ensures only qualified customers enter the journey.
+* Within the journey, they can further branch customers based on whether they’re already loyalty members, and send tailored messages to each group. This ensures that every path is personalized and relevant.
+
+### Conditions
+
+Conditions are logical rules that control how customers move through a journey. They act as decision points evaluating customer attributes, transactions, or engagement behaviour to decide whether a customer should move forward, branch into a new path, or wait for another event.
+
+There are four types of Conditions -
+
+* [Customer and Transaction Conditions](https://docs.capillarytech.com/docs/flow-control-building-block#/decision-split) -\
+  These evaluate who the customer is and what they have done so far.\
+  Example
+
+  i. If a customer’s lifetime spend is greater than ₹10,000, move them to the “High-Value Offer” path.
+
+  ii. If a customer belongs to the Gold loyalty tier, send a tier-exclusive message.
+
+  iii. If a customer’s last purchase was more than 30 days ago, send a reactivation reminder.
+
+  iv. If a customer purchased from a specific store region, show localized offers.
+
+* [Engagement Event Conditions](https://docs.capillarytech.com/docs/flow-control-building-block#/event-based-wait) -
+  These react to how customers interact with the messages you send.
+
+  Example
+
+  1. If a customer opened an email but didn’t click the link, send a follow-up nudge.
+  2. If a customer clicked a WhatsApp message link, route them to a thank-you or reward path.
+  3. If a message was not delivered, resend it via SMS or another available channel.
+
+* [Customer Event Conditions](https://docs.capillarytech.com/docs/flow-control-building-block#/event-based-wait) -
+  These are triggered by specific customer actions recorded in the system.
+
+  Example
+
+  i. If a customer completes a registration, start a welcome journey.
+
+  ii. If a customer redeems a coupon, exit them from the current promotion journey.
+
+  iii. If a customer upgrades their loyalty tier, trigger a reward communication.
+
+* [Date or Milestone Conditions](https://docs.capillarytech.com/docs/flow-control-building-block#/decision-split)  -
+  These use important customer-related dates to control journey timing.\
+  Example
+
+  i. If it’s been 90 days since the customer’s first purchase, send a re-engagement offer.
+
+  ii. If today is the customer’s anniversary with the brand, send a celebration message.
+
+### Performance Tracking and KPIs
+
+[Performance Tracking and KPIs](https://docs.capillarytech.com/docs/block-level-reporting-in-journey#/) provide a clear view of how your journey is performing at each stage. Each block within the journey captures detailed metrics that help you monitor customer movement and engagement throughout the flow.
+
+You can track key indicators such as:
+
+* Number of entries, completions, and exits
+* Messages sent, delivered, opened, or clicked
+* Incentive redemptions and conversion performance
+
+By analyzing these KPIs, you can refine your journey design, adjust your targeting, and continuously optimize campaign performance for improved customer engagement and results.

@@ -1,0 +1,20 @@
+---
+title: Configure a Loyalty Promotion Event Notification
+---
+
+Event notifications allow you to stream near-real-time updates about your loyalty promotions to external systems via webhooks. You can get updates on when a new loyalty promotion is created and when a loyalty promotion is updated.
+
+For more information refer [Event Notifications Overview](https://docs.capillarytech.com/docs/overview) documentation.
+
+## **Supported Events**
+
+The new loyalty promotions utilize the existing promotion event schemas. Currently, the system supports the following configuration events:
+
+| Event Name             | Trigger                                                                   | Documentation                                                                                                                             |
+| :--------------------- | :------------------------------------------------------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------- |
+| **`promotionCreated`** | Fired whenever a new loyalty promotion is created via the UI or API.      | [View Schema](https://docs.capillarytech.com/docs/event-schema-loyalty-and-cart-promotions#creating-loyalty-promotion-promotioncreated)   |
+| **`promotionUpdated`** | Fired whenever an existing loyalty promotion's configuration is modified. | [View Schema](https://docs.capillarytech.com/docs/event-schema-loyalty-and-cart-promotions#updating-a-loyalty-promotion-promotionupdated) |
+
+## **Configuring an event notifications**
+
+To configure event notifications for loyalty promotions you must configure a webhook endpoint and add the loyalty promotion events. For more information refer [Configure Event Notifications](https://docs.capillarytech.com/docs/configure-event-notification)

@@ -1,0 +1,136 @@
+---
+title: Quickstart Guide
+description: Get up and running with Catapillar by setting up your account and creating your first documentation space in just a few minutes.
+---
+
+## Prerequisites
+
+Before you begin, ensure you have:
+
+- A modern web browser (Chrome, Firefox, Safari, or Edge)
+- An email address for account registration
+- Internet connection
+
+<Callout kind="info">
+Catapillar works entirely in the browser—no downloads required. All you need is a free account to start creating documentation spaces.
+</Callout>
+
+## Step 1: Create Your Account
+
+Sign up for Catapillar in under a minute.
+
+<Steps>
+  <Step title="Visit the Dashboard" icon="globe">
+    Navigate to `https://dashboard.catapillar.com` and click **Sign Up**.
+  </Step>
+  <Step title="Enter Your Details" icon="user">
+    Provide your email, create a password, and complete the CAPTCHA.
+  </Step>
+  <Step title="Verify Email" icon="mail">
+    Check your inbox for a verification link from Catapillar and click it to activate your account.
+  </Step>
+</Steps>
+
+## Step 2: Log In and Create a Documentation Space
+
+Once logged in, create your first space.
+
+<Tabs>
+  <Tab title="From Dashboard" icon="home">
+    <Steps>
+      <Step title="New Space" icon="plus">
+        Click **New Documentation Space** on the dashboard.
+      </Step>
+      <Step title="Name Your Space" icon="edit">
+        Enter a name like `My Project Docs` and select a visibility (public or private).
+      </Step>
+      <Step title="Customize" icon="settings">
+        Add a description and choose your brand color (`#3B82F6` for Catapillar blue).
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Quick Import" icon="upload">
+    Use the import wizard for GitHub repos or Markdown files.
+  </Tab>
+</Tabs>
+
+## Step 3: Add and Edit Your First Document
+
+Publish your first page instantly.
+
+<Steps>
+  <Step title="New Document" icon="file-plus">
+    In your space, click **New Page** and title it `Introduction`.
+  </Step>
+  <Step title="Edit Content" icon="edit-3">
+    Use the visual editor or switch to Markdown mode. Here's a simple MDX example:
+    
+    <CodeGroup tabs="Markdown,Preview">
+    ````markdown
+    # Welcome to My Docs
+    
+    This is your first document.
+    
+    ```javascript
+    console.log("Hello, Catapillar!");
+    ```
+    ````
+    
+    ````mdx
+    ## Rendered Preview
+    
+    **Bold text** and `inline code`.
+    
+    ```javascript
+    console.log("Hello, Catapillar!");
+    ```
+    ````
+    </CodeGroup>
+  </Step>
+  <Step title="Publish" icon="upload-cloud">
+    Click **Publish** to make it live. Share the URL: `https://docs.catapillar.com/your-space/introduction`.
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+Use the preview pane to see changes in real-time. MDX supports components like `<Callout>` for rich docs.
+</Callout>
+
+## Basic Interface Tour
+
+Key areas of the Catapillar editor:
+
+<Columns cols={3}>
+  <Card title="Sidebar" icon="menu" horizontal>
+    Navigation to pages, spaces, and settings.
+  </Card>
+  <Card title="Editor" icon="edit" horizontal>
+    Visual/Markdown toggle with live preview.
+  </Card>
+  <Card title="Publish Panel" icon="globe" horizontal>
+    SEO, custom domains, and sharing options.
+  </Card>
+</Columns>
+
+## Next Steps
+
+<Expandable title="Explore Advanced Features" default-open="false">
+
+- **Customize themes**: Upload logos and set brand colors.
+- **Collaborate**: Invite team members via email.
+- **Integrations**: Connect GitHub for version control.
+
+</Expandable>
+
+Dive deeper with these guides:
+
+<Columns cols={2}>
+  <Card title="Authentication" icon="shield" href="/authentication">
+    Secure your spaces with API keys and SSO.
+  </Card>
+  <Card title="Full Introduction" icon="book-open" href="/introduction">
+    Learn core concepts and best practices.
+  </Card>
+</Columns>
+
+You're now ready to build your documentation! Your first space is live—share it with your team.

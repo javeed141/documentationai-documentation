@@ -1,0 +1,55 @@
+---
+title: Custom Tags
+---
+
+Custom tags are dynamic placeholders used to personalize message content with data uploaded in the audience list. These are available by default, and you can map them to the desired dynamic values. The custom tags are named in the format `custom_tag_1,` `custom_tag_2`, and so on. A total of 15 custom tags are available, which you can use to define your dynamic values.
+
+## Use cases
+
+### Recently Viewed Product
+
+Brands can use the 'Recently Viewed Product' custom tag to send personalized messages reminding customers about items they recently explored. This helps in nudging users to complete a purchase and increases the chances of conversion.
+
+Example:
+Consider two users: Ananya and Rohan. Ananya recently viewed a Silk Scarf, while Rohan recently viewed Running Sneakers. To encourage them to revisit these products, you can use `{{custom_tag_1}}` for the recently viewed item in the message content.
+
+Message content example:
+Hi `{{first_name}}`, we noticed you recently checked out `{{custom_tag_1}}`. It’s still available — grab it before it’s gone!
+
+<Image width="80% " src="https://files.readme.io/107abcbd223e522a9a6bb3302833516facebdbe644225a96a6bbb454be3fbb4f-GIF3_9.gif" />
+
+### Size
+
+Brands can use the 'Size' custom tag to send personalized messages based on a customer’s preferred clothing or footwear size. This ensures that product recommendations, restock alerts, or offers are highly relevant and tailored to each user.
+
+Example: Consider two users: Maya and Arjun. Maya’s preferred dress size is M, while Arjun’s preferred shoe size is 9. To send messages about new arrivals or restocked items in their size, you can use `{{custom_tag_1}}` for the size in the message content.
+
+Message content example:
+Hi` {{first_name}}`, the Silk Dress you loved is now available in your size `{{custom_tag_1}}`! Don’t miss out — shop now!
+
+<Image width="80% " src="https://files.readme.io/05098d12005e79eb9bb66ae1562857708955a5360d96a6327fbcdb4ef1d9a5aa-GIF3_8.gif" />
+
+## Configure Custom Tags
+
+You can use custom tags to personalize your message content based on customer data uploaded in a CSV file.
+
+To configure custom tags, follow these steps:
+
+1. **[Create a campaign](https://docs.capillarytech.com/docs/create-campaign#/)** or select an existing one.
+
+<Image width="70% " src="https://files.readme.io/6fd73882718f33689939e2e467687b7e649b57914440814f6ea8dc388301c2d5-Screenshot_2025-10-13_at_2.35.33_PM.png" />
+
+2. [Create a message](https://docs.capillarytech.com/docs/create-message#/) within the campaign.
+
+<Image width="75% " src="https://files.readme.io/3f93a99e2bff2b1e2cd3b4a577df7dce142aa51f920523ab038daec6040ebc1c-Screenshot_2025-10-14_at_11.39.48_AM.png" />
+
+3. In the **Audience** section, select **Add Audience Group** and [create an audience group by uploading a CSV file](https://docs.capillarytech.com/docs/create-audience-group#/create-audience-group-using-csv-file).
+4. In the Content section, select **Add Creative** and choose your desired [engagement channel](https://docs.capillarytech.com/docs/engagement-channels#/).
+5. **Create a new template** or select an existing one.
+6. In the message content, click **+ Add Label** to open the list of available labels.
+7. Navigate to or search for **Custom** Labels on the search bar, and select the required custom tags based on the fields in your uploaded CSV file. The tags appear in the message as placeholders such as -`{{custom_tag_1}}` or `{{custom_tag_2}}`.
+8. Click **Done** to save your changes.
+
+<Image width="70% " src="https://files.readme.io/c58fd244f16fea3d0bfe37c256836f18992deded9d6d22d1c7a70ab661ef8329-The_Smarter_Path_Forward_Kidzz.gif" />
+
+When the communication is sent, these custom tags are automatically replaced with the actual values from your uploaded CSV file, ensuring each recipient receives a personalized message.

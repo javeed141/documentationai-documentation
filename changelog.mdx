@@ -1,0 +1,134 @@
+---
+title: Changelog
+description: Stay updated with the latest releases, features, and improvements in Catapillar.
+---
+
+## Recent Updates
+
+Catapillar releases follow semantic versioning. You receive updates automatically, but check here for highlights, breaking changes, and migration steps. Review release notes before upgrading production deployments.
+
+<Callout kind="info">
+  Subscribe to our RSS feed or join the Discord community for instant notifications on new releases.
+</Callout>
+
+<Update label="2024-10-15" description="v1.2.0" tags={["feature", "bugfix"]}>
+## New Features
+
+- Added real-time collaboration for shared projects
+- Introduced webhook support for custom integrations with `https://your-webhook-url.com/webhook`
+- New dashboard analytics with export to CSV
+
+## Improvements
+
+- Enhanced search performance by `>50%`
+- Better mobile responsiveness on `https://dashboard.example.com`
+
+## Bug Fixes
+
+- Fixed authentication timeout during long sessions
+- Resolved file upload errors with large attachments
+</Update>
+
+<Update label="2024-09-20" description="v1.1.0" tags={["feature", "improvement"]}>
+## New Features
+
+- Custom themes using your brand color `#3B82F6`
+- API rate limiting controls via `https://api.example.com/v1/rate-limits`
+- Bulk import from CSV files
+
+## Improvements
+
+- Optimized database queries for `>10x` faster loads
+- Updated UI components for better accessibility
+
+## Bug Fixes
+
+- Corrected pagination issues in project lists
+- Fixed email notification delivery delays
+</Update>
+
+<Update label="2024-08-10" description="v1.0.0" tags={["breaking", "feature"]}>
+## New Features
+
+- Core documentation management system
+- User authentication with API keys at `https://api.example.com/v1/auth`
+- Basic project organization and search
+
+## Breaking Changes
+
+- Updated API namespace from `/v0` to `/v1`
+- Removed legacy `project_id` parameter (use `id` instead)
+
+## Migration Notes
+
+Update your integrations to use the new endpoints.
+</Update>
+
+## Upgrade Instructions
+
+Follow these steps to upgrade Catapillar safely.
+
+<Steps>
+  <Step title="Backup Data" icon="database">
+    Export your projects from `https://dashboard.example.com/export`.
+  </Step>
+  <Step title="Update Package" icon="package">
+    <CodeGroup tabs="npm,yarn">
+````bash
+npm install catapillar@latest
+````
+````bash
+yarn add catapillar@latest
+````
+    </CodeGroup>
+  </Step>
+  <Step title="Run Migrations" icon="git-branch">
+    ```bash
+    npx catapillar migrate
+    ```
+  </Step>
+  <Step title="Restart Service" icon="refresh-cw">
+    Restart your application server.
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+  Test upgrades in staging first. Use `catapillar --dry-run` to preview changes.
+</Callout>
+
+## Migration Guide
+
+<ExpandableGroup>
+  <Expandable title="v1.0 Breaking Changes" default-open="true">
+    The API now requires `{API_KEY}` headers instead of query params.
+
+    ```javascript
+    // Old
+    fetch('https://api.example.com/v0/projects?api_key=YOUR_API_KEY')
+
+    // New
+    fetch('https://api.example.com/v1/projects', {
+      headers: { 'Authorization': `Bearer ${YOUR_API_KEY}` }
+    })
+    ```
+
+    Update `<ParamField header="Authorization" param-type="string" required="true">Bearer token</ParamField>` in your requests.
+  </Expandable>
+  <Expandable title="Deprecated Features">
+    Legacy file uploads end support in v2.0. Migrate to the new multipart API.
+  </Expandable>
+</ExpandableGroup>
+
+## Quick Links
+
+<Columns cols={3}>
+  <Card title="Quickstart" icon="rocket" href="/quickstart">
+    Get started in minutes.
+  </Card>
+  <Card title="API Reference" icon="code" href="/authentication">
+    Full API documentation.
+  </Card>
+  <Card title="Support" icon="help-circle" href="/help-center">
+    FAQs and troubleshooting.
+  </Card>
+</Columns>

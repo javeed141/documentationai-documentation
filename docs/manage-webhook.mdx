@@ -1,0 +1,94 @@
+---
+title: Manage Webhook
+---
+
+You can click on any webhook from the event listing page and perform the following:
+
+* [View the Webhook metrics for the last 30 days,](https://docs.capillarytech.com/docs/manage-webhook#viewing-webhook-performance)
+* [Edit  a webhook,](https://docs.capillarytech.com/docs/manage-webhook#editing-webhook-details) and
+* [Deactivate a webhook](https://docs.capillarytech.com/docs/manage-webhook#deactivating-a-webhook)
+
+<Image src="https://files.readme.io/9bb18be92e63ea2e40afdd5344d609e29f434942f41fe360bdb01e51826d228b-Webhook_view.gif" />
+
+## Viewing webhook performance
+
+### Webhook basic details
+
+Use this section to view information about the webhook configuration, including its status, endpoint URL, payload enrichment, and authentication headers.
+
+<Image src="https://files.readme.io/354b25ce0d78b7931fe5cafd5d74fa639c8bf8b96a1a3915fa9113a3f572b38a-image.png" />
+
+| Field                            | Description                                                  |
+| :------------------------------- | :----------------------------------------------------------- |
+| Status indicator Active/Inactive | Indicates if the webhook is active or inactive.              |
+| Endpoint url                     | Displays the webhook url.                                    |
+| Payload enrichment               | Indicates if the payload is enriched or not.                 |
+| Headers                          | Indicates the number of headers added along with the payload |
+
+### Delivery metrics
+
+Use this section to monitor the webhook’s delivery performance over a selected time range.
+
+<Image src="https://files.readme.io/c7e28b9749f3fbee51eac2de3b8e0457547bc95efb5cf1babe465600f06a96fe-image.png" />
+
+| Field                 | Description                                                                                                                                               |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Day-wise filter       | Lets you select the number of past days (1, 3, 7, 15, or 30) for which you want to view the metrics. Selecting **1D** shows data for the most recent day. |
+| Total events          | Displays the total number of event notifications attempted during the selected period. This includes both successful and failed deliveries.               |
+| Successful deliveries | Shows the number and percentage of event notifications that were successfully delivered to the webhook endpoint.                                          |
+| Failed deliveries     | Displays the number and percentage of event notifications that failed to deliver, either due to endpoint errors, timeouts, or invalid responses.          |
+
+### Event delivery details
+
+Use this section to view the log of all event deliveries made to the webhook in the past 30 days.
+Each record displays the date and time an event occurred, the event type, its current delivery status, and the corresponding API request ID.
+
+<Image src="https://files.readme.io/87240ad2edaf1c57afb82007ba99dd60467bf529f89dc3954192b9861f38d0ab-image.png" />
+
+You can filter events by customer, event type, delivery status, or date range to quickly identify specific deliveries or troubleshoot issues.
+
+<Callout kind="danger">
+
+  Filter usage
+
+  You can filter by either event type or search option, but not both at the same time.
+  If you use the search option to look up a specific customer or identifier, the event type filter becomes inactive, and vice versa.
+
+</Callout>
+
+| Field | Description |
+| --- | --- |
+| Search and filter | Lets you: * search for specific events by customer identifier (email, mobile number, or external ID), card number, transaction/bill number, and API request ID (you can find this from the API reponse header). * filter by event dates * filter by event type such as transactionAdd, customerAdd etc * filter by event status such as pending, delivered, failed, and retrying |
+| Event occurred at | Displays the exact timestamp when the event was triggered in the Capillary system in organization timezone. |
+| Event type | Indicates the type of event that was sent to the webhook (for example, `customerUpdated`, `transactionAdded`, `pointsIssued`). |
+| Status | Shows the current delivery state of the event, such as **Pending**, **Success**, **Retrying**or **Failed**. |
+| API request ID | Displays the unique identifier for each API request, which can be used for tracking or troubleshooting webhook deliveries. |
+
+## Editing webhook details
+
+<Image src="https://files.readme.io/472c45d8ef68d64d0b65938d6f9a5891d8d1817907f54d16b1a7b4cd743e4298-Edit_Webhook.gif" />
+
+To edit an existing webhook, perform the following:
+
+1. from the **Webhook** tab, open **Webhooks** and select the webhook you want to edit.
+2. Click **Edit** icon.
+3. Review **Webhook name**. You cannot edit a webhook name.
+4. In **Webhook URL**, enter the destination URL. ENS will send events to this URL.
+5. Under **Header**, add required key–value pairs for authentication.
+6. To add more headers, click **Add new key** and repeat.
+7. Click **Done** to save.
+
+After saving, the new settings apply to all future deliveries.
+
+## Deactivating a webhook
+
+Follow these steps to delete an existing webhook.
+
+1. Open **Webhooks** and select the webhook you want to delete.
+2. Click the **more options (⋮)** icon in the top-right corner of the page.
+3. Select **Deactivate** from the dropdown menu.
+4. Confirm the deactivation when prompted.
+
+   <Image src="https://files.readme.io/d201b94807eed804ccc6067edd73256f92cae6c9d629e1e2659b9b648fabfc8d-image.png" />
+
+Once deactivated, the webhook is permanently removed and will no longer receive event notifications from ENS. Deactivating a webhook does not affect past event logs, but future event deliveries to the deleted endpoint will stop immediately.

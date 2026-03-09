@@ -1,0 +1,20 @@
+---
+title: Handling Customer Cards During Data Deletion
+---
+
+Apart from the customer data, you must also define how linked loyalty cards are handled during PII deletion.
+This behaviour is controlled by the configuration parameter `CONF_PII_DELETION_CARD_UNLINK_STATE`.
+
+By default, when a customer profile is deleted, the linked card is delinked, and its status changes to `Not Issued`.
+You can change this behaviour by setting the configuration to `DELETED`, which automatically marks the card as DELETED during PII deletion.
+
+The card status remains as `NOT_ISSUED`:
+
+* if an invalid value is set or
+* if the configuration is set to `DELETED` but the DELETED status label is not available in your organization.
+
+Set this configuration before submitting the PII deletion request.
+
+## Enabling the Configuration
+
+To enable this configuration, create a JIRA ticket for the Product Support team.
