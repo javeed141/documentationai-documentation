@@ -1,0 +1,136 @@
+---
+title: Entity-specific Behaviour in a Connected Organization
+---
+
+Most operations in a Connected organization setup behave just as they do in standalone org units. However, the Customer entity and Behavioural events follow special rules once organizations are linked in a Connected organizations model. The sections below explain these key differences.
+
+## Customer entity
+
+<Callout kind="danger">
+
+  Data Import is not supported for Connected Orgs. Import should be done through APIs or Connect+.
+
+</Callout>
+
+### Customer data
+
+| Aspect | Details | Action Origin | Configuration Maintained At |
+| --- | --- | --- | --- |
+| [Standard fields](https://docs.capillarytech.com/docs/data-entities#/data-fields) | Defined and stored at the parent level.- Visible across all connected orgs.- Child orgs cannot override them. | Parent org | Parent org |
+| [Extended Fields (EF)](https://docs.capillarytech.com/docs/data-entities#extended-fields) and [Custom Fields (CF)](https://docs.capillarytech.com/docs/data-fields#/custom-fields) | **Parent-level EF/CF**: Shared across all child orgs. **Child-level EF/CF:** Visible only within that child org. If a duplicate EF/CF name exists at both levels, the parent field overrides the child version and applies its value across all connected orgs. **Example:** If the parent org creates a field `customer_interest`, it’s shared with all child orgs. If Child A creates it, it stays private to Child A. If both exist, the parent’s field takes precedence. | Parent/child org | Parent or respective Child org |
+
+### PSI Flag Inheritance
+
+When a field is marked as PSI (Potentially Sensitive Information) at the parent or child organization level, the following rules determine how fields are treated during API requests.
+
+#### Custom Fields
+
+For custom fields, PSI designations from both parent and child organizations are combined. If a custom field with the same name exists in both organizations and is marked as PSI in either one, it's treated as sensitive. When both organizations have a field with the same name, the parent's PSI configuration takes precedence.
+
+#### Extended Fields
+
+For extended fields, the parent organization's configuration takes precedence. If an extended field exists in both parent and child:
+
+* The parent's PSI designation applies
+* The child's PSI configuration for that field is ignored
+
+Extended fields unique to the child organization (not present in the parent) use the child's PSI configuration.
+
+#### Example
+
+| Field Name             | Parent PSI Setting | Child PSI Setting | Result                                                    |
+| ---------------------- | ------------------ | ----------------- | --------------------------------------------------------- |
+| `customer_income`      | PSI                | Not PSI           | Treated as PSI                                            |
+| `loyalty_tier`         | Not PSI            | PSI               | Treated as PSI (custom field) or Not PSI (extended field) |
+| `child_specific_field` | Not present        | PSI               | Treated as PSI                                            |
+
+<Callout kind="info" title="Cache Updates">
+
+PSI configurations are cached for up to one hour. When you update PSI settings at the parent organization level, the cache automatically refreshes for the parent and all connected child organizations.
+
+</Callout>
+
+### Customer registration
+
+| Aspect                  | Details                                                                                                                                                                                                                                                                                                                                                     | Action Origin | Configuration Maintained At |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | --------------------------- |
+| Registration flow       | Registration starts at the child organization level. When a customer registers, an **account** is created at the parent organization. This account is shared between the parent and the corresponding child organization. Individual **profiles,** such as WeChat or mobile app profiles, exist and are managed at the respective child organization level. | Child Org     | Parent org                  |
+| Customer Identifier     | A unified user ID/customer ID is maintained across all connected organizations, ensuring consistency across the hierarchy.                                                                                                                                                                                                                                  | Child org     | Parent org                  |
+| External ID             | Customer External ID cannot be auto-generated in a connected org setup.                                                                                                                                                                                                                                                                                     | NA            | NA                          |
+| One-org limit           | At the same time, a user can be registered in only one organization.                                                                                                                                                                                                                                                                                        | NA            | NA                          |
+| Configuration alignment | The parent organization’s settings should match those of the child organization, as they don’t sync automatically. For example, if the primary identifier of a parent org is mobile, every child should have the primary identifier as the mobile itself. Otherwise, registration may fail or behave unexpectedly.                                          | NA            | NA                          |
+| Attribution             | When a customer registration is initiated from a child organization (using the child organization’s till), an account is created at the parent organization. At the same time, a **reference till** is created in the parent organization to represent the child organization’s till and record the source of registration.                                 | -             | -                           |
+
+### Customer update
+
+All updates are initiated from the child organization.
+
+| Aspect                          | Details                                                                                                                                                                                                                                                                                                                             | Action Origin | Configuration Maintained At |
+| ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | --------------------------- |
+| Standard fields and identifiers | Changes to standard fields are updated at the parent organization and reflected across all associated child organizations.                                                                                                                                                                                                          | Child org     | Parent org                  |
+| Child-specific fields           | Changes are reflected only in the child org                                                                                                                                                                                                                                                                                         | Child org     | Child org                   |
+| Audit logs                      | Audit logs are available in Member Care. Changes to customer identifiers and standard fields (e.g., first name, last name) are logged in both parent and child orgs.  Child-specific changes are logged only in the respective child org.                                                                                           | Child org     | Respective org              |
+| Workflow for identifier changes | Identifier changes are typically initiated through the requests workflow. A request is submitted by either the customer or a designated representative and must be approved by the approver. **Note:** These requests are accessible only within the organization that initiates them and are not visible across all organizations. | Child org     | Respective org              |
+
+### Customer Personal Information (PII) deletion
+
+| Aspect                                       | Details                                                                                                                                                                              | Action Origin | Configuration Maintained At |
+| -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------- | --------------------------- |
+| Customer Personal Information (PII) Deletion | [A deletion request can be raised only from the parent org, and the data is deleted from both the parent and the child org](https://docs.capillarytech.com/docs/pii-configuration#). | Parent org    | Parent org                  |
+
+### Customer label
+
+| Aspect                  | Details                                                                                                                                                                                                                              | Action Origin           | Configuration Maintained At |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------- | --------------------------- |
+| Customer Label and Status | Each organization tracks labels and status independently. Changes in one org do not affect others.  **Edge case:** If Child A marks a user “Fraud” and Child B marks them “Non-fraud,” the system treats that scenario as undefined. | Parent org or Child org | Respective org              |
+
+### Customer merge
+
+| Aspect         | Details                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Action Origin | Configuration Maintained At |
+| -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | --------------------------- |
+| Customer Merge | Merge operations must always be **initiated from the parent organization**. Requests raised from a child organization are not supported. Both the **survivor and victim profiles must exist within the same organization** for the merge to be performed. Once the merge process is completed, the **unified profile** is automatically available in both the **parent** and the **corresponding child organisation**. Cross-organisation mergers (for example, between two child organisations) are **not allowed**. | Parent org    | Parent org                  |
+
+### Other customer-related data
+
+| Aspect                                                      | Details                                                                                                      | Action Origin  | Configuration Maintained At |
+| ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ | -------------- | --------------------------- |
+| Card/Subscription/Status/user group/Image/Barcode/Inventory | Each org stores and manages this information independently. Cards remain unique to the org that issued them. | Respective org | Respective org              |
+
+## [Behavioural event](https://docs.capillarytech.com/docs/setup-test-behavioral-events#/handling-behavioural-in-connected-organizations)
+
+| Aspect                  | Details                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | Action Origin          | Configuration Maintained At |
+| :---------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :--------------------- | :-------------------------- |
+| Event definitions       | Behavioural events can be defined at both the parent and child organization levels.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | Parent org / Child org | Parent org                  |
+| Real-time updates       | Any change made to an event in the parent organization is immediately reflected in all connected child organizations.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Parent org             | Parent org                  |
+| New child organizations | When a new child organization is added, all existing event definitions from the parent are automatically available in that child organization.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | Parent org             | Parent org                  |
+| Child-specific events   | You can create events directly in a child organization. These remain local and must have unique names that don’t clash with parent events. **Event handling:** Events that are common across parent and child organisations are posted to the parent webhook with the child org reference. The system routes the event to the appropriate child organisation, where it’s saved and used for local actions like loyalty rewards, campaigns, or reports. The same event is also replayed to the parent so that parent-level programs can act on it. The parent doesn’t store the event but can still use it in event-based workflows. **Example:** A loyalty program offers rewards at both the child and parent organisation levels. When a user completes a challenge in the child org, the event triggers local rewards within that org. The same event is then replayed to the parent org, allowing it to grant additional rewards. | Child org              | Child org                   |
+
+## Store
+
+| Aspect                                          | Details                                                                                                                                                                                                             | Action Origin              | Configuration Maintained At |
+| ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- | --------------------------- |
+| Store setup                                     | Each organization (parent and child) can have its own stores.                                                                                                                                                       | Parent org and Child org   | Respective org              |
+| Stores representing child orgs in parent        | For every child org mapped to a parent, a corresponding store is created in the parent org. This enables the parent org to record and track events from child orgs using corresponding ‘representing stores.        | Child org                  | Parent org and Child org    |
+| Stores representing the parent org in child org | Each child org includes a store representing the parent. This is used to record actions triggered at the parent or another child org but impacting the current child org (for example, a customer update workflow). | Parent org/Other child org | Child org and Parent org    |
+
+**Note**
+
+When an **event happens in a child org**, such as a purchase at a Brand A store, the **parent org** also needs to record that event in its own system. The parent org uses a **“representing store”** (a store created in the parent org for Brand A) to record the event.
+
+So:
+
+* In **child org Brand A**, the event is shown under the actual Brand A store.
+
+* In the **parent org**, the same event is logged under the “Brand A store” that exists inside the parent org only for tracking/representation purposes.
+
+Similarly, when an **action originates in the parent org or in a different child org**, it may still need to be reflected in the **current child org**. To capture this, every child org has a **“representing store”** for the parent org or the other child org.
+
+## Transaction
+
+For transactions, each org stores and manages its information independently.
+
+## Authentication and authorisation
+
+For **authentication**, the client key and secret must be created for each child and parent organization, and for **authorisation**, access groups are handled independently within each organization.
+
+<br />

@@ -1,0 +1,85 @@
+---
+title: Introduction to the UI
+---
+
+A guide to navigating the Connect+ interface — the home page, dataflow list, workspace selector, performance metrics, and settings.
+
+The Connect+ UI uses the same block-based, visual builder paradigm as the **Neo** extension platform. If you have worked in Neo, the Connect+ interface will feel familiar.
+
+## Navigating the Connect+ home page
+
+When you open Connect+, you land on the dataflow listing page for your selected org. For each dataflow, the listing shows:
+
+* Whether the dataflow is **Active** or **Inactive**
+* The **version currently live**
+* **Last activity** and the user who performed it
+
+You can search and filter dataflows by name or by tags. Tags can be assigned to dataflows to group related flows — for example, all flows for a particular integration or business function. You can add up to 5 tags per dataflow.
+
+## Workspace selector
+
+## Dataflow list and status indicators
+
+## Performance metrics at a glance
+
+The dataflow listing provides a quick view of key performance indicators for each active dataflow:
+
+* **Accuracy %** — The percentage of records processed successfully (output count ÷ input count × 100)
+* **Error counts** — The number of records that failed during the last run
+
+For full performance details, open a dataflow and go to the **Performance** tab.
+
+## Settings panel
+
+## Blocks
+
+A dataflow is built by connecting **blocks** — modular units that each perform a specific task. Common block types include:
+
+| Block                  | Function                                                              |
+| :--------------------- | :-------------------------------------------------------------------- |
+| Connect to Source      | Connects to an SFTP server or Kafka topic to read the input           |
+| Decrypt                | Decrypts encrypted source files before processing                     |
+| Transform Data         | Handles data format conversion, header mapping, and field expressions |
+| Connect to Destination | Calls Capillary APIs or sends data to external services               |
+| Encrypt                | Encrypts output files before delivery                                 |
+| Trigger Frequency      | Defines when the dataflow runs (schedule or event-based)              |
+
+<Callout kind="info">
+
+The blocks available in a given dataflow depend on the template selected. Not all blocks appear in every template.
+
+</Callout>
+
+For credentials such as host names, passwords, and API keys, Connect+ integrates with **Vault Manager**. Instead of entering credentials manually in each block, you select stored secrets from a dropdown. When credentials change, running **Sync** on the dataflow picks up the latest values without requiring edits to individual blocks.
+
+## Dataflow versions
+
+Every dataflow in Connect+ is version-controlled. Changes are always made on the latest **Draft** version. Once changes are ready, send the draft for approval. The version lifecycle is:
+
+Draft → Awaiting Approval → Approved → Live
+
+Only one version of a dataflow can be **Live** at a time. You can view any past version, compare changes between versions, or restore the most recently approved version if needed.
+
+<Callout kind="info">
+
+It takes approximately 10 minutes for a version to become Live after approval.
+
+</Callout>
+
+## Dataflow controls
+
+Use the following controls to manage a live dataflow:
+
+| Control | Behavior                                                         |
+| :------ | :--------------------------------------------------------------- |
+| Stop    | Halts all processing immediately                                 |
+| Start   | Restarts a stopped dataflow                                      |
+| Sync    | Re-applies the latest Vault Manager configurations to all blocks |
+
+## aiRA Coder
+
+Connect+ includes an integrated AI assistant, **aiRA Coder**, that helps you work with dataflows conversationally. You can use it to:
+
+* **Explain** an existing dataflow — aiRA Coder reads the current configuration and generates a plain-language summary of what the flow does.
+* **Create** a new dataflow from a prompt — describe your requirement and aiRA Coder generates the appropriate block sequence, including transformation scripts.
+* **Copy and paste** dataflows — copy a dataflow's configuration and paste it into a new flow, enabling reuse across orgs without rebuilding from scratch.

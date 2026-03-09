@@ -1,0 +1,98 @@
+---
+title: Cart Promotion Example and Use Case
+---
+
+## Use case 1:  Buy 2 Get 1 Free
+
+**Requirement**: Automatically discount 1 item when a customer adds 3 qualifying items to their cart.
+
+**Promotion Type**: POS Cart Promotion, which automatically apply discount if the criteria are fulfilled.  (no coupon code required).
+
+### Step 1: Basic Setup
+
+1. Navigate: Go to Engage+ > Campaigns > Select your active campaign.
+2. Create: Go to the Promotions tab and click New cart promotion.
+3. Define Basic Details:
+   * **Name**: Enter a clear system name (e.g., PROMO_B2G1_Coffee_Jan25).
+   * **Description**: "Buy any 2 Coffees, Get the 3rd Free. Applied to the lowest price item."
+   * **Timezone**: Specifies the timezone where the promotion was created
+   * **Duration**: Set the Start Date and End Date.
+   * **Promotion Type**: Select POS Cart Promotion. This type ensures that the POS automatically triggers the discount when the cart rules are met.
+
+<Image width="80% " src="https://files.readme.io/a9307d75c5d4702bf21fdc4d63ad554e7a9f3997259fd788c04da9d17332eb1d-1.png" />
+
+### Step 2: Configuration
+
+Scroll to the section Availing conditions and benefits.
+
+#### Step 2.2: Set the Trigger (Condition)
+
+You need to tell the system to count specific items.
+
+1. Click Add conditions/benefits.
+
+<Image width="80% " src="https://files.readme.io/0be7e1b7ea768acae7a3ea0a7d8d935bf981c55dcec682c4dd4d8b57657b8634-Screenshot_2026-02-11_at_2.54.29_PM.png" />
+
+<br />
+
+2. In the Conditions column, configure the following:
+
+| Field Name           | Selection / Value                                  | Explanation                                                                                                                     |
+| :------------------- | :------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------ |
+| Qualifying Condition | Sum of line item quantity for the selected product | We are counting how many items are in the basket, not the price of the items.                                                   |
+| Select Product       | Select or upload sku                               | Defines which items count toward the deal. You can also select specific categories here.                                        |
+| Operator             | Greater than or equal to                           | Allows the deal to trigger when the product quantity reaches the specified criteria.                                            |
+| Value                | 3                                                  | CRITICAL: This is the Total Cart Count required. The customer must bring 2 paid items + 1 free item to the counter (Total = 3). |
+
+<br />
+
+<Image width="70% " src="https://files.readme.io/dc0f4637a0755f2f6059ea319d875120082d9c25c41c672f12d6c182275c2c7b-Screenshot_2026-02-11_at_3.13.54_PM.png" />
+
+<br />
+
+#### Step 2.3: Set the Reward Benefits
+
+You need to tell the system which item gets the discount.
+
+1. In the Benefits column, configure the following:
+
+| Field Name     | Selection / Value             | Explanation                                                                             |
+| :------------- | :---------------------------- | :-------------------------------------------------------------------------------------- |
+| Benefit On     | Selected products in the cart | Ensures the discount applies only to the coffee, not unrelated items like gum or water. |
+| Select Product | SKU                           | Must match the sku selected in Conditions.                                              |
+| Benefit type   | Free product                  | This will be a free item if it fulfills the paymentmode criteria.                       |
+
+<Image width="70% " src="https://files.readme.io/31be79fde6768bdac7bebc27c18fd753a3809c65d4646af71d5c234b9defd98d-Screenshot_2026-02-11_at_3.16.50_PM.png" />
+
+<br />
+
+### Step 3: Restrictions and Limits
+
+Prevent revenue loss and system abuse.
+
+#### 3.1. Repeat Behavior (Cart Limits)
+
+Scroll to **Define scope and restrictions on availing promotions**
+Click on continue towards **Restriction tab**
+
+* Field: Number of times promotion can be redeemed in a single cart
+  * Option A: Add value as `1` for Single Use.
+
+    * **Behavior**: Customer buys 6 coffees -> Gets 1 free.
+    * **Use Case**: Limited-time offers.
+
+    <Image width="70% " src="https://files.readme.io/ec933be5a21da6549be15acb420207d9cb4bef851ef20f06c734389bf0693318-Screenshot_2026-02-11_at_3.24.01_PM.png" />
+
+    * Option B: You can leave the value empty if you require no limit.
+      * **Behavior**: Customer buys 6 coffees -> Gets 2 free.
+      * **Use Case**: Standard "Happy Hour" behavior.
+
+#### 4.2. Stacking and Exclusivity
+
+Navigate to Compatibility settings (bottom of page).
+
+* **Setting**: Mark this promotion as exclusive at the cart level.
+* **Action**: Turn the toggle `ON`.
+* **Why**: This prevents "Double Dipping." If a customer has a "10% Off Entire Bill" coupon, enabling exclusivity ensures they cannot use it on top of getting a free coffee. The system will calculate which offer gives the customer the best deal and apply only that one.
+
+<br />

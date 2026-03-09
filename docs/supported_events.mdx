@@ -1,0 +1,89 @@
+---
+title: Supported Events
+---
+
+<br />
+
+<Callout kind="alert">
+
+  Note
+
+  Event notifications (webhooks) may not be triggered when points or coupons are issued through certain automated modules, including:
+  • Campaign automation
+  • Journey automation (using the Issue Incentive block)
+  • Other automated issuance workflows
+
+</Callout>
+
+Event notifications for the following events can be configured.
+
+| Event                                     | Description                                                                                   |
+| ----------------------------------------- | --------------------------------------------------------------------------------------------- |
+| **rewardIssued**                          | Notification that a reward has been issued to a customer.                                     |
+| **streakCustomerUnEnrolment**             | Notification that a customer has been unenrolled from a streak program.                       |
+| **issueRewardFailure**                    | Notification that a reward issuance failed.                                                   |
+| **updateRewardTransaction**               | Notification that a reward transaction has been updated.                                      |
+| **notInterestedBillAdded**                | Notification that a bill was added under the ‘not interested’ category.                       |
+| **groupUpdated**                          | Notification that a customer group has been updated.                                          |
+| **promisedToCurrentPointsConversion**     | Notification that promised points were converted to current points.                           |
+| **pointsTransferredReceived**             | Notification that transferred points were received by a customer.                             |
+| **groupCreated**                          | Notification that a new customer group has been created.                                      |
+| **partnerProgramUpdated**                 | Notification that a partner program has been updated.                                         |
+| **pointsIssued**                          | Notification that points were issued to a customer.                                           |
+| **supplementaryMembershipExpiryReminder** | Reminder that a supplementary membership is about to expire.                                  |
+| **targetCustomerEnrolment**               | Notification that a customer has been enrolled in a target program.                           |
+| **unifiedTargetsUnAchieved**              | Notification that unified targets have not been achieved.                                     |
+| **partnerProgramDelinked**                | Notification that a partner program has been delinked.                                        |
+| **badgeEarned**                           | Notification that a customer has earned a badge.                                              |
+| **cartPromotionIssued**                   | Notification that a cart promotion has been issued.                                           |
+| **rewardCreated**                         | Notification that a reward has been created.                                                  |
+| **manualPointsAdjustment**                | Notification that points were manually adjusted.                                              |
+| **redeemedPointsReversed**                | Notification that redeemed points were reversed.                                              |
+| **cartPromotionEarned**                   | Notification that a cart promotion has been earned.                                           |
+| **tierDowngraded**                        | Notification that a customer was downgraded to a lower tier.                                  |
+| **pointsTransferredInitiated**            | Notification that a points transfer has been initiated.                                       |
+| **tierUpgraded**                          | Notification that a customer was upgraded to a higher tier.                                   |
+| **loyaltyCustomerMerge**                  | Notification that loyalty accounts were merged.                                               |
+| **partnerProgramLinked**                  | Notification that a partner program has been linked.                                          |
+| **requestUpdated**                        | Notification that a request was updated.                                                      |
+| **promotionIssued**                       | Notification that a promotion has been issued.                                                |
+| **targetPeriodStarted**                   | Notification that a target period has started.                                                |
+| **pointsExpiryChange**                    | Notification that the points expiry date has changed.                                         |
+| **pointsExpired**                         | Notification that points have expired.                                                        |
+| **unifiedTargetsAchieved**                | Notification that unified targets have been achieved.                                         |
+| **rewardUpdated**                         | Notification that a reward has been updated.                                                  |
+| **transactionUpdated**                    | Notification that a transaction has been updated.                                             |
+| **customerAdded**                         | Notification that a new customer has been added.                                              |
+| **groupMemberRemoved**                    | Notification that a member was removed from a group.                                          |
+| **targetValueAchieved**                   | Notification that a target value has been achieved.                                           |
+| **singlePointsExpiryUpdated**             | Notification that the expiry date of single points has been updated.                          |
+| **alternateCurrenciesIssued**             | Notification that alternate currencies have been issued.                                      |
+| **transactionRejected**                   | Notification that a transaction was rejected.                                                 |
+| **tierDowngradeReminder**                 | Reminder that a customer is about to be downgraded.                                           |
+| **issuedPointsReversed**                  | Notification that issued points were reversed.                                                |
+| **groupMemberAdded**                      | Notification that a member was added to a group.                                              |
+| **pointsContributionToGroup**             | Notification that points were contributed to a group.                                         |
+| **streakLevelUnAchieved**                 | Notification that a streak level was not achieved.                                            |
+| **CouponRedeem**                          | Notification that a coupon was redeemed.                                                      |
+| **promotionEarned**                       | Notification that a promotion was earned.                                                     |
+| **retroBillAdded**                        | Notification that a retro bill was added.                                                     |
+| **pointsExpiryReminder**                  | Reminder that points are about to expire.                                                     |
+| **pointsRedeemed**                        | Notification that points were redeemed.                                                       |
+| **cartPromotionRevoked**                  | Notification that a cart promotion was revoked.                                               |
+| **transactionAdded**                      | Notification that a new transaction was added.                                                |
+| **rejectedTransactionRetrigger**          | Notification that a rejected transaction was retriggered.                                     |
+| **streakCustomerEnrolment**               | Notification that a customer was enrolled in a streak program.                                |
+| **CouponIssue**                           | Notification that a coupon was issued.                                                        |
+| **IssueBulkCoupon**                       | Notification that bulk coupons were issued under a series.                                    |
+| **tierRenewed**                           | Notification that a customer’s tier was renewed.                                              |
+| **streakLevelAchieved**                   | Notification that a streak level was achieved.                                                |
+| **cardUpdated**                           | Notification that a card was updated.                                                         |
+| **targetAchievedValueUpdated**            | Notification that a target’s achieved value was updated.                                      |
+| **cartPromotionRedeemed**                 | Notification that a cart promotion was redeemed.                                              |
+| **targetValueUpdated**                    | Notification that a target’s value was updated.                                               |
+| **customerUpdated**                       | Notification that customer details were updated. This is also triggered on customer deletion. |
+| **issuedAlternateCurrenciesReversed**     | Notification that issued alternate currencies were reversed.                                  |
+| **requestWorkflowEvent**                  | Notification of an event in a request workflow.                                               |
+| **targetPeriodCompleted**                 | Notification that a target period was completed.                                              |
+
+The above events are also referred to as transactional events, as each of these events is inherently transactional in nature.

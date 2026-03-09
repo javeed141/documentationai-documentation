@@ -1,0 +1,24 @@
+---
+title: Issued Promotions Fact Table
+---
+
+**Databricks Table Name:** issued_promotions_fact
+
+| Column Name | Data Type | Description | Linked Table | Availability for Export in the Standard Template |
+| --- | --- | --- | --- | --- |
+| auto_update_time | bigint | Date and time when the corresponding table available at the source was last updated. It is in the Unix timestamp format. | [time](https://docs.capillarytech.com/docs/dimension-tables#time) | _ |
+| auto_update_time_ce | bigint | Indicate customer enrollment date and time. | [time](https://docs.capillarytech.com/docs/dimension-tables#time) | _ |
+| ce_id | bigint | Customer enrollment Id. | _ |  |
+| dim_customer_enrollment_date_id | bigint | Date when the Customer was enrolled for the promotion. | [date](https://docs.capillarytech.com/docs/dimension-tables#date) | * |
+| dim_customer_enrollment_time_id | bigint | Time when the Customer was enrolled for the promotion. | [time](https://docs.capillarytech.com/docs/dimension-tables#time) | * |
+| dim_event_date_id | bigint | Indicates the date associated with a specific event related to the promotion. | [date](https://docs.capillarytech.com/docs/dimension-tables#date) | * |
+| dim_event_time_id | bigint | Identifier for the time associated with a specific event related to the promotion. This could be used to track when the promotion was issued or redeemed. | [time](https://docs.capillarytech.com/docs/dimension-tables#time) | * |
+| dim_event_user_id | bigint | Identifier for the customer associated with the promotion. | [users](https://docs.capillarytech.com/docs/dimension-tables#/users-users) |  |
+| dim_issued_expiry_date_id | bigint | Indicates the expiration date of the promotion. | [date](https://docs.capillarytech.com/docs/dimension-tables#date) | * |
+| dim_issued_expiry_time_id | bigint | Indicates the expiration time of the promotion. | * |  |
+| dim_issued_promotion_active_id | bigint | Indicates whether the promotion is active or not. | * |  |
+| dim_latest_updated_date_id | bigint | Indicates the time when this row was last updated. | [date](https://docs.capillarytech.com/docs/dimension-tables#date) | * |
+| dim_promotion_id | bigint | Unique identifier for the table record. It is the primary key for the table. | [cart_promotion](https://docs.capillarytech.com/docs/dimension-tables?isFramePreview=true#cart-promotion) | * |
+| event_log_id | bigint | Identifier for the event log entry associated with this promotion. | points | * |
+| id | bigint | Unique identifier of the | * |  |
+| year | int | Year of the promotion issual. | [date](https://docs.capillarytech.com/docs/dimension-tables#date) | * |

@@ -1,0 +1,679 @@
+---
+title: Configure Cart Promotion
+---
+
+Configuring a cart promotion involves a series of steps to define how the promotion works, who qualifies, and how it interacts with other offers. The configuration process involves:
+
+* [Creating specific types of cart promotion](https://docs.capillarytech.com/docs/configure-cart-promotion#configuring-loyalty-cart-promotion): Selecting the appropriate promotion structure based on the specific use case, such as Loyalty, Earning, POS, Rewards, and code-linked.
+* [Configuring the benefits](https://docs.capillarytech.com/docs/configure-cart-promotion#availing-conditions-and-benefits): Defining the qualifying conditions and the specific benefits applicable to the cart.
+* [Defining restrictions and scope](https://docs.capillarytech.com/docs/configure-cart-promotion#define-scope-and-restriction): Configuring the target scope (stores, zones, customers) and setting issuance or redemption limits.
+* [Configuring communication](https://docs.capillarytech.com/docs/configure-cart-promotion#communication): Setting up automated messaging for events such as promotion earning or expiry reminders.
+* [Defining the stacking](https://docs.capillarytech.com/docs/configure-cart-promotion#managing-promotion-stacking): Managing compatibility settings to determine if the promotion is exclusive or can be combined with other offers.
+* These steps also include advanced benefit logic, product-level targeting, quantity rules, and time-based activation controls.
+
+<br />
+
+.wiz-container \{
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      max-width: 650px;
+      margin: 20px auto;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      background: #ffffff;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      color: #374151;
+    \}
+
+    
+    .wiz-header \{
+      background: #f9fafb;
+      padding: 12px 16px;
+      border-bottom: 1px solid #e5e7eb;
+      color: #6b7280;
+      font-size: 12px;
+      font-weight: 500;
+      text-align: center;
+      letter-spacing: 0.3px;
+    \}
+
+    
+    .wiz-tabs \{
+      display: flex;
+      padding: 16px;
+      gap: 10px;
+      background: #ffffff;
+      border-bottom: 1px solid #f3f4f6;
+    \}
+
+    
+    input[name="wiz-logic"] \{ display: none; \}
+
+    .wiz-tab \{
+      flex: 1;
+      padding: 10px 0;
+      font-size: 13px;
+      font-weight: 500;
+      text-align: center;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      cursor: pointer;
+      background: #f9fafb;
+      color: #4b5563;
+      transition: all 0.2s;
+    \}
+    .wiz-tab:hover \{ background: #f3f4f6; \}
+
+    
+    #t1:checked ~ .wiz-tabs label[for="t1"],
+    #t2:checked ~ .wiz-tabs label[for="t2"],
+    #t3:checked ~ .wiz-tabs label[for="t3"],
+    #t4:checked ~ .wiz-tabs label[for="t4"],
+    #t5:checked ~ .wiz-tabs label[for="t5"] \{
+      background: #2563eb;
+      color: white;
+      border-color: #2563eb;
+      box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+      font-weight: 600;
+    \}
+
+    
+    .wiz-panel \{
+      display: none;
+      padding: 24px;
+      animation: fadeIn 0.3s ease;
+    \}
+    @keyframes fadeIn \{ from \{ opacity: 0; transform: translateY(-4px); \} to \{ opacity: 1; transform: translateY(0); \} \}
+
+    
+    #t1:checked ~ #p1, #t2:checked ~ #p2, #t3:checked ~ #p3, #t4:checked ~ #p4, #t5:checked ~ #p5 \{ display: block; \}
+
+    
+    .wiz-note \{
+      font-size: 12px;
+      color: #991b1b;
+      background: #fef2f2;
+      padding: 10px 14px;
+      border-radius: 4px;
+      border-left: 3px solid #ef4444;
+      margin-bottom: 24px;
+      display: inline-block;
+    \}
+
+    
+    .wiz-flow \{
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      position: relative;
+    \}
+
+    
+    .wiz-flow::before \{
+      content: "";
+      position: absolute;
+      left: 15px; 
+      top: 10px;
+      bottom: 30px;
+      width: 2px;
+      background: #e5e7eb;
+      z-index: 0;
+    \}
+
+    .wiz-step \{
+      position: relative;
+      padding-left: 50px; 
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+    \}
+    .wiz-step:last-child \{ margin-bottom: 0; \}
+
+    
+    .wiz-step::after \{
+      content: "↓";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #f3f4f6;
+      border: 2px solid #fff;
+      color: #6b7280;
+      font-size: 14px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+    \}
+
+    
+    .wiz-step.done::after \{
+      content: "✓";
+      background: #dcfce7;
+      color: #166534;
+    \}
+
+    
+    .wiz-link \{
+      font-size: 13px;
+      font-weight: 500;
+      color: #111827;
+      text-decoration: none;
+      border-bottom: 1px solid #e5e7eb;
+      transition: all 0.2s;
+      width: 100%; 
+    \}
+    .wiz-link:hover \{
+      color: #2563eb;
+      border-bottom-color: #2563eb;
+    \}
+
+    
+    .wiz-footer \{
+      background: #f9fafb;
+      border-top: 1px solid #e5e7eb;
+      padding: 14px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      letter-spacing: 0.5px;
+    \}
+
+    .wiz-footer-title \{
+      font-weight: 600;
+      color: #6b7280;
+      text-transform: uppercase;
+    \}
+
+    .wiz-footer a \{
+      color: #4b5563;
+      text-decoration: none;
+      font-weight: 600;
+      margin-left: 20px;
+      border-bottom: 1px solid transparent;
+    \}
+    .wiz-footer a:hover \{
+      color: #111827;
+      border-bottom-color: #111827;
+    \}
+  
+  
+  
+
+  
+    
+    
+      Click on the specific promotion type to see the required configurations
+    
+
+    
+    
+    
+    
+    
+
+    
+      Loyalty
+      Earning
+      POS
+      Rewards
+      Code-Linked
+    
+
+    
+      Note: Distinct from standard Loyalty Campaigns
+      
+        
+          Loyalty Setup Guide
+        
+        
+          Define Conditions and Benefits
+        
+        
+          Add Additional Information
+        
+        
+          Setup Communication
+        
+      
+    
+
+    
+      
+        
+          Configure Earning Criteria
+        
+        
+          Define Conditions and Benefits
+        
+        
+          Add Additional Information
+        
+        
+          Setup Communication
+        
+      
+    
+
+    
+      
+        
+          Define Conditions and Benefits
+        
+        
+          Add Additional Information
+        
+      
+    
+
+    
+      
+        
+          Configure Promotion Earning
+        
+        
+          Define Conditions and Benefits
+        
+        
+          Add Additional Information
+        
+        
+          Setup Communication
+        
+      
+    
+
+    
+      
+        
+          Define Conditions and Benefits
+        
+        
+          Add Additional Information
+        
+      
+    
+
+    
+      Advanced and Optional Configuration:
+      
+        Scope and Restrictions →
+        Stacking Rules →
+
+<br />
+
+### Configuring loyalty cart promotion
+
+<Callout kind="danger">
+
+  **Loyalty cart promotion** is a type of cart level promotion. it is different from standard [Loyalty Promotions](https://docs.capillarytech.com/docs/loyalty-promotions-basic-and-advanced#/), which are campaigns for earning points or upgrading tiers based on activities.
+
+</Callout>
+
+To configure Loyalty Cart Promotion, follow the steps below.
+
+1. Define [Availing conditions and benefits](https://docs.capillarytech.com/docs/configure-cart-promotion#/availing-conditions-and-benefits).
+2. Add [Additional Information](https://docs.capillarytech.com/docs/configure-cart-promotion#/additional-information).
+3. Setup [Communication](https://docs.capillarytech.com/docs/configure-cart-promotion#/communication).
+
+<Image src="https://files.readme.io/bbecc030e3055721a7615b12684f78246e57cb60fb34beeb7b24dfee36f383c3-4.png" />
+
+### Configuring Earning cart promotion
+
+To Configure Loyalty earning cart promotion follow the steps below:
+
+1. Configure the criteria for [earning the promotions](https://docs.capillarytech.com/docs/configure-cart-promotion#/promotion-earning).
+2. Configure [Avail conditions and benefits ](https://docs.capillarytech.com/docs/configure-cart-promotion#/availing-conditions-and-benefits). Define qualifying cart conditions and benefits.
+3. Configure [Additional information](https://docs.capillarytech.com/docs/configure-cart-promotion#/additional-information). Add metadata for your promotion
+4. Configure [Communication](https://docs.capillarytech.com/docs/configure-cart-promotion#/communication). Setup the schedule for this message
+
+### Configuring POS cart promotion
+
+To configure POS promotion follow the steps below:
+
+1. Configure [Availing conditions and benefits](https://docs.capillarytech.com/docs/configure-cart-promotion#/availing-conditions-and-benefits). Define qualifying cart conditions and benefits.
+2. Configure [Additional information](https://docs.capillarytech.com/docs/configure-cart-promotion#/additional-information). Add metadata for your promotion.
+
+<Image width="70% " src="https://files.readme.io/3ecf7500433fb86f178741ad8169c44fa4e40c3548bf5b7ea23022f640bffe4e-image.png" />
+
+### Configuring rewards cart promotion
+
+To configure Rewards promotion follow the steps below:
+
+1. Configure [Promotion Earning](https://docs.capillarytech.com/docs/configure-cart-promotion#/promotion-earning).
+2. Configure [Avail conditions and benefits ](https://docs.capillarytech.com/docs/configure-cart-promotion#/availing-conditions-and-benefits). Define qualifying cart conditions and benefits.
+3. Configure [Additional information](https://docs.capillarytech.com/docs/configure-cart-promotion#/additional-information). Add metadata for your promotion.
+4. Configure [Communication](https://docs.capillarytech.com/docs/configure-cart-promotion#/communication). Setup the schedule for this message
+
+<Image width="55% " src="https://files.readme.io/9b91133342846a0576ba87f1699d994e6f506ecfe01018c7dc7860f7ff99b0b3-image.png" />
+
+### Configuring code-linked cart promotion
+
+To configure code linked promotion, follow the steps below:
+
+1. Configure [Availing conditions and benefits ](https://docs.capillarytech.com/docs/configure-cart-promotion#/availing-conditions-and-benefits). Define qualifying cart conditions and benefits.
+2. Configure [Additional information](https://docs.capillarytech.com/docs/configure-cart-promotion#/additional-information). Add metadata for your promotion.
+
+<Image width="70% " src="https://files.readme.io/c7cc090a44953ef9251f30a453c802e4a90f3adf342e9a15dd4d4176f2a3c420-image.png" />
+
+## Promotion Earning
+
+Configure the criteria that must be met in order to earn the promotion. This page is divided into two subsections based on the type of cart promotion: **Loyalty Earning Cart Promotion** and **Rewards Promotion**, each requiring specific configurations.
+
+Under **Loyalty Earning Cart Promotion,** there are two types to consider: **Single Activity** and **Activity Milestone**. Follow the steps outlined below to understand how to configure each type properly.
+
+## Loyalty earning cart promotion
+
+You can define the earn condition for the customer to earn the promotion.
+
+#### For activity-based promotion earning
+
+To configure promotion earning based on a **Single activity**, follow these steps:
+
+<Image src="https://files.readme.io/45d26d9fdf397c1792c0c4ef1fcd28df1bcb5d34a5d2aa59bc849c6e097a9431-image.png" />
+
+1. Select the activity that target customer should achieve to earn promotion
+
+| Option              | Description                                |
+| :------------------ | :----------------------------------------- |
+| Makes a transaction | Customer makes a purchase with your brand  |
+| Registers           | Customer registers in your loyalty program |
+| Updates profile     | Customer Updates their profile             |
+
+2. Define the scope of the promotion.
+
+<Image src="https://files.readme.io/1baac5b49e0205778b86c562894db1b4f87e29694667ba72b027b0c55edddde5-image.png" />
+
+3. Define the earning conditions for the cart promotion.
+
+The fields are as follows:
+
+|                                |                                                                                                                                    |
+| :----------------------------- | :--------------------------------------------------------------------------------------------------------------------------------- |
+| Criteria Name*                | Name to identify the criteria                                                                                                      |
+| What conditions are to be met? | Condition to be evaluated. For more information refer to the document on [Profiles](https://docs.capillarytech.com/docs/profiles). |
+
+<Image src="https://files.readme.io/671aeb6f668d23df742da9c6ec2bfb9a14fdf48060c84b79ba929d781e350aa5-image.png" />
+
+4. Define the additional settings for the cart promotion.
+
+|                              |                                                                      |
+| :--------------------------- | :------------------------------------------------------------------- |
+| Maximum Earning per Customer | Limit how many times a customer can earn the promotion               |
+| Restrict earning days        | Define the promotion earning time period from the date it is issued. |
+
+<Image width="75%" src="https://files.readme.io/22fd8cd411180ac044282912492e4e0a4ce1871287f2799aac8ce90e951bd8c2-image.png" />
+
+#### Milestone based earning
+
+For milestone-based promotions, you can target a specific audience group and set a goal they need to achieve to earn the promotion.
+
+To configure this: In the Configure Earning section, select **Activity Milestone**.
+
+1. Under **Select Milestone Group**, choose the milestone group. Refer to the documentation for more information on [Milestones](https://docs.capillarytech.com/docs/milestones-new-flow).
+
+<Image width="75%" src="https://files.readme.io/42de91c9f60f80040aad093f64851c97a6315efe9408b8709023b077b8237f1c-image.png" />
+
+2. Select the target that should be achieved by the audience group in order to earn promotion
+
+<Image width="75%" src="https://files.readme.io/967d762bed8d3d727d1124008710420b6a4084ffd9d06a0df6fcb7d866c2ca4a-image.png" />
+
+3. Enable the toggle under **Maximum earning per customer** and add the maximum times a customer can earn the cart promotion.
+
+<Image width="75%" src="https://files.readme.io/8e9a55c95b949d68e61affcf3e7149785377e6bd7e7a92a77508606ede631a07-image.png" />
+
+***
+
+## Rewards promotion
+
+Promotion Earning here lets you define how a customer qualifies to earn a promotion in the cart.
+
+1. Select **Direct trigger** to automatically issue the promotion based on predefined customer behaviors or preferences—no manual action is required from the customer.
+
+<Image width="75%" src="https://files.readme.io/2a7891a9b63f2dd90f548329326fe376919ee05fabb1d756f78a267b761aa7d1-Screenshot_2025-04-11_114416.png" />
+
+2. You can define maximum earning per customer that will limit the number of times a customer can earn the promotion.
+
+<Image width="55%" src="https://files.readme.io/dbaa26feaa083dd3bbcc670d48f834d1d432874acba98fac57ba8d772cf2b14c-Screenshot_2025-04-11_114524.png" />
+
+3. Select **Continue** to proceed.
+
+## Availing conditions and benefits
+
+This section defines the logic required to trigger a promotion. It is divided into defining the **Qualifying Condition** (the trigger) and the **Benefit** (the reward).
+
+### 1. Define Qualifying Conditions
+
+Select the primary cart property, the logic operator, and the target value.
+
+Choose how the system evaluates the cart. Each property requires an **Operator** and a **Value**.
+
+| Cart Property | Description | Example Use Case |
+| --- | --- | --- |
+| **Cart amount** | Evaluates the total gross value of the cart. | **Property**: Cart amount\ **Operator**: Greater than or equal to\ **Value**: 500\ Triggered when the cart total is $500 or more. |
+| **Count of items in the cart** | Evaluates the total number of SKUs added to the cart. | **Property**: Count of items\ **Operator**: Greater than\ **Value**: 5\ Triggered when 6 or more items are in the cart. |
+| **Sum of the item amount for selected product** | Focuses on the total price of specific products.\ Use **Select product** to define the scope. | **Property**: Sum of item amount\ **Operator**: Greater than\ **Value**: 1000\ Triggered if the total of 'Denim' items exceeds $1000. |
+| **Sum of the item quantity for selected product** | Focuses on the total quantity of specific products. Use **Select product** to define the scope. | **Property**: Sum of item quantity\ **Operator**: Greater than or equal to\ **Value**: 3\ Triggered if 3 or more 'T-shirts' are added. |
+| **Payment Mode** | Triggers based on the **Payment Identifier** selected (Cash, Points, Gift Card, etc.). | **Property**: Payment Mode\ **Identifier**: Points\ Triggered only when the customer pays using Loyalty Points. |
+| **Gift Voucher** | Triggers based on the specific **Gift Voucher** applied to the cart. | **Property**: Gift Voucher\ **Value**: Employee_Special_Voucher Triggered only when this specific voucher is applied. |
+
+#### **Multiple Conditions (AND Logic)**
+
+Click **+ Add condition** to create complex triggers.
+
+* **Logic:** The promotion will only trigger if **every single condition** listed is met simultaneously.
+* **Example:** `Sum of item quantity (Shirts) >= 2` **AND** `Payment Mode is Credit Card` (Both must happen for the discount to apply).
+
+#### **Select Product Scope**
+
+When using product-based properties, for example, "sum of item amounts for the selected product," a sidebar opens to let you define exactly which items qualify.
+
+* **List of SKU codes:** You can upload a CSV file containing the specific Stock Keeping Unit (SKU) IDs that you want to include in this group.
+* **Selected categories/Brands/Attributes:**
+  * **Include:** You can select specific product attributes (like Brand = Nike) to **target** those items for the condition.
+  * **Exclude:** You can select specific attributes to **ignore** (e.g., Category = Clearance), ensuring they do not contribute to the condition.
+
+### **2. Select Benefit**
+
+Define who receives the reward and which products are discounted.
+
+#### **A. Benefit Scope**
+
+Select where the benefit applies:
+
+* **Cart:** The discount is applied to the **final total amount** of the transaction (e.g., "Flat $10 off the bill").
+* **Select products in cart:** The discount is applied only to **specific items** within the cart, rather than the whole bill.
+
+#### **B. Product Benefit Logic**
+
+If "Select products in cart" is chosen, you must define the target items relative to the condition:
+
+**1. Over and above the condition (Buy X, Get Y)** The benefit is applied to items **excluding** the specific ones that triggered the condition.
+
+* **Use Case:** Buy 2 Pants (Condition), Get 1 Belt for 50% off (Benefit).
+* **Note:** In this scenario, only the belt receives the discount; the pants are paid for at full price.
+
+**2. Selected in condition (Buy X, Get % off X)** The benefit applies to the **same product** (or a subset of them) that satisfied the condition.
+
+* **Use Case:** Buy 2 Pants, Get 10% off on those same Pants.
+
+#### **C. Define Benefit Products**
+
+Define the specific products eligible for the reward using the toggle options:
+
+* **Single SKU:** You can enter a specific code which is valid in your organisation.
+* **Multiple SKUs:** You can upload a CSV file containing a list of eligible product codes (SKUs) to apply the benefit to a large batch of items at once.
+* **Brand/Category/Attribute:** You can select a dynamic group of products defined by shared characteristics, such as all items under the "Nike" brand or "Summer" category.
+* **Include/Exclude:** You can further refine the product selection by explicitly adding desirable attributes or removing specific ones (e.g., Include "Shirts" but Exclude "New Arrivals").
+
+#### **D. Apply Benefit on Each Unit**
+
+Toggle this **ON** to make the reward recurring for every set of qualifying items found in the cart.
+
+* **Unit type:** This defines the "block" size or threshold required to trigger one instance of the reward.
+  * **Value:** The numerical count required (e.g., 2).
+  * **Quantity/Amount:** The unit of measure (e.g., Items or Dollars).
+* **Example:** "Every 2 items get ₹50 off."
+  * **Unit type:** 2 Quantity.
+  * **Result:** Buying 2 items = ₹50 off. Buying 4 items = ₹100 off.
+
+### **3. Benefit Details**
+
+Select the **Benefit type** from the final dropdown to define the actual reward value.
+
+| UI Benefit Type | Functionality | Example |
+| --- | --- | --- |
+| **Fixed amount** | Deduces a specific currency value. | Fixed amount: 150\ Example: Takes $150 off the item/cart |
+| **Percentage based** | Deducts a percentage of the price. | Percentage-based: 20 Example: Takes 20% off the item/cart |
+| **Free product** | Issue a specific product at $₹0$ cost. | Free product: Summer_Tote_Bag_SKU\ The product associated with the SKU "Summer_Tote_Bag_SKU" is free of cost. |
+| **Fixed target amount** | Forces items to a set price regardless of original cost. | Fixed target amount: Buy any 3 Jeans for exactly $999 |
+
+## Define scope and restriction
+
+To define the scope and restrictions for the cart promotion, follow these steps:
+
+1. Select **+ Add scope/restrictions** under **Define scope and restrictions on availing promotions**.
+2. Under**Define scope**:
+
+   1. Select **Customize** under **Limit to specific store entities** and then select **Concept**, **Store** or **Zone** and the specific option from the drop-down menu to select a specific store, zone or scope. For more information on scope, refer to the [store hierarchy](https://docs.capillarytech.com/docs/store-hierarchy) document.
+
+   2. Select **Customize** under **Limit to specific day/time scope** and then configure the day/time scope by selecting the specific options from the drop-down menus.
+
+   * **Days of Week** – Limits the promotion to selected weekdays.
+   * **Dates of Month** – Activates the promotion only on specific calendar dates.
+   * **Start Time** – Defines when the promotion begins during the day.
+   * **Duration in Hours** – Determines how long the promotion remains active after the start time.
+
+   iii. Select **Customize** under **Limit to specific customers** and then configure the customer by selecting the specific options. The options available are as follows:
+
+   | Configuration | Description |
+| --- | --- |
+| Customers who are eligible for this promotion | Define the customers who are eligible for the cart promotion. * All customers: All registered (loyal and non-loyal) customers are eligible for the cart promotion. * Loyalty customers: All registered customers who are part of the loyalty program are eligible for the cart promotion. |
+| Who belongs to loyalty type | Define the loyalty program type that qualifies customers for the cart promotion. * All: All registered customers who are part of any loyalty program type are eligible for the cart promotion. * Supplementary program: All registered customers who are part of a [supplementary/subscription program](https://docs.capillarytech.com/docs/subscription-program#/) are eligible for the cart promotion. * Tier: All registered customers who are part of a tier-based loyalty program are eligible for the cart promotion. |
+
+   <br />
+
+   <Image width="80% " src="https://files.readme.io/73f355742d5923a2b922fc5f1080b4ca3175bb8f2adc8ec38cb48b207001f6ef-Screenshot_2025-08-04_at_11.28.04_AM.png" />
+3. Click on Continue to proceed.
+4. Under**Issual restrictions**define the individual promotion issual limit.
+
+   <Image width="80% " src="https://files.readme.io/bf194c6984db42164d2e6cd82a6efec738a0d6c0256df2a3669f5106ac461db1-image.png" />
+
+* **Individual promotion issual limit** - Use this option to limit the number of promotions every customer can get. You can also select No limit.
+
+5. Under **Redemption restriction**, configure the following:
+
+i)**Earn Limits** (This step is only available for Loyalty Earning Cart Promotion and Rewards Cart Promotion)
+
+<Image width="80% " src="https://files.readme.io/96b772dc2e45690556fbc5939eb6556ccc7581e951dd77ac584177c3020aca09-image.png" />
+
+| Field Name | Description |
+| --- | --- |
+| Restrict redemptions per earn | Toggle to enable limiting redemptions based on each earn event. |
+| * Maximum times an earn could be redeemed | Sets how many times a single earn instance can be redeemed. |
+| * Maximum transactions in which an earn could be redeemed | Sets the number of different transactions where the same earn can be used. |
+| * Maximum discount due to single earn | Specifies the maximum discount value allowed from a single earn. |
+
+ii)**Individual cart limits**
+
+<Image width="80% " src="https://files.readme.io/3d396151e54fdad12c14352b258f9af64e84e06ecab1deeb5e3d1c707c9962f6-image.png" />
+
+| Field Name                                                       | Description                                                                   |
+| :--------------------------------------------------------------- | :---------------------------------------------------------------------------- |
+| Number of times the promotion could be redeemed in a single cart | Sets how many times the promotion can apply within a single transaction/cart. |
+| Maximum discount due to the promotion in a single cart           | Sets a limit on the total discount provided by the promotion within one cart. |
+
+iii)**Individual customer limits**
+
+<Image width="80% " src="https://files.readme.io/17ee503e0e0b9aec0ab8dca94dac81a98b8f8d902503c6dab1577416437ac26b-image.png" />
+
+| Field Name | Description |
+| --- | --- |
+| Enable limit on the number of times a customer could avail the promotion | Toggle to restrict how many times a customer can use the cart promotion in total. |
+| * Maximum times a customer could avail the promotion | Defines the maximum number of times a customer is allowed to use the cart promotion. |
+| * Refresh the limit after a specified period | Sets the reset frequency for cart promotion redemption limit . |
+| Enable limit on the number of transactions a customer could avail the promotion | Toggle to restrict the number of transactions in which a customer can apply the promotion. |
+| * Maximum transactions in which a customer could avail the promotion | Sets the maximum number of transactions that qualify per customer. |
+| * Refresh the limit after a specified period | Sets the reset frequency for transaction limit. |
+| Enable limit on total discount a customer could avail across redemptions | Toggle to limit the total discount amount a customer can receive from all redemptions. |
+| * Maximum discount a customer could avail across redemptions | Defines the overall discount amount limit per customer across all uses |
+| * Refresh the limit after a specified period | Sets the reset frequency for the discount redemption limit. * Never: The restriction acts as a single, lifetime limit for the duration of the promotion and never resets.\ eg. A limit of 10 redemptions is set. Once 10 redemptions are reached, the restriction remains in place for the promotion's duration. * Days: The limit resets every `N` days based on the number you select. eg. A limit of 100 redemptions resets every 10 days, if the value * Weeks: The limit resets weekly. The reset starts on a defined day of the week, which is Sunday.\ eg.A limit of 500 redemptions resets each week, starting on Sunday. |
+
+<Callout kind="info" title="Note">
+
+Redemption restrictions cannot be updated once the promotion is live
+
+</Callout>
+
+6. Click on **Continue** to proceed.
+7. In **Set expiry of the promotion**. Enter the limit till when the promotion can be applied in a cart. This can be used for sending expiry communication.
+
+   <Image width="80% " src="https://files.readme.io/1d098e0a82101eecbd6533b327fcd4413b56cb17979a82857b9c3a5c1e424826-image.png" />
+8. Click on **Continue** to proceed.
+
+## Additional Information
+
+This section allows you to enter the value for custom field that have been configured for the organisation. To learn more about how to configure refer to the [Cart Promotion Settings](https://docs.capillarytech.com/docs/cart-promotion-settings) page.
+
+To enter the Additional Information follow these steps:
+
+1. Enter the value for the custom field.
+2. Select **Continue**
+
+<Image width="80% " src="https://files.readme.io/ee8d1bb9644a729e1f40d21deaa5e12af54c44669b61083d23f97c119295506f-Screenshot_2025-06-05_141355.png" />
+
+## Communication
+
+It allows you to configure automated messages to customers based on their interaction with a promotion or reward. To understand how to create content used for different channels like mobile push, SMS templates, and more refer to [Content Management](https://docs.capillarytech.com/docs/content-management). You can set communication for two types of messages **On Earning** (this is only available for Loyalty Earning Cart Promotion and Rewards Cart Promotion) and to **Set Expiry Reminder**. Follow the steps below to understand how to set it.
+
+<Image width="55%" src="https://files.readme.io/1dbb7a9f36e4ddbb36b36c2750a3a934023933d95c6cc707915e0e83705fb208-image.png" />
+
+### On earning
+
+It allows you send a creative message (email, SMS, push, etc.) when a customer earns a reward (e.g., loyalty points, discount, voucher).
+
+1. Click **Add creative on earning**
+2. Select either one: SMS, Email, Push notification
+3. Select **Create new** to create a new template or choose from the list of available templates.
+4. Select **Done** to save the changes.
+
+### Set expiry reminder
+
+This feature lets you notify customers before a reward or benefit expires, encouraging them to use it before it becomes invalid.
+
+1. Click **Add creative expiry reminder**
+2. Select either one: SMS, Email, Push notification
+3. Select **Create new** to create a new template or choose from the list of available templates.
+
+<Image width="55%" src="https://files.readme.io/fc43b3b6c81e35d30b87a2d5f8f230983123c45c815575dbe7d0d3dd3426477b-image.png" />
+
+4. Configure the Expiry Reminder by clicking the <img src="https://cdn-icons-png.flaticon.com/512/158/158384.png" alt="Gear Icon" width="20" height="20" /> icon
+5. Select **Done** to save the changes.
+
+## Managing Promotion Stacking
+
+This feature allows you to set a promotion to be applied exclusively at the cart level. You can choose to allow this promotion to be applied with other offers or set it as exclusive to prevent any other promotions from being applied.
+
+To configure stacking settings, follow these steps:
+
+1. Click "Show" next to "Compatibility settings" at the bottom of the page.
+
+<Image src="https://files.readme.io/ec916fd249096d09829d6ce87abe13635ea843cd09f8d71c3cc3d05e9ed258fd-Screenshot_2025-11-20_at_2.17.21_PM.png" />
+
+<br />
+
+2. Toggle "Mark this promotion as exclusive at cart level" to make the promotion exclusive at the cart level.
+
+<Image src="https://files.readme.io/f7b858d0e1104aa4983849117f3e292acbdcb7dfe66b5270bbdab0218aa5a0e2-Screenshot_2025-11-20_at_2.21.45_PM.png" />
+
+<br />
+
+* Enabled_: If this promotion is applied, no other promotions will be applied to the cart.
+* Disabled: Other applicable promotions can be applied to the cart along with this promotion.
+
+3. Click Continue to save the settings.

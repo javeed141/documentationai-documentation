@@ -1,0 +1,52 @@
+---
+title: Search User Journey History
+---
+
+The Journey History feature enables you to search for a customer who entered a journey and provides a detailed, real-time log of a specific customer's path through a journey. You can use this to see exactly when a customer entered each step, what actions occurred, and where they are in the process. This helps you monitor customer progression in real time, troubleshoot issues for individuals, and analyse the journey's performance.
+
+<Image width="80% " src="https://files.readme.io/6ea53c7fd975f063de8cb237223e7438e6713b5d6f6be972188bbde77dfecdd2-image.png" />
+
+## Searching the customer entries in a journey
+
+You can use the search option and search for a customer entry's details in the journey using:
+
+* Customer name
+* Customer identifier
+* Email ID
+* External ID
+* Mobile number
+
+  <Image width="40% " src="https://files.readme.io/7eb72cb3bf87c77e387e1ad83e2dbd5eef48ac82f9863a966ee6d12485f41ff1-image.png" />
+
+### Journey log
+
+The journey log provides you with the following information:
+
+* The entry date and time for each journey block. All timestamps shown in the journey log are displayed in the organization's default time zone (e.g., IST, UTC).
+* The status for each journey block, for example: Entered, Email Sent, Email Opened by user, Waiting, Failed, Issued.
+
+<Image width="45% " src="https://files.readme.io/72b675e998b8dc4faf787ba4d76e696549d4aeba3a2f3b161227aecced50d0f9-image.png" />
+
+### Checking multiple journey entries
+
+You can also use the **Entry date and time** dropdown to check multiple logs for the customer if they have entered multiple times.
+
+## Frequently asked questions
+
+1. **Why can’t I find the customer I’m searching for?**
+   If your search returns no results, check the following:
+   * Correct Identifier: Ensure there are no typos. The search supports identifiers like Email, Customer ID, customer name, external ID, and mobile number.
+   * Correct Journey: This search only shows results for customers within the specific journey you are viewing.
+   * Customer Has Not Entered: If you search for a valid customer who has not yet started this journey, the system will display a message like, "This customer has not entered this journey yet."
+2. **I know many customers are on my journey, but the list only shows a few. How do I see everyone?**
+   For faster performance, the page initially loads the most recent customers who have entered the journey. To load more, simply scroll to the bottom of the list, and the next set of customers will be added automatically. The total count displayed at the top of the list reflects all customers in the journey.
+3. **What do the different statuses in the journey log mean?**
+   The status indicates the outcome of each step. While you may see general statuses like Entered or Completed, message blocks (e.g., Email, Push) will have more specific delivery statuses, such as Sent, Delivered, Opened, or Failed. This gives you a precise, real-time view of the customer's interaction.
+4. **What time zone is used for the "Entry Date and Time" in the log?**
+   All timestamps shown in the journey log are displayed in your account's default time zone (e.g., IST, UTC). A note at the top of the log will specify which time zone is being used.
+5. **How can I see a customer's history from a previous version of the journey?**
+   If a customer was migrated from an older version, the log will clearly indicate this. You will see a status like Migrated from V2 and a clickable link that allows you to open their history from that previous version, giving you a complete, end-to-end view of their path.
+6. **The journey log for my customer stops at a certain step. Is it stuck?**
+   Not necessarily. The last entry shows the customer's current position. If the last step is a Wait timer or a Condition block, it means the customer is actively waiting at that point. Check the Entry Date and Time to see how long they have been there.
+7. Can I export the journey history log for a customer?
+   Currently, the journey history log cannot be exported directly from this page.

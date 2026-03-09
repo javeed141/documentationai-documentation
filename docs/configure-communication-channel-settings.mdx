@@ -1,0 +1,82 @@
+---
+title: Configure Delivery Settings
+---
+
+## Engagement channels sender details
+
+When you [create a campaign](https://docs.capillarytech.com/docs/create-campaign#/) and [add message](https://docs.capillarytech.com/docs/create-message#/), you select the [engagement channel](https://docs.capillarytech.com/docs/engagement-channels#/) through which the message will be delivered to your audience. Along with the channel, you also need to add the sender details. The sender details define the **Sender ID**, **Reply-to Id** and **Sender Name** that will be used to send the message.
+
+To configure the domain gateway and sender details, create a ticket to the Capillary Gateway team. For more information refer to [Configure domain settings]()
+
+To add the sender details on the UI follow the given steps:
+
+1. Create a campaign and then create a message, choose the desired engagement channel and navigate to **Delivery settings** and select **Show**.
+
+<Image width="60% " src="https://files.readme.io/578d934ca2cf59c3375f365e64587be283c3e0da8d6d701db2f7196afa0b5254-Screenshot_2025-09-09_at_10.51.14_AM.png" />
+
+2. Based on the selected engagement channel add the sender details.
+
+<Image width="70% " src="https://files.readme.io/0754f884851793ce223855de583c5c09d32229cd42df48bc6e2640320d28a957-Screenshot_2025-09-09_at_10.58.51_AM.png" />
+
+2. Navigate to **Sender Id** and, from the dropdown, select the desired **sender Id** that you want to use to send the message to the customers.
+3. Navigate to **Reply-to Id** and from the dropdown, select the desired **Reply-to Id** that you want to use to receive customer replies.
+4. Navigate to **Sender Name** and enter the name that you want to display to recipients.
+5. Select **Done**.
+
+The sender details are added and ready to be used for sending the campaign.
+
+## Target DND users
+
+Mobile SMS messages are blocked for users who have marked themselves as **DND (Do Not Disturb)**. By default, messages are not sent to DND users, but you can manually enable messaging for them if required. This is useful for checking reachability if those DND users have opted out of DND.
+
+To allow messages to be sent to DND users:
+
+* Enable the **NDNC** toggle to send messages to customers subscribed to DND.
+
+By default, this option is **not available** for all organisations. To enable it, navigate to `_{hostURL}orgadmin/administer/{orgID}_ `and enable the **Send to NDNC Customer** option.
+
+## Send communication to control customers
+
+In general, Test Audience/Customers are the selected group of customers or audience to whom all communication messages are sent. Control Audience/Customers are the selected group of customers or audience for whom messages are not sent. The brand decides the ratio and group of the Test-Control audience.
+
+By default, the campaign communication messages are not sent to the Control customers but only to the Test customers. You can turn on the toggle switch to enable sending communications to Control customers.
+
+<Image src="https://files.readme.io/f238db30c34b6e5c102be17bb23234274fe67cd711aa7400c8b36ed6e40f7456-image.png" />
+
+A confirmation message is displayed on enabling the option. Select **Yes, send** to proceed.
+
+<Image src="https://files.readme.io/464b54d3d470a4b3df0b95e6d31445eccc81ebe4b3be1f2120c73cb32768a6fc-image.png" />
+
+## Use case
+
+You can enable this option in scenarios such as:
+
+* sending communication about a brand's promotional program to all customers
+* sending feedback form and collect feedback from all the customers
+* sending any emergency communication
+* event invitation to all customers
+
+## Send messages to unsubscribed users
+
+This feature enables you to send communication messages to customers who have disabled their subscription status. You can set this while configuring the campaign.  To activate this:
+
+1. From the Campaign configuration page, navigate to the **Delivery settings**.
+
+   <Image src="https://files.readme.io/e7f95d311bdf8a1608095df30e123d6009cfa94a577734e1dffd872122c45026-image.png" />
+2. Set the **Ignore subscription status**? toggle switch to On.
+
+<Image src="https://files.readme.io/cc57f7667f3304591dd709d0058551c51ee1016890e54837fb27852d9002a4cf-image.png" />
+
+3. A confirmation box appears asking if you want to send the message to users regardless of their subscription status. Click **Yes, send** to proceed.
+
+<Image width="60% " src="https://files.readme.io/785a51f84e0570620647dbc6d6af17762de3fe500ea612b03d938c1f08cfced2-Screenshot_2025-09-02_at_9.02.44_PM.png" />
+
+4. Click **Save**.
+
+## Shortening URLs in communication messages
+
+This helps you shorten any URL in your communication message when you are constrained by character limits. You can enable **Use tiny URL** from the delivery settings, and the system will automatically shorten the URL. This is applicable across all [engagement channels](https://docs.capillarytech.com/docs/engagement-channels#/).
+
+<Image width="80% " src="https://files.readme.io/c19ea70fc43c349c0c59e52fb3568fcbc0b6b42935c7f76e3c9d3998f24c173c-Screenshot_2025-11-20_at_2.31.44_PM.png" />
+
+<br />

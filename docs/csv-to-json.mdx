@@ -1,0 +1,20 @@
+---
+title: CSV to JSON
+---
+
+Configuration reference for the CSV to JSON block — converts a CSV file into a JSON array for use with downstream Neo transformer blocks.
+
+The CSV to JSON block is used in DIY dataflows built using the Neo transformer pattern. It converts a CSV file into a JSON structure suitable for consumption by a downstream Neo transformer block.
+
+**Block type:** `csv_json_neo_transformer`
+
+Converts a flat CSV file into a JSON array, where each row becomes a JSON object with keys corresponding to column headers. Used as an intermediate step before the Neo transformer in DIY templates.
+
+## Configuration fields
+
+| Field                   | Description                                                           |
+| :---------------------- | :-------------------------------------------------------------------- |
+| Input File Delimiter * | Delimiter in the source CSV file                                      |
+| Has Header              | Indicates whether the CSV file includes a header row. Default: `true` |
+
+* Required field
