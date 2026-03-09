@@ -9,6 +9,10 @@
             "group": "GETTING STARTED",
             "pages": [
               {
+                "title": "hai",
+                "path": "hai"
+              },
+              {
                 "title": "Introduction",
                 "path": "docs/introduction"
               },
