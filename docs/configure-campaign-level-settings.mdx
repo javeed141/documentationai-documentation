@@ -1,0 +1,231 @@
+---
+title: Configure Campaign Settings
+---
+
+The delivery setting allows you to set the sender ID, enable POC, and use a tiny URL.
+
+## Enable tracking of clicked links
+
+When a campaign message containing a link is sent to users, Capillary checks the message content and verifies whether Enable Link Tracking is enabled.
+
+If link tracking is enabled:
+
+* The system replaces the original link with a custom Capillary tracking URL. This allows you to track user interactions, such as the number of users who clicked the link.
+* When a user clicks the link, they are redirected to the intended destination.
+* Since the system uses a Capillary tracking URL, it records and tracks the number of users who clicked the link before redirecting them.
+
+If link tracking is disabled, the system sends the message with the original link and no tracking data is collected.
+
+To track the link (URLs or web links) clicks sent through messages, you need to do the following:
+
+1. On the Engage+ home page, click the settings icon and navigate to the **Messages** page.
+2. Enable the **Enable link tracking in messages** toggle button.
+
+   <Image src="https://files.readme.io/2b13069bb30b835c822af90368f8f3fc60bc53b9c7460fb8617826bedfd2391f-image.png" />
+
+<Callout kind="info" title="Note">
+
+* Link tracking is available for all links across all engagement channels on Campaigns and Journeys. This includes links added to all input fields such as the email subject, CTA buttons and media content.
+* Unsubscribe clicks are not counted as general Call To Action (CTA) clicks. For example, if a user receives an email and clicks the Unsubscribe link it will not be considered as a general CTA click.
+
+</Callout>
+
+## Set up communication limits for each channel
+
+When you run several campaigns at once, there’s a risk that the same customer may receive too many messages, either on the same day or across multiple days resulting in customer dissatisfaction. To prevent this, you can limit the number of messages to be sent for each communication channel and overall messages. This is set up at the organisation level. For each channel, you can set daily, weekly, and monthly limit with no maximum limit.
+
+**Access Requirements**
+
+By default, users do not have access to enable the communication limits feature for an org. If authenticated users need access, raise a JIRA ticket and assign it to the Engage+ Developer team.
+
+Time Period Definitions:
+
+* Day = From 12:00 AM to 11:59 PM (same calendar day)
+* Week = From Sunday 12:00 AM to Saturday 11:59 PM
+* Month: From 12:00 AM on the first of a month until 11:59 PM on the last day of the same month
+
+To limit the number of messages to be sent through Engage+, follow these steps:
+
+1. Click **+Add limits**.
+
+<Image src="https://files.readme.io/6ba302a-c3SvMihbFwCAPtMhnndHNwuVPKOQtpvm8w.png" />
+
+2. Select the **channel** for which you want to set the limit. You can also select **Overall** to apply a limit across all channels.
+
+<Image src="https://files.readme.io/d0ec3688a49e33fb70b7139d45a50b4427037e2d6a78db51921bb64c66666887-Screenshot_2025-08-07_at_1.57.29_PM.png" alt="" />
+
+3. Choose the time period for the limit. You can select one or more of the following options:
+
+* **Daily**: Check to set a daily limit and enter the limit value in the respective box.\
+  **Note** A default limit of 10 messages per user within 24-hour window is always enforced, even if no custom limit is configured. Any messages sent beyond this limit will be blocked until the 24-hour window resets. This limit applies across all the engagement channels. To increase this limit, raise a Jira ticket with the Product Support team. The updated limit will be applied within 24 hours.
+* **Weekly**: Check this to set a weekly limit and enter the limit value. Example: 100 messages per week.
+* **Monthly**: Check this to set a monthly limit and enter the limit value. Example: 2000 messages per month.
+
+<Image src="https://files.readme.io/9c6fe504cc5213b3cb32c0f25a328cea8fd984b6fd980f5221e1dd06478b862f-Screenshot_2025-08-07_at_2.02.53_PM.png" alt="" />
+
+<Callout kind="info">
+
+  Note
+
+  Each value should be equal to or greater than the limit set for the time period. For example, the weekly limit must be equal to or greater than the daily limit, and the monthly limit must be equal to or greater than both the weekly and daily limit.
+
+</Callout>
+
+4. Click **Done** to save the settings. You can view the limit **Communication Limit** box, along with the limits set for other engagement channels.
+
+<Image src="https://files.readme.io/1291be0d3da59a617f1ae7776012614d28d21681f5831e4877b7b0cde319a362-Screenshot_2025-08-07_at_2.13.07_PM.png" alt="" />
+
+### Edit or delete a communication limit
+
+To edit a communication limit follow the given steps:
+
+1. Navigate to the **Communication Limit** box, hover over the more options icon (⋯) next to the desired engagement channel, then click **Edit**.
+2. You can make changes to the previously set limits, then click **Done**. The updated limit will then be visible in the **Communication Limit** box.
+
+<Image src="https://files.readme.io/81a5f2c14e57b235d45265402bcc93c0efb3574cd01d0243b7c2a812174f3a45-Connected_Orgs_7.gif" alt="" />
+
+To delete a communication limit follow the given steps:
+
+1. Navigate to the **Communication Limit** box, hover over the more options icon (⋯) next to the desired engagement channel.
+2. Click **delete**.
+
+The engagement channel will be removed from the **Communication limit** box.
+
+<Image src="https://files.readme.io/f17fcb60c0997032f115026b7decd957d39e41a769ddb3328f8c0461c3d329c6-Connected_Orgs_8.gif" alt="" />
+
+## Report notification and failure alert settings
+
+You can set notifications of daily campaign summary reports, weekly SMS and email credit report, and campaign execution update.
+
+<Image src="https://files.readme.io/91fed48b5b0873a6e079fbc9185b44d34310aac7867a88ae5f8d4c8cf4e53eea-image.png" />
+
+### Report notifications
+
+To notify users on the campaign level report, do the following:
+
+* On the Engage+ home page, click on the setting icon, and navigate to the **Reports** page.
+
+| **OPTION**                                     | **DESCRIPTION**                                                                                                                        |
+| ---------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| Daily campaign summary report                  | Enter the email IDs of users (comma separated values) that you want to send daily notifications on the Campaign Summary Report.        |
+| SMS / Email credit report                      | Enter the email IDs of users (comma separated values) that you want to send the available SMS and email credits on a weekly basis.     |
+| Email notification on message execution status | Enter the email IDs of users (comma separated values) that you want to notify whenever a campaign message is executed with the status. |
+
+### Campaign alerts
+
+To alert users on message approval requests, low delivery rates, or execution failures, do the following:
+
+1. On the Engage+ home page, select the settings icon, and go to the **Alerts** page.
+2. Go to the campaign alerts tab.
+   The following configurations are available:
+
+   | Configuration                   | Description                                                                                                                     |
+   | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+   | Message execution failure alert | Notifies the users when a campaign message fails to execute.                                                                    |
+   | Low message delivery alert      | Notifies the users when the message delivery rate is less than 60%.                                                             |
+   | Message approval request        | Notifies the users when a new campaign message is sent for approval.                                                            |
+   | Recurring message expiry alert  | Notifies the users when a [recurring campaign](https://docs.capillarytech.com/docs/recurring-campaign#/) is approaching expiry. |
+3. Select the users to notify from the dropdown. The dropdown lists the points of contact (POCs) for the organisation. For more information, refer to the documentation on [Organisation POCs](https://docs.capillarytech.com/docs/org-management#/organization-point-of-contact-tab).
+4. Enter the number of days before the expiry date to receive the alert.
+
+   <Image src="https://files.readme.io/ff02487cd08918e2a8686428186a6f104b1b2154993c3ea3d75d95b4f455ff67-image.png" alt="" />
+
+### Recurring message expiry alert
+
+This feature allows you to configure reminders when recurring campaigns approach their end dates. You can add contacts and configure the alert settings, specifying the number of days before the end date to send an alert.
+
+For example, if you set the alert to 7 days, it will be triggered 7 days before the message's end date.
+
+<Callout kind="info">
+
+  Note
+
+  Users will receive an alert for every recurring message configured in the organization. There are no specific users assigned alerts at the message level.
+
+</Callout>
+
+<Image src="https://files.readme.io/1d0c501-Recurring_message_alert.png" />
+
+## Create test user group
+
+Test user groups are special groups of users that you can use to test campaign messages before sending them to a wider audience and share campaign reports and alerts. This feature is used for all engagement channels except email.
+
+To create a test user group:
+
+1. On the Engage+ home page, click on the **setting** icon and navigate to the **User Groups** page.
+2. Click **Create user group**.
+
+<Image src="https://files.readme.io/c5ff04c-kYbAxB9wRTZRnBtvZK3fSsO-KGwhqUsc6Q.png" />
+
+3. In **Name** field, enter a name of the test group.
+4. In **All contacts** field , add each user using **+Add**. You can use the search box to find a specific user.
+5. Click **Done** to save the group. The newly created group will appear on the User Groups list. Similarly, you can create multiple user groups.
+
+<Callout kind="info" title="Note">
+
+If the users you add have invalid email addresses, the group will not save.
+
+</Callout>
+
+## Test customers
+
+Test customers are sample users or groups used for testing purposes, allowing you to test messages and workflows before they are sent to real customers. This feature is available across Engage+.
+
+### Creating test customers
+
+To create the test customers, perform the following:
+
+1. From the **Engage+** homepage, click on  **Settings icon** and then select **Test Customers**.
+2. Select **Individuals** or **Groups**.
+3. For individuals, perform the following:
+   1. Search for the desired contact using their identifiers in the text field.
+   2. Click on **Add**.
+4. For Groups, perform the following:
+   1. Select **Create test group**.
+   2. Enter a group name.
+   3. Search for the desired contact using their identifiers in the text field. There is no limit in the number of customers that you can add.
+   4. Click on **Add to group**.
+5. Select **Done** to save the changes.
+
+<Image src="https://files.readme.io/1aaf67011d60ab8875578ef132bf4a74ca01734cd80338df31889a0d6dad57db-4f24b4550fbe5ca685d0b08bd047b031ef6f575c5f8a0889d2565225a661f70a-Untitled_design_1.gif" />
+
+<Callout kind="info">
+
+  **Note**
+
+  While searching for a test customer, ensure that the desired contact is a registered customer. Only registered customers appear in the search results; unregistered customers do not appear when searched.
+
+</Callout>
+
+### Editing test customers
+
+To edit a test customer follow the given steps.
+
+1. From the Engage+ home page, click on  **Settings icon** and then select **Test Customers**.
+2. Select **Individuals** or **Groups**.
+3. For individuals: A list of customers who are selected as test customers will be visible, and you can remove any customer from the list by clicking the cross (×) icon next to their name.
+4. For Groups, perform the following:
+   1. Click **Edit Test Group**.
+   2. You can either add or remove customers from the group.
+   3. Click **Done** to save the changes.
+
+The test group will be updated accordingly.
+
+<Image src="https://files.readme.io/591f166f12dad3a46619966b044b3f60c30866b29f00e20b94499adafed2ead2-f833401afd489019c2a4ccee3441470cb2c7510cb5353423c69265e062d7a635-Gif_5.gif" alt="" />
+
+### Deleting test customers
+
+To delete a test customer follow the given steps.
+
+1. From the **Engage+** home page, click on  **Settings icon** and then select **Test Customers**.
+2. Select **Individuals** or **Groups**.
+3. For individuals: A list of customers who are selected as test customers will be visible, and you can remove any customer from the list by clicking the cross (×) icon next to their name.
+4. For Groups:
+   1. Click **Delete Test Group**.
+   2. Click **Yes, delete group** to delete the test group.
+
+The test group will be deleted successfully.
+
+<Image src="https://files.readme.io/ae7c44cb96fafe129b569db0e956872b57205d61f400abd003a0d6e865b0040c-fc666287f0418b48bc182a36c1db367d106472cbb71d9723a85920a236ee7244-Gif_6.gif" alt="" />
+
+<br />

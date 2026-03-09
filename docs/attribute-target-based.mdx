@@ -1,0 +1,16 @@
+---
+title: Attribute - Target Based
+---
+
+## **Attribute: targetAchieved.**
+
+**Profile :** currentEvent and **Event in workflow:** Target Completed\
+**Attribute :** Target Achieved (targetAchieved)\
+**Type :** Integer(int)\
+**Meaning :** Provides the numeric value of the actual achievement of the customer for the given target.\
+**Sub-Attribute:** NA\
+**Syntax: currentTxn.targetAchieved(“Target Name”)**
+
+| Example: Write a rule to check if the target value achieved for a VNBrand4 is greater than the defined value of the VNBrand5 Target. |
+| :--- |
+| **Rule: Condition1 &gt; condition 2** **Condition1:** Profile: current Event Attribute: target achieved Target Name: VNTeamPilotBrand **Condition2:** Profile: current Event Attribute: target achieved Target Name: VNTeamPilotBrand **Rule: currentEvent.targetAchieved("VNBrand4")&gt;currentEvent.targetDefined("VNBrand5")** |

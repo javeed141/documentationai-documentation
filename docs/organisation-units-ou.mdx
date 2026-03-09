@@ -1,0 +1,120 @@
+---
+title: Organization Units (OU)
+---
+
+## Organization units in Capillary
+
+An organization unit (OU) in Capillary supports conglomerates that manage multiple brands under a single organization. Each brand maps to a dedicated OU, while all data resides within the same parent organization. Data is not physically separated by brand.
+
+Customer data is shared across the organization. When a customer registers with one brand, the profile becomes available to the umbrella organization and can be accessed by other OUs, subject to access control. Integrations connect once at the organization level, which simplifies data ingestion and sharing.
+
+Capillary supports both brand-level and umbrella-level loyalty programs through the multi-loyalty program (MLP) capability.
+
+## Core concepts behind organization units
+
+Before understanding how OUs are created, it is important to understand the store hierarchy. OUs are derived from this hierarchy.
+
+### Zone
+
+A zone is a geographical grouping of stores.
+
+* Used for regional structuring and reporting.
+* Examples: *India-North*, *India-South*, *Bangalore-East*.
+* Stores are mapped to zones.
+
+Zones are optional for OU creation, but commonly used for scale and reporting.
+
+### Concept
+
+A concept is a logical grouping of stores based on a business line or brand.
+
+* Typically represents a **brand** in a multi-brand organization.
+* Examples: *Supermarket*, *Fashion*, *Electronics*.
+* A concept is the **foundation for an OU**.
+
+Only concepts can be enabled as organization units.
+
+### Store
+
+A store represents a physical or operational outlet.
+
+* Examples: *Fashion – Indiranagar*, *Electronics – Mall of Asia*.
+* Stores are mapped to:
+
+  * One concept (brand)
+  * One or more zones (geography)
+* Each store can have one or more tills (POS).
+
+## How organization units are created in Capillary
+
+You create organization units by enabling concepts as OUs.
+
+### Creation flow
+
+1. **Create zones**
+
+   * Define geographical zones if required.
+   * Use zones to group stores by region.
+
+2. **Create concepts**
+
+   * Create a concept for each brand or business line.
+   * Example: *Supermarket*, *Fashion*, *Electronics*.
+
+3. **Enable concepts as organization units**
+
+   * Mark the required concepts as OUs.
+   * Each enabled concept becomes a distinct OU.
+
+4. **Create and map stores**
+
+   * Create stores under the appropriate concept.
+   * Map stores to zones for geographical grouping.
+
+Once enabled:
+
+* The concept functions as an OU.
+* Brand-level configurations apply at the OU level.
+* Customers remain shared across all OUs.
+
+## What OUs control vs what stays shared
+
+| Category                     | Feature                         | Description                                                                                                                         |
+| ---------------------------- | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| **Customer data management** | Centralised customer database   | Customers are shared across all OUs. Registration in one OU registers the customer in all OUs. No customer-level data segregation.  |
+| **Loyalty and campaigns**    | Loyalty programmes              | Supports both centralised and independent programmes. Customers can earn and redeem points across brands within the same programme. |
+| **Access control**           | User access management          | Access to assets and data can be restricted by OU. Applies primarily to Insights (reporting).                                       |
+|                              | Audience sharing                | Audiences created in one OU are available across all OUs.                                                                           |
+|                              | Shared campaigns                | Campaigns can run across OUs. OU-level campaign filters are not supported.                                                          |
+| **OU-specific management**   | Communication and subscriptions | Each OU manages its own communication preferences and subscription settings.                                                        |
+|                              | Store and product management    | Each OU manages its own stores and inventory. Inventory-level reporting and campaigns are not supported.                            |
+| **Reporting**                | Dual-level reporting            | Consolidated reports at the organization level and individual reports per OU.                                                       |
+| **Billing and transactions** | Independent configuration       | Billing and transaction settings can be configured per OU.                                                                          |
+
+## Standard implementation models for organization units
+
+### Centralised program model
+
+Best suited for conglomerates where all brands participate in a single umbrella loyalty program.
+
+**Example**: A diversified business group with multiple non-competing brands
+
+* One loyalty program across all OUs
+* Customers enrol once and participate across brands
+* Unified points earn and burn
+* Central governance with brand-level campaign execution
+
+### Global program model
+
+Best suited for multinational or multi-brand organizations with distinct programs but central oversight.
+
+**Example**: A global conglomerate with region- or brand-specific programs
+
+* Separate loyalty programs per brand or region
+* Central governance for shared benefits and frameworks
+* Local flexibility for offers and rewards
+* Consolidated reporting for global insights
+
+<br />
+
+<br />

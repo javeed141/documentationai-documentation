@@ -1,0 +1,425 @@
+---
+title: Configure Email
+---
+
+You can create an email either **from scratch** or by using an **existing email template**.
+
+An **email template** refers to a pre-designed email layout that includes predefined structure, formatting, and placeholders such as [tags](https://docs.capillarytech.com/docs/custom-tags) and [labels](https://docs.capillarytech.com/docs/labels), and sometimes sample content. Templates help maintain brand consistency and reduce the time required to create emails.
+
+If you choose to use an existing template, you can edit and customize its content, design elements, subject line, and placeholders as needed before saving or publishing the email.
+
+## Creating a new email from scratch
+
+1. On the **Engage+** homepage navigate to **Creatives**, section &gt;  **Email tab**, click **Create New**.
+2. In the **Creative name**, enter the name for the Email template.
+3. **Select the editor for creating the template.** You can choose from the following options:
+
+   * [**HTML Editor**](https://docs.capillarytech.com/docs/configure-email#creating-an-email-using-the-html-editor) –  Use the basic HTML editor to write and format your email content. If you already have ready HTML, you can copy and paste it directly into the editor.
+   * [**Drag and drop Editor**](https://docs.capillarytech.com/docs/configure-email#creating-an-email-using-the-drag--drop-editor) –Create the email template using the visual drag-and-drop editor. This editor is disabled by default. Raise a ticket with the PST team to enable this option for your organization.
+   * [**Upload ZIP File**](https://docs.capillarytech.com/docs/configure-email#creating-an-email-by-uploading-a-zip-file) –  Upload a ZIP file containing the HTML file and associated images for the template.
+
+   <Image src="https://files.readme.io/a116093402b3c45425e51a98e99dd3900c09e2c2dd10a472c851a20b3e36138f-email-html-editor-google-docs.png" alt="" />
+4. Select **Start from Scratch**.
+5. Enter the subject and configure the email content based on the editor selected.
+6. Click **Create**. To see a preview, select [**Preview and Test**](https://docs.capillarytech.com/docs/test-and-preview-across-engagement-channels).
+
+## Creating an email using an existing template
+
+To create a new email template using an existing template, follow the given steps:
+
+1. On the **Engage+** homepage navigate to the **Creatives** section &gt;  **Email tab**, and from the list of existing templates, choose the desired template and click on **Edit**.
+2. Update the **subject** and modify the email body as needed.
+3. Click **update**. To see a preview, select [**Preview and Test**](https://docs.capillarytech.com/docs/test-and-preview-across-engagement-channels).
+
+The email template has been edited successfully.
+
+<Image src="https://files.readme.io/9eb232b0d80e13269b6a3b6af04b5894b7c3eec09997a31e02692c4f5a4781b4-gif_18.gif" alt="" />
+
+## Creating an Email using the HTML editor
+
+You can create an email template using the HTML editor either from the **Creatives** section or from the **campaign message creation flow**. The HTML editor allows you to write email content directly in HTML or paste prebuilt HTML and preview it in real time. You can also write or paste [Liquid expressions](https://docs.capillarytech.com/docs/add-dynamic-content-using-liquid) within the HTML to personalize the email content.
+
+<Callout kind="alert">
+
+  **Important**
+
+  Use **email-compatible** **HTML** when creating templates. Follow standard email best practices such as [table-based layouts](https://www.geeksforgeeks.org/html/html-tables/) and [inline CSS](https://www.geeksforgeeks.org/css/inline-css/) to ensure consistent rendering across email clients. Avoid CSS frameworks, external stylesheets, and scripts.
+
+</Callout>
+
+To create an Email Template using the HTML Editor, follow the steps below
+
+1. From the **Engage+ home page**, navigate to **Creatives** and select **Email**.
+
+2. On the Email listing page, select **Create New**.
+
+3. Enter a **Creative name** for the email template and select **HTML Editor** as the creation mode.
+
+4. Enter the email subject in the **Subject** field. To insert dynamic values, select **[+ Add label](https://docs.capillarytech.com/docs/labels)** to include the required labels in the subject.
+
+5. In the **Email content** section:
+
+   * Use the **HTML editor (left pane)** to write or paste your HTML code or liquid expression.
+
+   * Use the **preview (right pane)** to view a real-time preview of the rendered content.
+
+<Image src="https://files.readme.io/c7be9db3ed52029d92ecc439f44284f5f1b9e742ad8a89dace5b90aade3d9f9d-Untitled_design_13.gif" alt="" />
+
+6. Select **[+ Add label](https://docs.capillarytech.com/docs/labels)** and place the label at the required position in the HTML code to insert dynamic values in the email body.
+
+7. Review validation warnings displayed at the bottom of the editor. For each issue listed, select the **arrow icon** next to the warning to navigate directly to the corresponding line in the HTML editor where the fix is required.
+
+   Below are the types of validation issues you may encounter in the editor:
+
+   * **Errors:** Displays critical issues in the HTML or Liquid code, such as restricted protocols (for example, `data:` URLs), unclosed or malformed Liquid output tags (missing `}}`), invalid variables, or incomplete control statements (for example, `{% if %}` without `{% endif %}`). Errors must be resolved before you can save the template.
+
+   * **Warnings**: Displays HTML and content-level validation warnings, including formatting issues such as indentation, spacing, or syntax-related recommendations, unclosed CSS rules, and missing required attributes (for example, missing `alt` attributes for `<img>` elements)
+
+     **Note**: Each warning includes the line number and character position where the issue occurs. You can still save the template if it contains warnings. However, if the template contains errors, the system will not allow you to save it until all errors are resolved.
+
+   <Image src="https://files.readme.io/3ee2a73c2017e2159528466caf6b078756024f2fe723df6a2ea4ff9041227606-giffs.gif" alt="" />
+
+8. Use the preview toggle to switch between desktop and mobile views. To expand the preview area, select the **expand icon** in the preview pane.
+
+9. (Optional) Select **Preview and Test** to preview the email and test it with a set of test customers.
+
+10. Select **Done** to save the template.
+
+The saved template appears in the Email listing page and can be reused in future campaigns.
+
+### HTML Editor Validation Messages and Warnings
+
+While creating or editing an email using the HTML Editor, the system performs multiple checks on the HTML content. These checks help identify invalid markup, unsupported elements, potential security risks, and compatibility issues across email clients and devices.
+
+The following tables describe the validation errors, warnings, and guidance messages that may appear in the editor, along with what each message indicates.
+
+* **Input and Sanitization Errors**
+
+| Rule Key                              | Description                                                                                                  |
+| :------------------------------------ | :----------------------------------------------------------------------------------------------------------- |
+| `sanitizer.invalidInput`              | The HTML input is invalid. The editor expects the content to be a string.                                    |
+| `sanitizer.invalidInputNonEmpty`      | The HTML input must be a non-empty string. Empty content is not allowed.                                     |
+| `sanitizer.sanitizationFailed`        | HTML sanitization failed due to an internal error. The error details are displayed for troubleshooting.      |
+| `sanitizer.dangerousProtocolDetected` | A potentially dangerous protocol (for example, `javascript:`) was detected and blocked for security reasons. |
+
+* **Email Client and CSS Compatibility Warnings**
+
+| Rule Key                                   | Description                                                                                 |
+| :----------------------------------------- | :------------------------------------------------------------------------------------------ |
+| `sanitizer.emailMultimediaNotSupported`    | Multimedia elements (such as video or audio) may not be supported across all email clients. |
+| `sanitizer.emailPositioningNotSupported`   | Fixed or sticky positioning may not render correctly in email clients.                      |
+| `sanitizer.emailModernCssLimited`          | Modern CSS features such as Grid and Flexbox have limited support in email clients.         |
+| `sanitizer.emailViewportUnitsNotSupported` | Viewport units and `rem` may not be supported consistently across email clients.            |
+
+* **Mobile Responsiveness Warnings**
+
+| Rule Key                                 | Description                                                                         |
+| :--------------------------------------- | :---------------------------------------------------------------------------------- |
+| `sanitizer.mobileTablesNotFriendly`      | Table-based layouts may not adapt well to smaller screen sizes.                     |
+| `sanitizer.mobileRelativeFontSizes`      | Relative font sizes (`em`, `rem`, `%`) are recommended for better mobile scaling.   |
+| `sanitizer.mobileFixedWidthsProblematic` | Fixed-width elements may cause layout issues on mobile devices.                     |
+| `sanitizer.mobileRelativeUnits`          | Relative units (`em`, `rem`, `%`) are recommended to improve mobile responsiveness. |
+
+* **Production Readiness Guidance**
+
+| Rule Key                               | Description                                                                                  |
+| :------------------------------------- | :------------------------------------------------------------------------------------------- |
+| `sanitizer.productionValidHtml`        | The HTML should be valid before deploying the template to production.                        |
+| `sanitizer.productionSanitizedContent` | The content has been sanitized for security. Review the changes before deployment.           |
+| `sanitizer.productionInlineCss`        | Inlining CSS is recommended for better compatibility with email clients.                     |
+| `sanitizer.productionLargeContent`     | The content size is large (`{size}` characters). Consider optimizing for mobile performance. |
+
+* **Validation and Parsing Errors**
+
+| Rule Key                           | Description                                                                        |
+| :--------------------------------- | :--------------------------------------------------------------------------------- |
+| `validator.validationFailed`       | General validation failed due to an error in the HTML structure.                   |
+| `validator.liquidValidationFailed` | Liquid syntax validation failed. The template contains invalid Liquid expressions. |
+| `validator.cssValidationFailed`    | CSS validation failed due to invalid or unsupported CSS rules.                     |
+| `validator.unclosedCssRule`        | An unclosed CSS rule was detected.                                                 |
+| `validator.emptyCssRule`           | An empty CSS rule was detected and flagged as invalid.                             |
+
+* **Security and Compatibility Checks**
+
+| Rule Key                           | Description                                                                                 |
+| :--------------------------------- | :------------------------------------------------------------------------------------------ |
+| `validator.unsafeProtocolDetected` | A potentially unsafe protocol was detected in the content.                                  |
+| `validator.scriptTagsDetected`     | Script tags were detected. These may be filtered or removed in production environments.     |
+| `validator.outlookIncompatible`    | The specified HTML element may not be supported in Microsoft Outlook.                       |
+| `validator.emailCssUnsupported`    | The CSS feature used may not be supported across common email clients.                      |
+| `validator.mobileIncompatible`     | The specified element may not be supported on mobile email clients.                         |
+| `validator.largeImageDetected`     | Large image dimensions were detected. Image optimization is recommended for mobile viewing. |
+
+## Creating an Email by uploading a Zip file
+
+You can create an email template by uploading a ZIP file that contains the HTML file and all associated images. The total size of the ZIP file, including images, must not exceed 5 MB.
+
+To create an email template by uploading a ZIP file follow the steps below:
+
+1. Navigate to **Creatives**, section &gt;  **Email tab**, click **Create New**.
+2. In the **Creative name**, enter the name for the Email template.
+3. Select **Upload zip file** as the editor to create the template.
+4. The HTML Editor modal opens. The options available in this modal are the same as those provided when [creating an email template using the HTML Editor](https://docs.capillarytech.com/docs/configure-email#creating-an-email-using-the-html-editor).
+5. Select **Create** for saving the template.
+
+The saved Email content appears in the Email listing page and can be reused in future campaigns.
+
+<Image src="https://files.readme.io/3a8c980ff895251bccf0edaaa161c5953fdd7351949af8d85e89d107145f185c-gifyyzzx.gif" alt="" />
+
+## Creating an Email using the Drag and drop editor
+
+You can create an email template using the **Drag and drop Editor**, which allows you to build content by adding and arranging blocks without writing any code. You can start from an inbuilt template or create a template from scratch. By default, this editor is not enabled. Raise a ticket with the PST team to get it enabled for your organization.
+
+<Image src="https://files.readme.io/b30442162fbfb9ac329ea74615d74be719417626c529e6a6b2c3376494c054ee-image.png" alt="" />
+
+To create an email template using the drag and drop editor, follow the steps below:
+
+#### [Step 1:Build the Email layout and content](https://docs.capillarytech.com/docs/configure-email#building-the-email-layout-and-content)
+
+#### [Step 2: Add Personalization and dynamic content](https://docs.capillarytech.com/docs/configure-email#add-personalization-and-dynamic-content)
+
+#### [Step 3: Configure Email appearance (Settings tab)](https://docs.capillarytech.com/docs/configure-email#configuring-email-appearance-settings-tab)
+
+#### [Step 4: Review and save the email template](https://docs.capillarytech.com/docs/configure-email#review-and-save-the-email-template)
+
+***
+
+#### Building the Email layout and content
+
+Use rows and content blocks together to create the email body.
+
+1. From the **Rows** tab, drag and drop a row into the email body. Add additional rows as required. Each row has a predefined column structure.
+
+<Image src="https://files.readme.io/efdd87ca13721a40bc281f0a2b3cdb9ef761d6f57159e5e4878a88fd90ea12b3-email-html-editor-google-docs_2.png" alt="" />
+
+2. Switch to the **Content** tab and drag the required content blocks into the rows.
+
+**Available Content Blocks**
+
+| Block     | Description                                                                                                       |
+| :-------- | :---------------------------------------------------------------------------------------------------------------- |
+| Title     | Adds a heading or title.                                                                                          |
+| Paragraph | Adds formatted text content.                                                                                      |
+| List      | Adds a bulleted or numbered list.                                                                                 |
+| Text      | Adds a simple text message.                                                                                       |
+| Image     | Adds images from the library or local system. Supported formats: JPEG, PNG, GIF. Base64 images are not supported. |
+| Button    | Adds action buttons such as *Click here* or *Submit*.                                                             |
+| Divider   | Divides a row into multiple columns.                                                                              |
+| Social    | Adds social media icons linked to the organisation’s social channels.                                             |
+| HTML      | Inserts custom HTML code such as tags, hyperlinks, or headers.                                                    |
+| Video     | Embeds a video using a video link.                                                                                |
+| Icon      | Adds small image icons, typically used for logos or symbols.                                                      |
+| Menu      | Adds a navigation menu with configurable links.                                                                   |
+| Stickers  | Adds stickers from the library.                                                                                   |
+| GIFs      | Adds animated images from the library.                                                                            |
+
+**Block options**
+
+After selecting the content block, you can view all the content properties and block options to modify the content.
+
+| Property        | Description                                                                                                                            |
+| :-------------- | :------------------------------------------------------------------------------------------------------------------------------------- |
+| **Padding**     | Adds space inside the content block. You can apply padding to all sides (Overall) or individually to the Top, Bottom, Left, and Right. |
+| **Margin**      | Adds space outside the content block, separating it from surrounding content. You can configure margins for individual sides.          |
+| **Font style**  | Changes the font applied to the selected text                                                                                          |
+| **Font color**  | Changes the colour of the text within the selected content block.                                                                      |
+| **Bold**        | Applies bold formatting to emphasize selected text.                                                                                    |
+| **Italics**     | Applies italic formatting to the selected text.                                                                                        |
+| **Alignment**   | Aligns the text to the left, centre, or right.                                                                                         |
+| **Add Bullets** | Formats text as a bulleted list to present information clearly.                                                                        |
+| **Hide on**     | Controls content visibility by device type. You can choose to hide the content on **desktop** or **mobile** views.                     |
+
+<Image src="https://files.readme.io/8ede991413f910531a0992573e83913cb296b2aa276cdd171c015368e3758586-image.png" alt="" />
+
+#### Add Personalization and dynamic content
+
+In the editor, move the required blocks from the **Content** and **Row** tabs, and then add your content. You can perform the following:
+
+* Add text with [labels](https://docs.capillarytech.com/docs/labels) and tags, and then apply formatting. You must include an unsubscribe tag in all email content. You can also customize the unsubscribe message's landing page using [Vulcan](https://docs.capillarytech.com/docs/creating-a-microsite-using-vulcan#/).
+
+  <Callout kind="alert">
+
+    Note
+
+    i. You can add labels in the email subject and the body.
+
+    ii. Ensure all tags contain data. If tags are inconsistent, a validation error occurs.
+
+    iii. When using dynamic labels in templates (for example, `{{gap_to_upgrade_tracker}}`, `{{gap_to_renew_tracker}}`), the system validates all labels before sending the message. If any one label fails to resolve and returns a null value, the message is not sent, and the customer can be skipped from the communication.
+
+    iv. Ensure that Liquid loops and dynamic tags remain within the correct HTML structure and that all required variables are present in the payload. If dynamic tags (for example, `coupon.standard_image_1`) cannot be resolved due to template changes or missing variables, email delivery may fail.
+
+  </Callout>
+* Add images
+* Personalize the message with the [Liquid language](https://docs.capillarytech.com/docs/add-dynamic-content-using-liquid#/). Applicable for the email subject and body. When writing Liquid code, use straight quotes (' or ") only. Curly quotes (“ ”) will break your template.
+
+  For example -\
+  Correct expression: `{% if slab_name == 'Platinum' %}`\
+  Incorrect expression: `{% if slab_name == “Platinum” %}`
+* Add dynamic headers and footers. Add dynamic headers and footers. You can also use an organisation's custom fields to apply dynamic elements, such as headers and footers, that are specific to that organisation. This is helpful in a connected organisation setup. For more information, refer to the documentation on [Adding Dynamic Content Using Custom Fields](https://docs.capillarytech.com/docs/add-dynamic-content-using-custom-fields).
+* Add a [barcode](https://docs.capillarytech.com/docs/configure-email#barcode-in-email) that contains the customer's loyalty identification information. You can include this barcode in customer registration emails, updates, or campaign messages. For more information, refer to the section on [Adding barcodes for emails](https://docs.capillarytech.com/docs/configure-email-content#barcode-in-email).
+
+<Image src="https://files.readme.io/629af1fe418a5c3d2caf030625cb6a4c4ff848220398f0d4be3a46a57eb6d131-email-html-editor-google-docs_4.png" alt="" />
+
+#### Configuring Email appearance (Settings Tab)
+
+Use the Settings tab to define the overall appearance of the email.
+
+| Block                             | Description                                                  |
+| :-------------------------------- | :----------------------------------------------------------- |
+| **Content area width**            | Sets the width of the main content section in the email.     |
+| **Content area alignment**        | Aligns the content area to the left and center.              |
+| **Background color**              | Sets the overall background color of the email.              |
+| **Content area background color** | Sets the background color specifically for the content area. |
+| **Default font**                  | Sets the font of the text.                                   |
+| **Link color**                    | Sets the color of all hyperlinks in the email.               |
+
+<Image src="https://files.readme.io/4ae02cf70ecba80ab0e3a5fb412dfa5fb345e217d802c4898847e36cf7427992-image.png" alt="" />
+
+#### Review and save the email template
+
+Once the content is added to the email template you can review and save the template.\
+To review and save the email template, perform the following steps:
+
+1. Select **[Preview and Test](https://docs.capillarytech.com/docs/test-and-preview-across-engagement-channels)** to populate values for any tags and labels, review the rendered content, and send test messages to test customers before sending the email.
+
+2. Select **Create** to save the email template.
+
+## Barcode in Email
+
+<Callout kind="info" title="Note">
+
+* When sending email communication that includes a barcode, ensure that the barcode feature is enabled. This feature is disabled by default, so you must raise a JIRA ticket with the sustenance team to activate the `ENABLE_CUSTOMER_BARCODE_TAG` flag before using barcodes in emails.
+* Barcode feature can be used both in Loyalty programs and on Engage+.
+
+</Callout>
+
+This feature enables you to create a barcode that contains customer identifier information and can be used by customers for identification purposes.  Customers can use this barcode at the POS to identify themselves and earn/claim loyalty benefits.
+
+### Prerequisites to enable barcode
+
+1. To enable barcode generation, the following configurations must be enabled:
+
+   1. **CONF_REGISTRATION_BARCODE_GEN_ENABLED**: Set the value to 0 or 1. Default value: 0- False
+   2. **CONF_BARCODE_VALUE_IDENTIFIER**: Set the value to 0,1 or 2 to set the barcode identifier. You can set the identifier according to the information to embed in the barcode.
+
+| **Value** | **Description**                  |
+| :-------: | :------------------------------- |
+|     0     | Mobile number of the customer.   |
+|     1     | Email ID of the customer.        |
+|     2     | The external ID of the customer. |
+
+2. Raise a [Jira ticket](https://capillarytech.atlassian.net/browse/CAP-114872) assigned to the Foundation team and enable bucket, namespace, and CDN URL support for the barcode service on the respective cluster where the organization is located.
+
+### Configuring barcode
+
+Capillary supports six types of barcodes, given below:
+
+* ITF
+* PDF417
+* EAN 13
+* UPC A
+* QR code
+* CODE 128
+
+### Default barcode configuration
+
+| **Field** | **Value** |
+| --- | --- |
+| Default barcode type | CODE_128 |
+| Image type | PNG |
+| Default barcode styles according to the barcode type: |  |
+| -ITF | * Barcode text: Disabled * Image height: 200 * Image width: 400 |
+| -QR_CODE | * Barcode text: Disabled * Image height: 200 * Image width: 300 * Image width padding: Enabled * Image height padding: Enabled |
+| -PDF_417 | * Barcode text: Disabled * Image height: 200 * Image width: 300 * Image width padding: Enabled * Image height padding: Enabled * Font size: 5 |
+| -EAN_13 | * Barcode text: Disabled * Image height: 200 * Image width: 300 * Image width padding: Enabled * Image height padding: Enabled * Font size: 5 |
+| -UPC_A | * Barcode text: Enabled * Image height: 200 * Image width: 300 * Image width padding: Enabled * Image height padding: Enabled * Font size: 5 * Font name: Arial |
+| -CODE_128 | * Barcode text: Disabled * Image height: 200 * Image width: 300 * Image width padding: Enabled * Image height padding: Enabled * Font size: 5 * Font name: Arial |
+
+| **Field**              | **Data Type** | **Description**                                                                                                                                    |
+| ---------------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **default_barcode**   | String        | Default barcode type that will be used if no barcode type is mentioned in the barcode service API.                                                 |
+| **showBarcodeText**    | Boolean       | If set to true, the text will be displayed with config.                                                                                            |
+| **imageHeight**        | Integer       | Height of the image in pixels.                                                                                                                     |
+| **imageWidth**         | Integer       | Width of the image in pixels.                                                                                                                      |
+| **imageWidthPadding**  | Integer       | Padding around the width of the barcode image. This property is applicable when `showBarcodeText` is set to true. Not applicable for ITF barcode.  |
+| **imageHeightPadding** | Integer       | Padding around the length of the barcode image. This property is applicable when `showBarcodeText` is set to true. Not applicable for ITF barcode. |
+| **fontName**           | String        | Name of the font. Not applicable for EAN 13, PDF417, QR Code, ITF barcode.                                                                         |
+| **fontSize**           | String        | Size of the font. Not applicable for ITF and QR code.                                                                                              |
+
+To edit the default barcode configuration, create a [JIRA ticket ](https://capillarytech.atlassian.net/browse/CAP-113628)to the Capillary sustenance team.
+
+### Generating barcode
+
+According to the configuration, during customer registration, the [Customer Add API ](https://docs.capillarytech.com/reference/add_customer)calls the barcode service and the barcode image is stored in the images table in the backend. If the identifier provided in the configuration is changed using [customer identifier change API](https://docs.capillarytech.com/reference/update-identifiersissue-card), a new barcode image is created and saved. You can retrieve the barcode image details using the [GET customer](https://docs.capillarytech.com/reference/get-customer-details-) details API.
+
+<Callout kind="info" title="Note">
+
+If you want to create a barcode for an existing user or regenerate a barcode, create a ticket to the Sustenance team.
+
+</Callout>
+
+To embed the barcode in the email creative, perform the following:
+
+1. Navigate to the **Engage+** homepage, and select the campaign to send the email creative.
+
+<Image src="https://files.readme.io/4be352ad4081d8ee246e92b04d8da99838ef1623910c37cdf2a7f8c59bd84aad-image.png" alt="" />
+
+2. Select **New message** to create a new email creative.
+
+<Image src="https://files.readme.io/e9a055806609f4c5a60615ca0b42f10afb358cd8fc171529c14b2704391c1072-image.png" alt="" />
+
+3. In the **Content** section, select **Add creative**.
+
+<Image src="https://files.readme.io/1c6aca9720da6cb3c144ddf35ffcb714d0da588c67c2322083149af6b4e18c66-image.png" alt="" />
+
+4. Navigate to the **Email** tab and click **Create new**.
+
+<Image src="https://files.readme.io/d020a7a68091d72b4d3a7e6b7b7d175c2d2e09634a088917040867aac7f02c75-image.png" alt="" />
+
+5. Click **Drag and drop editor** and click **Continue**.
+
+<Image src="https://files.readme.io/d1d992f83823db4df7c147bd948b0b62218d245f5b608d5a79030e2a4d72c388-image.png" alt="" />
+
+6. Select a template of your choice.
+
+<Image src="https://files.readme.io/119d0e479581826e793ba63ec8ca75b7f664b85d7b3b26dfb449ea78a13cf4ff-image.png" alt="" />
+
+7. In the email body, click **Add label** and select Customer barcode label.
+
+<Image src="https://files.readme.io/f174f918b4c66cecf1d6e51fd875840ffdb6319dcc88d31f3ad70073d355c5b6-image.png" alt="" />
+
+8. Embed the `{{customer_barcode}}` tag in your email template.
+
+<Image src="https://files.readme.io/01a62dc4c0ff74986957539fedd107858d038c798caf338be4c144309fd11a52-image.png" alt="" />
+
+A barcode has been generated for the customer. A broken image is sent to the customer if a barcode fails to generate.
+
+## Customize Unsubscribe landing page
+
+You can customize the default unsubscribe landing page using [Vulcan](https://docs.capillarytech.com/docs/creating-a-microsite-using-vulcan#/). To request customization, connect with your Customer success executive.
+
+You can customize the following elements:
+
+* Brand logos
+* Custom text or messaging
+* Language-specific versions
+
+<Image src="https://files.readme.io/09002de767ba7d045df072b1c1e7a23f19017c2f89d6e1c59414511ac32d8e21-image_4.png" alt="" />
+
+## Troubleshooting email image quality issues
+
+<Callout kind="tip" title="Notes">
+
+* [ ] Do not forcefully enlarge images.
+* [ ] Use actual images or image URLs in zip files without enlarging them.
+
+</Callout>
+
+| **Issue**                                       | **Resolution**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **File size is getting reduced**                | Expected behavior. File size reduction due to image transformations does not affect user experience. Specify image dimensions to maintain quality.  <br/>For example, if the email specifies a height and width of 200 x 300, images are transformed to match these dimensions instead of saving the original image, which might have very high dimensions. Consequently, the file size is reduced. This reduction could also occur due to dynamic image quality adjustments based on file sizes. |
+| **Image getting compressed excessively**        | Compression varies with file size. Smaller images have less compression; larger images undergo higher compression. This makes sure that irrespective of the file size, similar quality of images is achieved after compression. Do not artificially enlarge images to increase the file size.                                                                                                                                                                                                     |
+| **Images saved in avif format instead of jpeg** | Images are saved in their actual format except when the device supports avif format. avif format enables saving the images in smaller file sizes without impacting image quality.                                                                                                                                                                                                                                                                                                                 |
+
+For information on Generate OTP APIs, refer to the [API documentation](https://docs.capillarytech.com/reference/otp).

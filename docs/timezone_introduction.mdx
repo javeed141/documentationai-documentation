@@ -1,0 +1,199 @@
+---
+title: About Timezone
+---
+
+A timezone provides the regional context for date and time values. 
+
+A timezone provides the regional context for date and time values. The same moment in time can appear differently across locations.
+
+For example, a transaction that happens at a single instant may appear as:
+
+* 16 December 2025, 14:30 in India
+* 16 December 2025, 17:00 in Singapore
+* 16 December 2025, 09:00 in London
+
+Although the clock time differs, it represents the same event.
+
+To manage this consistently across regions, systems use a common reference time (UTC). Each region expresses its local time as an offset from UTC (for example, +05:30 or +08:00).
+
+## Timezone Concepts in Capillary
+
+Capillary uses two key timezone references:
+
+* **Organization timezone**
+* **Server timezone**
+
+Each serves a specific purpose and is applied consistently across the platform.
+
+#### **Organization timezone**
+
+The [organization's timezone](https://docs.capillarytech.com/docs/org-management#create-or-modify-organization-profile-information)represents the headquarter **timezone** for your business.
+
+* It reflects where your organization primarily operates.
+* It is used for **displaying dates and times** in the UI.
+* It is the reference timezone for scheduling promotions, campaigns, and journeys.
+
+For example, if your organization's timezone is in IST, the listing pages display the time in IST.
+
+<Image src="https://files.readme.io/6a8227de5c5aa51bf0d76debd5b697a4d98db823ea3631c7df89968c481a89f4-image.png" alt="" />
+
+#### **Server timezone**
+
+The server timezone is based on **where the Capillary server cluster is located**.
+
+* Each cluster uses the timezone of the region it operates in.
+* This timezone is used for **processing and storing events and transactions**.
+* It ensures consistent and reliable system behaviour within that cluster.
+
+In simple terms, the server timezone defines **how time is processed internally by the system**.
+
+## Timezone selection in the UI
+
+In certain modules, you can explicitly select the timezone during configuration.
+
+Where supported:
+
+* A timezone dropdown is available
+* The list uses IANA timezone format (for example, Asia/Shanghai, Europe/London, America/New_York)
+* The selected timezone defines the local time context for that configuration
+
+**Example**
+
+When creating a promotion:
+
+* You can select *Asia/Shanghai* from the dropdown
+* The promotion schedule (start and end date) is interpreted in that timezone
+* The listing and detail pages reflect that selected timezone context
+
+  <Image src="https://files.readme.io/35a9377195585f953ed9b8dd112059ab29961d27a2831966a277e30aa8246874-gif_16.gif" alt="" />
+
+This allows brands operating across regions to configure time-based logic in the appropriate local timezone.
+
+## Daylight Saving Time (DST) handling
+
+Capillary supports timezone-aware scheduling and evaluation using IANA timezone identifiers (for example, `America/New_York`).
+
+When a date and time are configured with an IANA timezone, Daylight Saving Time (DST) transitions are handled automatically.
+
+### How DST is handled
+
+Capillary stores:
+
+* The configured date and time
+* The associated IANA timezone (for example, `America/New_York`)
+
+An IANA timezone represents a region, not a fixed offset. It includes:
+
+* Historical timezone rules
+* Future DST transition rules
+* Exact dates when offsets change
+
+During scheduling or evaluation, the system:
+
+1. Reads the configured date and time.
+2. Reads the associated IANA timezone.
+3. Determines the correct UTC offset for that specific date.
+4. Applies the correct offset when processing the event.
+
+This ensures that time-based entities (such as promotions, campaigns, journeys, and rewards) run at the intended local wall-clock time, even when DST changes occur.
+
+***
+
+### Example: DST-aware scheduling
+
+A campaign is scheduled to start at:
+
+* 1 November 2026, 9:00 AM
+* Timezone: `America/New_York`
+
+If DST ends earlier that morning:
+
+* The system applies the updated offset automatically.
+* The campaign still starts at 9:00 AM local time.
+* No manual adjustment is required.
+
+***
+
+### What Happens During DST Transition Hours
+
+DST changes usually happen during early morning hours (for example, around 2:00 AM). During this time, one of two special cases can occur.
+
+***
+
+#### Spring Forward (Hour Skipped)
+
+When DST starts, clocks move forward by one hour.
+
+**Example**
+
+Timezone: `America/New_York`
+DST starts: 8 March 2026
+
+At **2:00 AM**, the clock jumps directly to **3:00 AM**.
+
+This means the time between **2:00 AM and 2:59 AM does not exist**.
+
+If you try to schedule something at:
+
+* 8 March 2026, 2:30 AM
+* Timezone: `America/New_York`
+
+That time is not valid because it never occurs.
+
+In such cases, the system may:
+
+* Prevent the configuration, or
+* Automatically adjust it to the next valid time.
+
+***
+
+#### Fall Back (Hour Repeated)
+
+When DST ends, clocks move back by one hour.
+
+**Example**
+
+Timezone: `America/New_York`
+DST ends: 1 November 2026
+
+At **2:00 AM**, the clock moves back to **1:00 AM**.
+
+This means the time between **1:00 AM and 1:59 AM occurs twice**.
+
+Although both show the same clock time, they represent two different moments.
+
+During this one-hour window, there may be minor timing differences depending on when the action occurred.
+
+<Callout kind="info">
+
+  Note
+
+  These special cases affect only the exact hour when DST changes.
+
+  Outside that one-hour transition window:
+
+  * Scheduling works as expected.
+  * Time-based promotions and campaigns behave normally.
+  * No manual adjustments are required.
+
+</Callout>
+
+### Best Practice
+
+Avoid scheduling time-based configurations during the exact DST transition hour in regions that observe DST.
+
+Scheduling outside that window ensures predictable behaviour.
+
+<br />
+
+<br />
+
+<br />
+
+<br />
+
+<br />
+
+<br />
+
+<br />

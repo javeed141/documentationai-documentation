@@ -1,0 +1,81 @@
+---
+title: Overview
+---
+
+The Capillary–Adobe integration provides a **ready-to-use connection** between **Capillary’s Loyalty Platform** and **Adobe Experience Platform (AEP)**, including **Adobe Real-Time CDP**.
+
+The integration enables you to:
+
+* **Stream loyalty and customer data from Capillary to Adobe Experience Platform** for advanced segmentation, analytics, and journey orchestration.
+* **Sync audience segments and journey triggers from Adobe back to Capillary** to run targeted loyalty campaigns and deliver personalised experiences across the customer journey.
+
+<Image src="https://files.readme.io/1f82440768d9b9118a5f032a76980c933ac95efd609f9ff52219d8a2e3a0e198-AdobeCap_Integraton.png" alt="" />
+
+**Note:** At present, only data flow from Capillary to Adobe is supported.
+
+## **Use cases**
+
+* Build **personalized cross-channel campaigns** using Capillary loyalty data in Adobe.
+
+* **Import Adobe segments** into Capillary to launch loyalty offers for refined customer groups.
+
+* **Enhance journey orchestration** by combining loyalty and transactional data with Adobe Analytics.
+
+* **Optimize engagement** with insights into loyalty program effectiveness and customer lifecycle behavior.
+
+## **Features**
+
+* **Ready-to-use integration**: Requires only one-time setup
+
+* **Near real-time data exchange**: Supports **bidirectional sync** between Capillary Loyalty and Adobe [AEP](https://experienceleague.adobe.com/en/docs/experience-platform), [RTCDP](https://experienceleague.adobe.com/en/docs/real-time-customer-data-platform), and [Journey Optimizer](https://experienceleague.adobe.com/en/docs/journey-optimizer)
+
+* **Historical data migration**: One-time export from Capillary via Insights+ to Adobe AEP
+
+* **Event-driven synchronization**: Loyalty events (e.g., customer updates, transactions, tier changes) trigger flows to Adobe
+
+* **Comprehensive data handling**: Supports the transfer of profile data and event data
+
+* **Flexible schema mapping**: Uses **XDM-compatible schemas** (standard structure of the data to be ingested by Adobe)
+
+* **Secure API integration**: Data pushed to Adobe via **authenticated Streaming Ingestion APIs** (client ID/secret + token)
+
+* **Robust monitoring and logging**: Real-time dashboards for errors (auth, API limits, network failures)
+
+* **High reliability and scalability**: Supports **100K+ transactions/day** with built-in resilience
+
+## **Integration Components**
+
+**Capillary**
+
+* **Neo** - Processes streamed events, performing payload enrichment (loyalty metadata) and transformation before sending to Adobe.
+* **Connect+**: Handles the initial setup process, data mapping, and enables the data ingestion to Adobe
+
+**Adobe**
+
+* **Source Connectors (Batch, Streaming):** Ingests bulk data and streamed events from Capillary. This includes a CDP component for storing loyalty data.
+  * **Adobe Experience Platform (AEP) for Personalized Communications:** Utilizes Campaign, Audience, Journey, and Analytics functionalities to deliver personalized communications (Email, SMS, Push).
+  * **Destination Catalog (Capillary Audience Destination):** Facilitates audience synchronization, sending segments generated in Adobe back to Capillary for targeted loyalty actions.
+
+## **Data flow**
+
+### **From Capillary to Adobe**
+
+* **What flows**: Profiles, loyalty balances, rewards, transaction history.
+
+* **How**: Event-driven triggers from Capillary → Neo Flow transformation → Adobe Streaming APIs.
+
+* **Additional**: One-time historical migration of existing data via Insights+.
+
+### **From Adobe to Capillary**
+
+* **What flows**: Segments and customer attributes.
+
+* **How**: Exported via SFTP/S3, ingested by Capillary.
+
+* **Usage**: Enables refined targeting and loyalty promotions.
+
+**Note:** This feature is not supported now and will be available in future updates
+
+<br />
+
+<br />

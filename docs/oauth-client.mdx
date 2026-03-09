@@ -1,0 +1,20 @@
+---
+title: OAuth Client
+---
+
+Configuration reference for the OAuth Client block — generates and manages an OAuth 2.0 access token for authenticating API calls.
+
+The OAuth Client block generates and manages an OAuth 2.0 access token used to authenticate API calls made by the Connect to Destination block. It is included in templates that call Capillary APIs using client credentials.
+
+**Block type:** `OAuthClientProcessor`
+
+Generates an OAuth 2.0 token using the provided client key and secret. The token is automatically refreshed and passed as an Authorization header to downstream API destination blocks.
+
+## Configuration fields
+
+| Field            | Description                                            |
+| :--------------- | :----------------------------------------------------- |
+| Client Key *    | The OAuth client key (client ID) issued for the org    |
+| Client Secret * | The OAuth client secret associated with the client key |
+
+* Required field

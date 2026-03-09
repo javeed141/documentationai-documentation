@@ -1,0 +1,71 @@
+---
+title: Overview
+---
+
+What Connect+ is, what you can do with it, and how it compares to Data Import.
+
+## What is Connect+?
+
+Connect+ is Capillary's no-code data integration platform. It lets you build, manage, and monitor data pipelines between external sources and the Capillary platform — without writing code or relying on a development team.
+
+Connect+ is built around **dataflows** — configurable sequences of steps that pick up data from a source, process it, and deliver it to a destination. A dataflow can be as simple as reading a CSV from an SFTP server and registering customers in bulk, or as complex as consuming a real-time Kafka stream, applying transformation logic, and calling multiple downstream APIs in sequence.
+
+## Key capabilities and benefits
+
+Connect+ supports a broad range of data integration scenarios across the Capillary platform:
+
+* **Ingest customer data** — Register or update customer profiles in bulk from flat files or streams.
+* **Process transactions** — Add, update, or reconcile transaction records at scale.
+* **Manage loyalty data** — Import points, adjust tier assignments, issue badges, and redeem coupons.
+* **Sync behavioral events** — Ingest event data for use in loyalty and engagement programs.
+* **Export data** — Push processed data from Capillary Insights to an external FTP or storage location.
+* **Run reconciliation workflows** — Compare source-side data against records in Capillary to identify and re-ingest missing entries.
+* **Trigger downstream jobs** — Invoke Databricks jobs, push to Kafka topics, or call internal and external APIs as part of a pipeline.
+* **Secure data in transit** — Decrypt incoming files and re-encrypt outgoing files within the flow.
+* **Version-controlled dataflows** — Full version history with draft, approval, and live states.
+* **Scheduled execution** — Run dataflows on a defined schedule without manual intervention.
+
+## Use cases
+
+### Data ingestion
+
+Connect+ reads data from a source (SFTP, FTP, S3, Kafka), optionally transforms it, and delivers it to the Capillary platform via API. Use this for customer registration, transaction ingestion, behavioral events, and more.
+
+### Data export
+
+Connect+ can push processed data from Capillary Insights to an external FTP or storage location. It does not replace Data Export but extends it by handling last-mile operations that cannot be achieved through Data Export alone.
+
+### Bulk requests
+
+Connect+ can raise requests in bulk and update data based on an approval flow. For example, it can be used to create PII deletion requests in bulk or issue goodwill points to a large customer segment.
+
+### Data merging
+
+Connect+ supports joining multiple source files before ingestion. For example, merging a bill-level file with a line-item file before posting to the transaction API.
+
+### Data conversion
+
+Connect+ supports data format conversion within a pipeline. For example, converting CSV files to XML format before delivery to a downstream system.
+
+## Connect+ vs. Data Import
+
+If you have used the **Data Import** feature in InTouch before, you may wonder where Connect+ fits. Both tools support bulk data ingestion, but they are designed for different purposes.
+
+**Data Import** is a structured, profile-based upload tool built into InTouch. It is suited for straightforward, one-time or periodic uploads where data is already clean and conforms to Capillary's expected format.
+
+**Connect+** is a pipeline builder. Use it when data requires transformation before reaching Capillary, when ingestion needs to run continuously or on a schedule, when errors need to be caught and reported at a granular level, or when the flow involves multiple steps across systems.
+
+| Capability              | Data Import                       | Connect+                                                         |
+| :---------------------- | :-------------------------------- | :--------------------------------------------------------------- |
+| Interface               | Form-based upload in InTouch      | Visual, block-based dataflow builder                             |
+| Data transformation     | Not supported                     | Supported via JSLT, JOLT, and Neo Transformer blocks             |
+| Supported data sources  | Manual file upload via UI         | SFTP, Kafka streams, APIs, S3, and more                          |
+| Streaming ingestion     | Not supported                     | Supported (Kafka-based ingestion)                                |
+| Multi-step pipelines    | Not supported                     | Supported — chain multiple blocks in sequence                    |
+| Error reporting         | Summary-level report after import | Block-level error logging, error files, and email alerts         |
+| Performance metrics     | Not available                     | Input/output counts, accuracy percentage, block-wise performance |
+| Versioning and approval | Not available                     | Full version history with draft, approval, and live states       |
+| Scheduling              | Not available                     | Schedule-based trigger support                                   |
+| Use case scope          | Predefined data types only        | Flexible — supports custom flows and non-standard use cases      |
+
+Use Data Import for a quick, governed upload of a clean, standard dataset. Use Connect+ when your integration involves transformation, automation, multi-system routing, or real-time data.

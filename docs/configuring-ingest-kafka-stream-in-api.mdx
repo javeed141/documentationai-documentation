@@ -1,0 +1,19 @@
+---
+title: Connect to Source - Kafka
+---
+
+This block enables you to define the Kafka server details. Below is the screenshot showing the fields in the block.
+
+<Image src="https://files.readme.io/b478905a418889e9d3e265c5c1c599512c0d551e68bf8311e8f8a8c8d8e59aef-image.png" />
+
+The table below describes the fields in the block:
+
+| Field Name | Description |
+| --- | --- |
+| kafka brokers | Kafka server URL. The URL is a combination of the server address and the port number. * *Example**: `kafka-connectplus:9092` |
+| kafka topics | Predefined topic name from which you consume messages. These topics must already exist in your Kafka system. You can list multiple topics separated by commas. |
+| Consumer Group Id | Specifies the predefined consumer group ID used for access control.\ **Note**: Configure a distinct `groupId` for each dataflow. If multiple dataflows share the same `groupId`, only one will consume the messages. |
+| Security Protocol | Specify the security protocol you want to use to exchange data between the Kafka client and server. The supported protocols are: * **PLAINTEXT**: No data encryption or authentication. * **SSL**: Uses the SSL protocol for data encryption but no SASL authentication. * **SASL_PLAINTEXT**: Uses SASL protocol for authentication but does not encrypt data. * **SASL_SSL**: Uses the SASL protocol for authentication and SSL for encryption. |
+| SASL Mechanism | Specify the authentication method used to connect to Kafka. The supported mechanisms are `GSSAPI`, `PLAIN`, `SCRAM-SHA-256` |
+| Username and Password | Username and password to access the Kafka server. |
+| Headers as Attribute | Choose the headers to be used as attributes.\ Kafka message headers can contain metadata such as `user ID`, `priority`, and `source system`. Connect+ extracts these headers as data attributes and makes them available to all steps in the flow. You can use these attributes for: * **Routing**: Direct messages based on header values * **Filtering**: Process only relevant messages * **Tracking**: Enable observability and trace message flow * **Simplified Logic**: Apply business rules without parsing the main message. |

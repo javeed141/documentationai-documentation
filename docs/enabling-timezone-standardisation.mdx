@@ -1,0 +1,79 @@
+---
+title: Timezone Configuration and Behaviour Across UI Modules
+---
+
+This page provides you with information on configuring timezone and its behaviour across UI modules.
+
+Timezone handling in Capillary is configuration-driven.
+
+**When timezone support is enabled:**
+
+* UI modules follow a defined and predictable timezone model.
+* Dates are displayed consistently in the organization timezone.
+* Timezone selection is available in supported modules.
+* Unexpected server-time displays are eliminated.
+
+This provides clarity for:
+
+* Promotion scheduling
+* Campaign management
+* Customer support investigations
+* Cross-region operations
+
+**When Timezone Support Is Not Enabled**
+
+If timezone support is not enabled:
+
+* Dates may appear in legacy display formats.
+* Timezone consistency may vary across modules.
+* Timezone switching options may not be available.
+
+## Enabling timezone
+
+For organizations created from **2026 onwards**, timezone handling is **enabled by default**.
+
+For organizations created earlier, you can raise a request with the **Capillary Product Support team** to enable timezone support for your organization.
+
+The list below explains the module-wise behaviour of date and time fields across the Intouch UI when timezone handling is enabled.
+
+| Module              | UI Component / Screen | Behavior         | Reference Timezone                       |
+| :------------------ | :-------------------- | :--------------- | :--------------------------------------- |
+| MemberCare          | Search and Detail View  | Allows selection | Org Timezone (Default) or User Selection |
+| Promotions (New UI) | Creation Flow         | Allows selection | Selected IANA Timezone                   |
+| Promotions (New UI) | Listing (Duration)    | View Only        | Timezone selected during creation        |
+| Promotions (New UI) | Listing (Updated at)  | View Only        | Organization Timezone                    |
+| Campaigns           | Creation and Listing    | View Only        | Organization Timezone                    |
+| Audience            | Listings and Details    | View Only        | Organization Timezone                    |
+| Audience            | Filter Date Ranges    | Input            | Server Time (UTC)                        |
+| Journeys            | Listing and Details     | View Only        | Organization Timezone                    |
+| Cart Promotions     | Creation and Listing    | View Only        | Organization Timezone                    |
+| Streaks             | Creation and Listing    | View Only        | Organization Timezone                    |
+| Milestones          | Creation and Listing    | View Only        | Organization Timezone                    |
+| Alternate Currency  | Creation and Listing    | View Only        | Organization Timezone                    |
+| Gift Cards          | Creation and Listing    | View Only        | Organization Timezone                    |
+
+### Modules not yet covered
+
+The following modules do not currently follow the standardised timezone model:
+
+* Insights UI – in progress
+* Loyalty Programs
+* Loyalty Promotions (Old UI)
+* Rewards catalog (also called Marvel Rewards)
+* Data import
+* Connect+
+* Badges UI
+* Offers
+
+For these modules:
+
+* Existing timezone behaviour remains unchanged.
+* Legacy display or processing logic may still apply.
+
+***
+
+### Future Rollout
+
+Timezone standardisation for some of the above modules is planned as part of ongoing revamp initiatives (for example, Loyalty, Rewards, Import, and Connect+).
+
+These modules are not being deprecated. They will adopt the standardised model in future releases.

@@ -1,0 +1,30 @@
+---
+title: Referral Programs
+---
+
+You can read about this in detail [here](https://dash.readme.com/project/capillary-documentation/v1.0/docs/referral-campaign).
+
+<Callout kind="info">
+
+Referral Programs only work inside the default program, we do not support Referral Programs for MLP as of now. This may be available at a later date and we will notify you when that happens.
+
+</Callout>
+
+You can find all details about setting up Referral Campaigns in the article mentioned above. Also, you can use the Expression Editor to use cases like adding limitations to how many transactions from referees can lead to the referrer getting points or how many referees need to start transactions for the referees to get points.
+
+The Expression Editor for Referral related actions has two options for rules: Referee Registration Count (refereeRegCount) and Referee Transactions Count (refereeTxnCount). These two rules behave a bit differently. The former gives the number of people that the referrer has given their code to while the latter gives the number of transactions for a particular referee. Accordingly, you can use them to set up your use case.
+
+<Image src="https://files.readme.io/d152e9a-Screenshot_194.png" alt="" />
+
+## Referral code validation
+
+When you use the /v2/referral/validate API to check a referral code, the system validates the code based on the campaign's start and end dates. If the referral code exists but its creation date is outside the campaign's active period, the API returns:
+
+\{"valid": false, "referrer": -1\}
+
+This means the referral code is not valid for the current campaign, even if the code itself exists. The validation happens at runtime and ensures that only codes created within the campaign's start and end dates are accepted.
+
+**Recommendation:**
+
+* Always check the campaign period before distributing or using referral codes.
+* If you receive a response with `"valid": false` and `"referrer": -1`, verify that the code was created within the campaign's active dates.

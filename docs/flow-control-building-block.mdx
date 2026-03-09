@@ -1,0 +1,274 @@
+---
+title: Flow Control Building Block
+---
+
+Flow control helps you control the flow of the journey by applying conditions to user events or user preferences.
+
+Marketers can define different conditions in a customer journey to guide users through different flows based on specific criteria such as time or event-based preferences. These conditions serve as additional decision points that determine whether the user will continue on the same path or be directed to a different flow.
+
+The various flow control blocks available are:
+
+1. Time-based wait
+2. Event-based wait
+3. Join
+4. Decision split
+
+## Time-based wait
+
+The time-based wait is used by brands to engage customers at a particular time/date or after a specified period. This is preferred after analyzing user behaviour and targeting users at a crucial time to improve engagement.
+
+This feature allows brands to target their customers at the right time to increase engagement and can avoid spamming the customer. This can increase click-through rates and would motivate the target customer to perform a desired behaviour.
+
+### Use Cases
+
+* A brand has analyzed that their customers have high activity rates mostly on the weekends and they want to send out communication messages during that period.
+* Certain countries have rules that engagements with customers should go out on particular days of the week/date of the month and rates for some days of the week are lower than the other. This would allow brands to comply with government rules and also save engagement costs
+
+### Configuring time-based wait
+
+1. Drag and drop the **Wait** block on the journey canvas.
+2. On the journey canvas, click **Time based wait**.
+3. In the **Block name**, enter a name for the wait block.
+4. Define the wait duration. Note: At present only, Wait for a duration is supported.
+   1. **Wait for** - Enter the wait time in hours/ day/week/month/year.
+   2. Then proceed from this block Immediately - From the drop-down, select when the customer should proceed to the next block. The available options are:
+      1. **Immediately**
+      2. **On a specific time** - Select the desired time
+      3. **On the nearest day** - Select the desired day and time
+      4. **On the nearest date** - Select the desired date and time
+
+<Image src="https://files.readme.io/3ad34a9-small-3.png" />
+
+<Image src="https://files.readme.io/59498a5-small-4.png" />
+
+5. Once the wait block is added to the canvas, click on the delete icon to remove the block or click on the setting icon to edit the block.
+
+<Callout kind="info" title="Note">
+
+If a customer's wait time in v1 is 2 days, and they are moved to v2, the wait time will not reset. It will continue from the remaining duration.
+
+</Callout>
+
+## Event-based wait
+
+This feature allows brands to configure user journeys based on the behaviour of the customer. Brands can configure separate paths for customers based on an event-based wait time. The wait can be configured in two ways - wait since event and wait till event.
+
+This allows brands to personalize journeys for users who perform a desired action and for new users that are yet to act. This also reduces the redundancy of messages and eliminates sending irrelevant messages to users.
+
+### Use Cases
+
+* The brand wants to give the customers a 10% off coupon if they make a purchase of 5000 within 30 days and if they do not make a purchase, the brand wants to share an upcoming offer message.
+* The brand wants to give customers a 10% off coupon after they have completed 90 days since the last purchase date.
+
+### Configuring event-based wait block
+
+To configure the event-based wait block, follow these steps
+
+1. Drag and drop the **Event based wait** to the Journey canvas.
+2. Select the **Event based wait** block on the canvas to open the configuration menu.
+3. In the **Block name** text box, enter a name for the block.
+4. Select the wait conditions from the **Wait Type** drop-down. The available wait types are listed in the table below with their descriptions.
+
+   | Wait type                     | Description                                                                                |
+   | ----------------------------- | ------------------------------------------------------------------------------------------ |
+   | Wait for future event         | Checks for the completion of a specified user action before proceeding.                    |
+   | Wait since a past event       | Checks for the prior completion of a specified user action before proceeding.              |
+   | Wait for engagement event     | Checks for user engagement with a message, such as an open or a click, before proceeding.  |
+   | Wait on entry event attribute | Checks if a user's attributes match the conditions of the entry trigger before proceeding. |
+5. For the **Wait for future event** wait type, configure the event conditions and additional criteria for the event.
+   1. Select the event conditions under the **Select event** drop-down. For more information, refer to the section on [Customer events](https://docs.capillarytech.com/docs/overview-journey#/customer-events).
+   2. Select **+ Add entry paths** to add additional criteria a customer must satisfy before proceeding to the next block.
+   3. Select **+ Add condition** to add a condition. For more information, refer to the section on [Conditions](https://docs.capillarytech.com/docs/overview-journey#/conditions)
+   4. Configure the condition.
+   5. Under **Maximum wait time for alternate path**, enter the duration to wait for the specified event before using an alternate path
+
+      <Image src="https://files.readme.io/ff735527b9561fdf995caf222984bb71614d4bec0612a3670f6557c25fb188ce-image.png" alt="" />
+6. For the **Wait since a past event** wait type, configure the number of days and the time criterion.
+   1. Under **Wait,** enter the duration to wait for the event.
+   2. Under the **since** drop-down, select the criterion. The available options are listed in the table below along with their descriptions.
+
+      | **Criteria**        | **Description**                                                   |
+      | ------------------- | ----------------------------------------------------------------- |
+      | Registration date   | Date when the customer registered with the brand                  |
+      | First purchase date | Date when the customer made their first purchase with the brand   |
+      | Last purchase date  | Date when the customer made their latest purchase with the brand¡ |
+
+      <Image src="https://files.readme.io/970e9ff2cb7fcaa5a544ee6194942332f7b196dfbd4cac8b558f3723d2bc5c63-image.png" alt="" />
+7. For the **Wait for engagement event** wait type, configure the engagement block and event.
+   1. Under the **Engagement Block** drop-down, select the engagement block you want to track (for example, SMS, Email, M-push, WhatsApp, Zalo, Line, Viber). The list will display only those engagement blocks that exist before the current wait block in the journey path.
+   2. Under the **Select engagement event** drop-down, select the type of engagement event - **Opened**, **Clicked on link** and **Undelivered**. Refer to the table below for detailed descriptions of each engagement event type.
+
+      | Condition | Description |
+| --- | --- |
+| Opened | Checks if a user has opened the message or clicked any link within it before proceeding. An open is treated as a weaker signal of engagement compared to a click. |
+| Clicked on link | Checks if a user has clicked any link within the message before proceeding. You can select from the following options: * **Exact link**: Select specific links from the engagement block to track. You can also choose to track all links within the message. The links displayed in the drop-down are those included in the message template of the selected engagement block. * **Link contains**: Enter a partial segment of the URL, such as a hostname, to track any links that contain the specified text. For example, entering `offers.brand.com` will track clicks on any link that includes this hostname. This match is based on the hostname, not the full URL. |
+| Undelivered | Checks if a message from a previous engagement block in the journey has failed to deliver. You can then create a fallback path for these users, such as attempting communication on a different channel. You can configure this based on the following options: * **Any reason:** Triggers the path if the message was undelivered for any reason. This is the default for all non-delivery events. * **Specific reason:** Allows you to select one or more specific reasons for non-delivery to create more targeted fallback paths. To create a new reason for non-delivery, raise a JIRA ticket to the ​​Capillary product support team. **Note:** The *Undelivered* event condition applies only to engagement blocks triggered within journeys. Campaign messages are not yet supported for undelivered tracking. |
+   3. Under **Maximum wait time for alternate path**, enter the duration to wait for the specified event before using an alternate path.
+
+      <Image src="https://files.readme.io/c28f9c7197b9f1993ee70eea694f9f014d3c598d96f27ea76dfd59b014f2ded6-image.png" alt="" />
+8. For the **Wait on entry event attribute** wait type, configure the wait until time and date attribute.
+   1. Under the **Wait until** drop-down, select the date and time period to wait until.
+   2. Enter the time period before or after the transaction date.
+   3. Under the **Select date attribute** drop-down, select the date attribute.
+   4. Select the path a customer will follow if they reach the block after the defined time has passed using the radio buttons. The following options are available:
+      * Will skip this wait block directly
+      * Will enter an alternate path
+9. Select **Done** the save the changes.
+
+<Callout kind="info" title="Notes">
+
+* You can preview the selected events in the journey flow by hovering over the icon. For links with more than one, it will show the user about additional links (e.g., "three more links along with this links").
+
+<Image src="https://files.readme.io/784a9b8a97df56e9b086679cba207accd7658df165667899bd059f18a1bc0a66-Gif_8.gif" alt="" />
+
+* If a [Decision Split block](https://docs.capillarytech.com/docs/building-blocks-of-a-journey#/decision-split) is used to configure a join block, engagement channels from the joined path will also be available for selection.
+
+<Image src="https://files.readme.io/974d59ca10fd82873f476e5099141f9b3b1c9d895bb3935aba08fd53b8dd32a8-Screenshot_2025-07-01_at_12.26.08_PM.png" alt="" />
+
+* If the selected engagement block (e.g., a Viber message) does not contain any links, the click event option will not be available, and a message will inform you accordingly.
+
+<Image src="https://files.readme.io/42cdb811ced1d53f3d042ed8650d7d8b27c6e6f43b03c1aad1be7cb38e47e3bf-Screenshot_2025-06-30_at_3.02.46_PM.png" alt="" />
+
+* If a particular combination of engagement block and event (e.g., Viber + open) is already used in a path, it cannot be selected again for the same block within the same journey.
+
+</Callout>
+
+## Join
+
+This feature is used to connect multiple paths within a journey onto a single common path. It reduces the time and effort of the brand to configure similar paths within a single journey. This feature saves the time of the marketer by disabling the hassle of creating multiple journeys/paths to send customers on a common path. It also maintains continuity and familiarity of engagements sent to customers
+
+### Use Cases
+
+Brands want to nudge their customers to purchase their seasonal collections. They share an SMS as well as a coupon code with the customer. They want to wait for 10 days for the user to act and if not performed, they want to re-send the message to customers.
+
+### Configuring a join block
+
+1. Drag and drop the **Join** block on the journey canvas. Whenever a user reaches this block, they will be redirected to a common path as configured.
+2. Click on the **Join** block in the canvas.
+3. In the **Block name** text box, enter a name for the block.
+4. From the Join the end before drop-down, select the block the customer should join. A list of block names previously configured within the journey is displayed in the drop-down as either *engagement* or *flow control* depending on the components included. You can use the search button to search the block names.
+
+<Image src="https://files.readme.io/e17c5be-small-8.png" />
+
+5. Click  **Done** to finish configuring the block. Post configuration, you can view where the join block merges the journey.
+
+<Image src="https://files.readme.io/95a1ef7-small-9.png" />
+
+6. Once the wait block is added to the canvas, click on the delete icon to remove the block or click on the setting icon to edit the block
+
+## Decision Split
+
+This feature helps brands to define different paths for multiple kinds of users. Brands can define multiple criteria and the customers will move in a path as per the criteria they fit in. This enables brands to target customers based on their past purchases and behavioural patterns which leads to extremely personalized journeys for users. It allows brands to create multiple paths for customers matching various criteria and to send out relevant engagement messages and nudges
+
+### Use Cases
+
+1. Incentive customers based on their previous behaviour which will result in an increase in coupon redemption and increase transaction frequency. Brands will be able to send relevant messages to users based on their behavioural patterns and can increase personalisation.
+2. Incentivise customers on special days such as birthdays/anniversaries to make them feel special and increase loyalty towards the brand.
+3. Send customers wishes and offers based on the festivals celebrated in their respective regions. This will increase personalisation.
+
+### Configuring a decision split block
+
+1. Drag and drop the Decision Split block on the journey canvas. Whenever a user reaches this block, they will be directed on the path according to which condition they match
+
+2. Click on the **Decision spli**t block in the canvas.
+
+3. In the **Block name** text box, enter a name for the block.
+
+4. Configure the loyalty status and add filter conditions.
+   1. Within loyalty status, choose the category of customers you want to select.
+      <Image src="https://files.readme.io/449a7be-small-10.png" alt="" />
+   2. Click **+Add condition** to add conditions and further refine the customer group. You can click **+Add condition** to add further conditions and combine them with the AND operator. Click Add group to add conditions and combine them with the OR operator.
+      <Image src="https://files.readme.io/08cb5d0-small-11.png" alt="" />
+   3. Along with multiple conditions, brands can also define multiple paths within the same block.
+   4. Once a filter is selected within a condition, further define which group of customers will be included in the condition. This is populated based on the filter chosen.
+      <Image src="https://files.readme.io/f638771-small-12.png" alt="" />
+
+5. Once the conditions have been configured, click **Done**. The journey will get divided into two paths- for customers who satisfy the condition within the decision split block and for customers who do not.
+
+<Image src="https://files.readme.io/2917670-small-13.png" />
+
+6. Further blocks can be added within the separate paths of the decision blocks. Once the wait block is added to the canvas, click on the **delete icon** to remove the block or click on the **setting icon** to edit the block.
+
+## Random split block
+
+The **Random Split** block enables you to divide customers into random groups to test different strategies, personalise engagement, or compare results to determine what works best. You have the flexibility to configure any type of block within each path, giving you complete control to design unique customer experiences for every group.
+
+### Use case: Testing Promotional Messages
+
+**Requirement**:\
+A brand wants to test different versions of its promotional messages to identify which one performs better in terms of engagement and conversions.
+
+**Solution**:
+The brand uses the **Random Split** block to create two paths in the journey. One group receives a message with a discount offer, while the other receives a message highlighting product benefits. After the journey is live, the brand compares engagement and conversion metrics across both paths to identify the more effective message.
+
+### Use case: Reward-Based Engagement
+
+**Requirement:**
+A brand wants to improve customer engagement by offering rewards and understanding which type of incentive -coupons or loyalty points, drives better participation and repeat purchases. It targets customers whose transaction value is more than ₹1000.
+
+**Solution:**
+The brand uses the **Random Split**block to create two paths in the journey. One group receives a coupon reward, while the other receives loyalty points. After the journey is live, the brand compares redemption rates and purchase behavior to determine which reward type is more effective in driving engagement.
+
+***
+
+You can configure up to five paths, each with a custom distribution percentage. Customers are assigned randomly based on the defined distribution, ensuring that over time, the split aligns closely with your configuration.
+When only a few customers enter the journey, the split may not appear exact. As more customers join, the actual distribution will gradually align with the percentages you configured.
+
+**Example**
+
+Let’s say you set up a Random Split block with two paths:
+
+* Path A: 70%
+* Path B: 30%
+
+This means you want about 70% of your customers to go to Path A and 30% to Path B.
+
+Now, if only 10 customers enter your journey, randomness might make it look like this:
+
+* Path A: 6 customers
+* Path B: 4 customers
+
+That’s a 60/40 split — not exactly 70/30.
+
+However, as more customers enter (for example, 1,000 or 10,000), the distribution will start getting closer to your setup:
+
+* Path A: around 700 customers
+* Path B: around 300 customers
+
+So, the more customers that enter the journey, the more accurate the split becomes.
+
+<Callout kind="info">
+
+  Note
+
+  When only a few customers enter the journey, the split may not appear exact. As more customers join, the actual distribution will gradually align with the percentages you configured.
+
+</Callout>
+
+When an odd number of customers enter the journey, the additional customer is automatically assigned to one of the paths to maintain a near-equal distribution.
+
+**Example:**
+
+If there are seven customers with a 50/50 split:
+
+* Four customers go to Path A.
+* Three customers go to Path B.
+
+### Configuring a Random split block
+
+To configure a Random split block, follow these steps:
+
+1. Drag the **Random Split** block onto the journey canvas.
+2. Select the Settings icon on the block. A configuration modal appears.
+3. Enter a **Block name**.
+4. To add paths, click the + icon.
+   * You can create up to five paths.
+   * By default, two paths are available with a 50/50 split.
+   * The minimum number of paths is two.
+5. (Optional)Adjust the distribution percentages using the slider. The values automatically adjust to ensure the total equals 100%.
+6. (Optional) Select **Split equally** to divide the customers equally across all paths.
+7. Select **Done** to save the configuration.
+
+Once configured, you can add activities to each path. When the journey starts, customers are randomly assigned to paths based on the defined distribution.
+
+<Image src="https://files.readme.io/de9125b8bbe5c95b478a065b32792bfd0c3a4520ac52ab449bec799b71d974e4-GIF3_14.gif" alt="" />

@@ -1,0 +1,78 @@
+---
+title: Performing Data Deletion
+---
+
+At a high level, enabling PII deletion involves:
+
+* Verifying prerequisites such as customer status configuration and PII classification.
+* Enabling and configuring PII deletion settings at the organization level.
+* Creating and submitting PII deletion requests through Member Care or APIs.
+* Approving the request
+
+Once configured, Capillary processes deletion requests automatically based on the defined waiting period and approval workflow.
+
+<Callout kind="success">
+
+  Data Deletion in Connected Organizations
+
+  In a connected organization setup, the PII deletion is always initiated from the parent organization, and the data gets deleted from both the parent and child organizations. However, the PII configuration is maintained separately. For the child organisation, the PII configuration should be set at the child level.
+
+</Callout>
+
+<Image src="https://files.readme.io/c669af0-PII.jpg" />
+
+## Step 1: Make sure the following prerequisites are met
+
+1. Enable customer status. See [Enable customer status](https://docs.capillarytech.com/docs/customer_entity#activating-customer-status).
+
+<Image src="https://files.readme.io/8f013a2-Enable_customer_status.png" />
+
+2. Make sure that a label is created for each customer status. For more information on customer status labels, see [Create customer status label](https://docs.capillarytech.com/docs/customer_entity#creating-a-custom-label).
+   <Callout kind="info">
+
+     For Pending Deletion, the platform creates a deletion_pending status automatically and assigns it whenever a deletion request is raised. The platform does not use any label that you created against the Pending Deletion status.
+
+   </Callout>
+3. Configure PII deletion. See [Configuring PII deletion](https://docs.capillarytech.com/docs/performing-data-deletion#step-2-define-pii-deletion-configurations-as-required).
+4. If required, select and mark the required extended field, custom field and payment mode attributes as PII data. See [Classifying custom field, extended field, and payment attribute as PII data](https://docs.capillarytech.com/docs/marking-custom-fields-extended-fields-as-psi-and-pii#classifying-custom--extended-fields-as-piipsi).
+
+## Step 2: Define PII deletion configurations as required.
+
+To enable and configure the PII deletion
+
+1. From Organisation settings, navigate to **Organization Setup** -> **PII Configurations**.
+2. To enable the PII deletion, select the **CONF_ENABLE_PII_DELETION** check box.
+
+<Image src="https://files.readme.io/5cc0ebb-Enable_delete_PII.png" />
+
+3. To set the number of days after which the data is deleted (deletion waiting period), enter the number in the **CONF_PII_DATA_DELETE_AFTER_DAYS** field. You can enter any value between 0-90.
+
+   <Callout kind="info">
+
+     Note
+
+     If the waiting period is set to 0 days, the system deletes the data on the same day that you raised the requests and approves if approval workflow is involved. For example, if a customer raises a deletion request at 1400 hrs, the system processes deletion at midnight on the same day depending on the time zone of the cluster the org belongs to on the Capillary platform.
+
+   </Callout>
+4. Click **Submit**.
+
+## Step 3: Create a deletion request
+
+A PII deletion request can be performed from the Member Care, refer to [the documentation on user deletion from Member Care](https://docs.capillarytech.com/docs/manage-id-change_requests#delete-member-account).
+For more information on the PII deletion APIs, see [Add deletion request API documentation](https://docs.capillarytech.com/reference/add-a-pii-deletion-request).
+
+## Step 4: (for approvers) Approve the PII deletion request from Membercare
+
+For information on approving member account deletion requests from Membercare, refer to [Request management](https://docs.capillarytech.com/docs/manage-id-change_requests#delete-member-account) documentation.
+
+### Deletion request status
+
+| Action                                                       | Request status | Customer status and status label    |
+| :----------------------------------------------------------- | :------------- | :---------------------------------- |
+| Capillary receives a deletion request                        | PENDING        | No change to the customer status    |
+| The brand rejects the deletion request                       | REJECTED       | No change to the customer status    |
+| Capillary receives a deletion request                        | APPROVED       | Pending Deletion: Deletion_pending |
+| The customer cancels the deletion request                    | CANCELED       | Previous customer status            |
+| Capillary deletes the customer PII after the waiting period. | DELETED        | DELETED: Deleted                    |
+
+After a customer is deleted, the system triggers a customerUpdate event notification to indicate the customer deletion.

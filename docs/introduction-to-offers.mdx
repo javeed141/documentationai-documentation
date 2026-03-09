@@ -1,0 +1,67 @@
+---
+title: Introduction to Offers
+---
+
+## What is a coupon?
+
+A coupon acts like a digital key at checkout. It is a code-based mechanism that unlocks a specific deal or discount. Unlike automatic promotions, a coupon requires a customer to actively present or enter a code—like "SAVE20"—to receive the benefit. In the Capillary ecosystem, coupons are managed within the **Offer Management System (CMS)**, which serves as a central repository for creating and tracking these incentives across internal and external services.
+
+## What it does?
+
+A coupon manages the lifecycle of a discount through four specific controls:
+
+1. **Target the benefit.** It defines the reward, such as a **Fixed Amount** ($20 off) or a **Percentage** (10% off), restricted to specific products or organizational units (OUs).
+2. **Control distribution.** It decides who gets a code (via targeted CSV lists or general campaigns). Once a code is utilized by one service, it becomes unavailable to others to prevent double-dipping.
+3. **Manage urgency.** It sets a strict shelf life. A code can expire on a fixed date, a set number of days after issuance, or be linked directly to a specific marketing campaign's validity.
+4. **Track success.** Through a centralized **Dashboard**, it monitors creation dates, service usage (Loyalty, Outbound, etc.), and real-time redemption performance.
+
+## How it works?
+
+#### **Brand setup**
+
+A marketing manager configures the "Incentive" logic in the CMS.
+
+* **The Container:** Create an "Offer" and set it as the master template for the discount logic.
+* **The Code:** Choose between **Auto-generation** (unique strings), a **Common Code** (e.g., "SALE20"), or **Manual Upload** for third-party/vendor codes.
+* **The Guardrails:** Set issuance limits per customer, total campaign caps, and redemption restrictions based on transaction amount, date, or time.
+
+#### **Customer experience**
+
+The customer receives a code via SMS or email and shops as usual. At the checkout or payment screen, they enter the code. The system validates the code's status and checks if the customer meets the redemption rules. If valid, the system applies the discount instantly.
+
+## **How it differs from other promotions**
+
+| Promotion type     | How it works                              | The vibe                             |
+| ------------------ | ----------------------------------------- | ------------------------------------ |
+| **Coupon**         | Requires the customer to enter a code.    | “I have a code that unlocks a deal.” |
+| **Cart promotion** | Applies automatically when rules are met. | “Surprise, my bill just dropped.”    |
+| **Points**         | Currency earned to be redeemed later.     | “I’m collecting value for later.”    |
+| **Gift voucher**   | Stored value used as a payment method.    | “I’m paying with a voucher.”         |
+
+## **Real-world examples**
+
+#### **The Welcome Gift**
+
+A new customer signs up and receives a unique code for 10% off their first order (limit 1 per customer).
+
+#### **The Influencer Code**
+
+A brand gives an influencer the code "Glow15." It is a common code shareable with everyone, but capped at the first 1,000 redemptions.
+
+#### **The Retention Tactic**
+
+A customer hasn't shopped in 30 days; the system sends a $20 off coupon that expires exactly 7 days after they receive the SMS, triggered by an outbound campaign.
+
+#### **The Threshold Reward**
+
+A "Fixed Amount" coupon that only activates when a customer spends above $100, valid only during weekend store hours.
+
+## **Benefits of Coupons**
+
+| Feature                  | Brand Benefits                                                                                                                           | Customer Benefits                                                                                             |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| **Precision Targeting**  | **Centralized Repository:** Manage global coupons in one place (CMS) and use them across Loyalty, Outbound, or third-party integrations. | **Exclusivity:** Feels like a personal reward or a "special" deal rather than a general sale.                 |
+| **Advanced Control**     | **Smart Expiry:** Automate reminders and notifications for expiring coupons to drive last-minute conversions.                            | **Portability:** Codes can be saved in a digital wallet or email and used when the customer is ready to shop. |
+| **Performance Tracking** | **Detailed Attribution:** The dashboard tracks usage by service and redemption rates to refine future marketing strategies.              | **Transparency:** Customers see exactly which code applied and how much they saved on their receipt.          |
+
+<br />

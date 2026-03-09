@@ -1,0 +1,33 @@
+---
+title: How Data Deletion Works and What Data is Deleted
+---
+
+When data deletion is enabled, certain customer identifiers are handled automatically, while others require you to explicitly mark them as personally identifiable information. Once a field is marked, the same masking behaviour is applied consistently across Member Care and API responses.
+
+## Understanding what data is deleted and retained
+
+When a deletion request is executed, the system removes sensitive customer information while retaining certain non-personally identifiable information (non-PII) data.
+
+| Deleted data | Non-deletion data |
+| --- | --- |
+| First name and last name | User ID |
+| Identifiers such as mobile, e-mail, and external id | Transactions (but transaction custom/extended fields can be configured to be deleted). See [Classifying custom field, extended field and payment attribute data as PII data](https://docs.capillarytech.com/docs/marking-custom-fields-extended-fields-as-psi-and-pii#classifying-custom--extended-fields-as-piipsi) |
+| Customer custom and extended fields. This is configurable. See [Classifying custom field, extended field and payment attribute data as PII data](https://docs.capillarytech.com/docs/marking-custom-fields-extended-fields-as-psi-and-pii#classifying-custom--extended-fields-as-piipsi) | Communications data |
+| Payment mode attributes against a transaction | Payment mode (Card, UPI, BNPL) details used for the transaction. But the attributes can be deleted. See Configuring data that need not be deleted. |
+| V1 and V2 profile identifiers | PII data in the promo engine or on the OTA (Over The Air) side |
+| V1 and V2 profile comm channels | Coupons/promotions/gift vouchers and all benefits |
+| Identifiers/login details in the auth engine | Behavioural events |
+| Card custom fields and card extended fields. See Configuring data that need not be deleted. | Points data (will still be attributed to User ID) |
+| Search database (solr/ES) | Supplementary and coalition memberships |
+| Identifier change logs | Targets and Member care profiles - If you have the profile URL, you can access the profile; however, the page displays a message indicating that the customer has been deleted. |
+| Identifiers that are kept in the change requests log are set to null | User group dependencies and associations. Deleted customers remain part of groups/companies unless explicitly removed from groups (User ID remains) |
+| Customer data audit logs | PII captured in leads data |
+| _ | Any other details not mentioned under Deleted data. |
+
+<Callout kind="info">
+
+  Note
+
+  In Databricks, deleted customers must be explicitly excluded in queries to ensure accurate reporting.
+
+</Callout>

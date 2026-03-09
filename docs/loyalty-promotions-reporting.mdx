@@ -1,0 +1,18 @@
+---
+title: Configure a Loyalty Promotion Report
+---
+
+Reporting for the new loyalty promotions is available on Insights+ and DataBricks. You can create a custom report and include data from a loyalty promotion. To create a custom loyalty promotions report, refer [Create Report](https://docs.capillarytech.com/docs/create)
+
+To build the custom reports, you can use the following fact tables on Databricks:
+
+| Fact | Fact Table | Purpose and Documentation |
+| --- | --- | --- |
+| **Enrollment** | `issued_promotions_fact` | Records every instance a customer is successfully enrolled in or issued a promotion. Use this to measure the reach of your campaign.\ [View Table Documentation](https://docs.capillarytech.com/docs/issued-promotions-fact-table) |
+| **Opt-in** | `earned_promotions_fact` | Records when a customer successfully completes the required activity and meets the qualifying conditions. Use this to measure conversion.\ [View Table Documentation](https://docs.capillarytech.com/docs/earned-promotions-fact) |
+| **Reward Currency** | `points` | The central ledger for all currency transactions. Use this to track the exact number of points or currency issued specifically by a promotion.\ [View Table Documentation](https://docs.capillarytech.com/docs/points-fact-table#points-fact-table) |
+| **Metadata** | `points_promotions` | This dimension table stores the configuration details (Name, ID, Type) of your promotions. You link this to the fact tables to filter data by specific campaigns.\ [View Table Documentation](https://docs.capillarytech.com/docs/dimension-tables#points-promotion) |
+
+<Image src="https://files.readme.io/a5161ec133d2cdbe33c52b5edbece1db83553c679c77f0db9f551ab1412feeea-image.png" alt="" />
+
+<br />

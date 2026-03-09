@@ -1,0 +1,1978 @@
+---
+title: Loyalty Promotions and Cart Promotions
+---
+
+## Loyalty Promotions
+
+A loyalty promotion is a special program within a loyalty program that offers customers additional rewards—such as extra points, coupons, or benefits—on top of the standard loyalty program.
+
+### Creating loyalty promotion (promotionCreated)
+
+Notifies when a loyalty promotion is created. An event notification is triggered when a loyalty promotion is created. These event notifications are triggered when a loyalty promotion is created using the UI and the create loyalty promotion API.
+
+<CodeGroup tabs="Webhook payload-For Transaction Events, with custom fields,For Generic Events, (event name and id would be of generic event),For Target completed event, there will be xtra field named linkedTargetGroupVsTargetRuleIdMap,Non webhook payload">
+
+```json
+{
+    "createdAt": 1738644477432,
+    "loyaltyEventId": "567012971210e00eb9b4e80ded2d5e62",
+    "eventName": "promotionCreated",
+    "eventLogId": -1,
+    "refId": "51135_567012971210e00eb9b4e80ded2d5e62",
+    "apiRequestId": "567012971210e00eb9b4e80ded2d5e62",
+    "orgId": 51135,
+    "data": {
+        "loyaltyProgramId": 2568,
+        "promotionId": 2000063,
+        "promotionName": "testnewpromot",
+        "promotionStartDate": 1738434600000,
+        "promotionEndDate": 1739471399999,
+        "externalIdentifier": "",
+        "type": "BILL",
+        "status": "LIVE",
+        "sourceType": "UI",
+        "description": "csd",
+        "customFields": [
+            {
+                "key": "name",
+                "value": "hero"
+            }
+        ],
+        "linkedEventId": "15",
+        "linkedEventName": "TransactionAdd",
+        "createdOn": 1738644477211,
+        "updatedOn": 1738644477211,
+        "updatedBy": 50685423
+    }
+}
+```
+
+```Text
+{
+    "createdAt": 1738590476015,
+    "loyaltyEventId": "8aa9e77ec84bb2ff00365a57fa761beb",
+    "eventName": "promotionCreated",
+    "eventLogId": -1,
+    "refId": "51512_-1",
+    "apiRequestId": "8aa9e77ec84bb2ff00365a57fa761beb",
+    "orgId": 51512,
+    "data": {
+        "loyaltyProgramId": 2809,
+        "promotionId":1234510,
+        "promotionName": "testBe",
+        "promotionStartDate": 1738607400000,
+        "promotionEndDate": 1741544999999,
+        "externalIdentifier": "",
+        "type": "CUSTOMER",
+        "status": "INACTIVE",
+        "sourceType": "UI",
+        "description": "description",
+        "customFields": [],
+        "linkedEventId": "e2cda500150b19d164bbfa0171506e51",
+        "linkedEventName": "BrowsingDuration",
+        "createdOn": 1738590475883,
+        "updatedOn": 9047889826879317,
+        "updatedBy": 50685423
+    }
+}
+
+```
+
+```Text
+{
+    "createdAt": 1738648339724,
+    "loyaltyEventId": "793166e072ecfda8ed3d579937867777",
+    "eventName": "promotionCreated",
+    "eventLogId": -1,
+    "refId": "51186_793166e072ecfda8ed3d579937867777",
+    "apiRequestId": "793166e072ecfda8ed3d579937867777",
+    "orgId": 51186
+    "data": {
+        "loyaltyProgramId": 2649,
+        "promotionId": 1234567,
+        "promotionName": "demo promo",
+        "promotionStartDate": 1738521000000,
+        "promotionEndDate": 1739039399999,
+        "externalIdentifier": "9eaf98ad-885a-49d5-8a93-9c7b16436b19",
+        "type": "CUSTOMER",
+        "status": "INACTIVE",
+        "sourceType": "UI",
+        "description": "acsdc",
+        "customFields": [],
+        "linkedEventId": "25",
+        "linkedEventName": "TargetCompleted",
+        "linkedTargetGroupVsTargetRuleIdMap": {
+            "50019": [
+                77954
+            ]
+        },
+        "createdOn": 1738648339002,
+        "updatedOn": 9047889843135000,
+        "updatedBy": 50685423
+    }
+}
+```
+
+```json
+{
+  "eventName": "promotionCreated",
+  "eventLogId": 6729,
+  "data": {
+    "linkedTargetGroupVsTargetRuleIdMap": {
+      "FUO": [
+        5182
+      ],
+      "VKBH": [
+        9029
+      ],
+      "NJIOP": [
+        6203
+      ],
+      "BNLTFAIFQT": [
+        5533
+      ],
+      "OXSCV": [
+        503
+      ],
+      "RGRF": [
+        5275
+      ]
+    },
+    "promotionEndDate": 1263,
+    "createdOn": 1236,
+    "customFields": [
+      {
+        "key": "QGJQBLS",
+        "value": "IQCMF"
+      }
+    ],
+    "linkedEventName": "SYLMEYO",
+    "promotionStartDate": 3882,
+    "promotionName": "KKLFBFTAX",
+    "updatedBy": 3863,
+    "status": "HLVOLF",
+    "externalIdentifier": "BBATA",
+    "sourceType": "ZCUECTV",
+    "triggeringActivity": {
+      "name": "EHUFVMRKPB",
+      "identifiers": [
+        {
+          "key": "HLTO",
+          "value": "JXLMOIFUKN"
+        }
+      ],
+      "enteredBy": {
+        "id": 9527,
+        "till": {
+          "code": "BVYSKZKQG",
+          "name": "BMHA"
+        },
+        "store": {
+          "code": "ULYQT",
+          "name": "FLT",
+          "externalId": "QOYSOKMPY",
+          "externalId1": "OBD",
+          "externalId2": "LDZ"
+        }
+      },
+      "entityInformation": {
+        "entityType": "WPGRU",
+        "entityId": 1189
+      },
+      "additionalAttributes": [
+        {
+          "key": "HCENVTNV",
+          "value": "YNFDA"
+        }
+      ]
+    },
+    "loyaltyProgramId": 3690,
+    "type": "ZFEUOAFWGA",
+    "updatedOn": 7557,
+    "linkedEventId": "KRYSNUUM",
+    "description": "GUWJSC",
+    "promotionId": 938
+  },
+  "refId": "BLAJ",
+  "loyaltyEventId": "RBKMAY",
+  "apiRequestId": "JGLJIQ",
+  "eventId": "QKK",
+  "createdAt": 7833,
+  "traceAttributes": {
+    "DKFUOW": "LPHCLVHUW",
+    "HJFGUEG": "ONCAYCR",
+    "XCJXNVFLCC": "YTXJIJHPW",
+    "KBFIBZT": "KFFG"
+  },
+  "orgId": 9608
+}
+```
+
+</CodeGroup>
+| Parameter           | Data Type | Description                                                 |
+| ------------------- | --------- | ----------------------------------------------------------- |
+| eventName           | String    | Name of the event notification                              |
+| eventId             | String    | Unique ID generated when the event is triggered             |
+| eventLogId          | Integer   | Event log ID (initially -1, updated post processing)        |
+| orgId               | Integer   | Organisation ID where the event occurred                    |
+| refId               | String    | Internal reference ID combining org ID and loyalty event ID |
+| apiRequestId        | String    | Unique identifier for the API request                       |
+| createdAt           | Long      | Epoch timestamp when the event was recorded                 |
+| data                | Object    | Object containing promotion details                         |
+| -loyaltyProgramId   | Integer   | Associated loyalty program ID                               |
+| -promotionId        | Integer   | Unique ID for the promotion                                 |
+| -promotionName      | String    | Name of the promotion                                       |
+| -promotionStartDate | Long      | Promotion start time (epoch)                                |
+| -promotionEndDate   | Long      | Promotion end time (epoch)                                  |
+| -externalIdentifier | String    | External reference ID (if any)                              |
+| -type               | ENUM      | Type of promotion: `BILL`, `LINEITEM`, `CUSTOMER`, `RETURN` |
+| -status             | ENUM      | `ACTIVE` or `INACTIVE`                                      |
+| -sourceType         | String    | Origin of the promotion: `USER_CREATED`, `UI`               |
+| -description        | String    | Description of the promotion                                |
+| -customFields       | Array     | Optional custom field data                                  |
+| -linkedEventId      | Integer   | ID of the associated triggering event                       |
+| -linkedEventName    | String    | Name of the triggering event                                |
+| -createdOn          | Long      | Epoch timestamp when created                                |
+| -updatedOn          | Long      | Epoch timestamp when updated                                |
+| -updatedBy          | Integer   | ID of the user who last updated it                          |
+| -loyaltyEventId     | String    | ID of the loyalty event tied to this promotion              |
+
+### Updating a loyalty promotion (promotionUpdated)
+
+Notifies when loyalty promotion metadata is updated. An event notification is triggered when a loyalty promotion is updated.
+
+```json Webhook payload
+{
+    "createdAt": 1738589018782,
+    "loyaltyEventId": "5b52badf5a5273ebf649a57aace392db",
+    "eventName": "promotionUpdated",
+    "eventLogId": -1,
+    "refId": "51512_5b52badf5a5273ebf649a57aace392db",
+    "apiRequestId": "5b52badf5a5273ebf649a57aace392db",
+    "orgId": 51512,
+    "data": {
+        "loyaltyProgramId": 2809,
+        "promotionId":200000012,
+        "promotionName": "Target Completed",
+        "promotionStartDate": 1738348200000,
+        "promotionEndDate": 1740767399999,
+        "externalIdentifier": "3e23e87b-7fb9-4a5e-bcdb-6869317bb1b3",
+        "type": "CUSTOMER",
+        "status": "INACTIVE",
+        "sourceType": "UI",
+        "description": "",
+        "customFields": [],
+        "linkedEventId": "25",
+        "linkedEventName": "TargetCompleted",
+        "linkedTargetGroupVsTargetRuleIdMap": {
+            "11104": [
+                19935,
+                19936,
+                19939
+            ],
+            "11115": [
+                19940
+            ]
+        },
+        "createdOn": 1738588986000,
+        "updatedOn": 1738588986000,
+        "updatedBy": 50685423
+    }
+}
+```
+
+```json Non webhook payload
+{
+  "eventName": "promotionUpdated",
+  "eventLogId": 8272,
+  "data": {
+    "linkedTargetGroupVsTargetRuleIdMap": {
+      "PWVT": [
+        6928
+      ],
+      "NYA": [
+        8674
+      ]
+    },
+    "promotionEndDate": 1702,
+    "createdOn": 8067,
+    "customFields": [
+      {
+        "key": "HZV",
+        "value": "DYGFKBRJ"
+      }
+    ],
+    "linkedEventName": "RXKV",
+    "promotionStartDate": 401,
+    "promotionName": "GNI",
+    "updatedBy": 6966,
+    "status": "ZSZI",
+    "externalIdentifier": "DXHUKYLIOJ",
+    "sourceType": "XUMANMXZI",
+    "triggeringActivity": {
+      "name": "ROTJQ",
+      "identifiers": [
+        {
+          "key": "AEC",
+          "value": "TUYFVDVEI"
+        }
+      ],
+      "enteredBy": {
+        "id": 6718,
+        "till": {
+          "code": "SKWKPY",
+          "name": "ENFYRE"
+        },
+        "store": {
+          "code": "JHDZLVRYX",
+          "name": "HJNYMS",
+          "externalId": "XTIX",
+          "externalId1": "FKPFUOKA",
+          "externalId2": "ICIXWYVK"
+        }
+      },
+      "entityInformation": {
+        "entityType": "IMJCF",
+        "entityId": 6844
+      },
+      "additionalAttributes": [
+        {
+          "key": "IUYIMPZFLH",
+          "value": "PPNZQCVPSU"
+        }
+      ]
+    },
+    "loyaltyProgramId": 5448,
+    "type": "WFM",
+    "updatedOn": 6611,
+    "linkedEventId": "KRSUBFV",
+    "description": "BWZYWQ",
+    "promotionId": 4991
+  },
+  "refId": "GZPQNYCWIN",
+  "loyaltyEventId": "AIMBLWEVNA",
+  "apiRequestId": "WRXWKD",
+  "eventId": "WYVKSVHOF",
+  "createdAt": 1593,
+  "traceAttributes": {
+    "PKWHYK": "HGJCLO",
+    "ETFFTLGCM": "OYOQ",
+    "VLDJUVJH": "OJZHRKPDL"
+  },
+  "orgId": 9600
+}
+```
+
+| Parameter           | Data Type | Description                                                 |
+| ------------------- | --------- | ----------------------------------------------------------- |
+| eventName           | String    | Name of the event notification                              |
+| eventId             | String    | Unique ID generated when the event is triggered             |
+| eventLogId          | Integer   | Event log ID (initially -1, updated post processing)        |
+| orgId               | Integer   | Organisation ID where the event occurred                    |
+| refId               | String    | Internal reference ID combining org ID and loyalty event ID |
+| apiRequestId        | String    | Unique identifier for the API request                       |
+| createdAt           | Long      | Epoch timestamp when the event was recorded                 |
+| data                | Object    | Object containing promotion details                         |
+| -loyaltyProgramId   | Integer   | Associated loyalty program ID                               |
+| -promotionId        | Integer   | Unique ID for the promotion                                 |
+| -promotionName      | String    | Name of the promotion                                       |
+| -promotionStartDate | Long      | Promotion start time (epoch)                                |
+| -promotionEndDate   | Long      | Promotion end time (epoch)                                  |
+| -externalIdentifier | String    | External reference ID (if any)                              |
+| -type               | ENUM      | Type of promotion: `BILL`, `LINEITEM`, `CUSTOMER`, `RETURN` |
+| -status             | ENUM      | `ACTIVE` or `INACTIVE`                                      |
+| -sourceType         | String    | Origin of the promotion: `USER_CREATED`, `UI`               |
+| -description        | String    | Description of the promotion                                |
+| -customFields       | Array     | Optional custom field data                                  |
+| -linkedEventId      | Integer   | ID of the associated triggering event                       |
+| -linkedEventName    | String    | Name of the triggering event                                |
+| -createdOn          | Long      | Epoch timestamp when created                                |
+| -updatedOn          | Long      | Epoch timestamp when updated                                |
+| -updatedBy          | Integer   | ID of the user who last updated it                          |
+| -loyaltyEventId     | String    | ID of the loyalty event tied to this promotion              |
+
+### Issuing a loyalty promotion (promotionIssued)
+
+Notifies when a loyalty promotion is issued to a customer or user group. An event notification is triggered when a loyalty promotion is issued.
+
+```json Webhook payload
+Extensive detailing links 
+
+Promotion Issual and Earning - here
+
+Promotion Revokes - here
+
+Promotion Issued
+
+Payload
+
+{
+    "eventName": "promotionIssued",
+    "data":
+    {
+        "customerIdentifiers":
+        {
+            "customerId": 348778070,
+            "instore":
+            {
+                "mobile": "919755252000",
+                "cardNumbers":
+                []
+            }
+        },
+        "loyaltyProgramId": 1049,
+        "promotionId": 1150796,
+        "promotionName": "issue_earn promo 1",
+        "promotionStartDate": "2025-11-01",
+        "promotionStartDateInMillis": 1761955200000,//Post Timezone standardisation
+        "promotionEndDate": "2027-02-01",
+        "promotionEndDateInMillis": 1801526399000,//Post Timezone standardisation
+        "promotionIssuedDate": "2025-11-03",
+        "promotionIssuedExpiryDate": "2027-02-01",
+        "promotionIssuedExpiryDateInMillis": 1801526399000, //Post Timezone standardisation
+        "promotionDescription": "",
+        "pointsOfferType": "LOYALTY_EARNING",
+        "customFields":
+        [],
+        "issueRestrictions":
+        [
+            {
+                "limitOn": "CUSTOMER",
+                "kpi": "MAX_NUMBER_OF_ISSUALS_PER_CUSTOMER",
+                "maxLimit": 1
+            }
+        ],
+        "redemptionRestrictions":
+        [
+            {
+                "limitOn": "",
+                "kpi": "MAX_REDEMPTIONS_PER_EARN_PER_CUSTOMER",
+                "restrictionType": "NON_PERIOD_BASED",
+                "maxLimit": 1
+            }
+        ],
+        "issualId": 36053
+    },
+    "eventLogId": 36275801,
+    "orgId": 50320,
+    "refId": "50320_97oGTLrpIH",
+    "apiRequestId": "46c44d1906a66aed55aa83d3c3c5862a",
+    "createdAt": 1762177510071,
+    "loyaltyEventId": "97oGTLrpIH",
+    "traceAttributes":
+    {
+        "x-cap-lineage-id": "fbcc3a9e-fbc0-4e82-a602-dd718992f8be",
+        "x-cap-lineage-start": "1762175962100"
+    }
+}
+Promotion Earned
+
+Payload
+Revoke Issued Promotion
+
+Payload
+Revoke Earned Promotion
+
+Payload
+```
+
+```json Non webhook payload
+{
+  "eventName": "promotionIssued",
+  "eventSearchKey": "data.customerIdentifiers.customerId",
+  "eventLogId": 4617,
+  "data": {
+    "issueRestrictions": [
+      {
+        "limitOn": "AKQ",
+        "kpi": "REBUACDCVD",
+        "maxLimit": 3638
+      }
+    ],
+    "linkedTargetGroupVsTargetRuleIdMap": {
+      "5444": [
+        7709
+      ],
+      "7061": [
+        1678
+      ],
+      "8368": [
+        4547
+      ]
+    },
+    "promotionEndDate": "OPCVSJIW",
+    "promotionEndDateInMillis": 1801526399000,
+    "customFields": [
+      {
+        "key": "UKHKRYFP",
+        "value": "MZAI"
+      }
+    ],
+    "customerIdentifiers": {
+      "loyaltyType": "ZZTYMUC",
+      "ecommerce": {
+        "accounts": [
+          {
+            "accountId": "RPIA",
+            "identifiers": [
+              {
+                "identifierType": "PNEX",
+                "identifierValue": "ZXCXQGAJTV"
+              }
+            ]
+          }
+        ]
+      },
+      "lastName": "ADWWGKBT",
+      "facebook": {
+        "accounts": [
+          {
+            "accountId": "LABO",
+            "identifiers": [
+              {
+                "identifierType": "ANVTFV",
+                "identifierValue": "AEIMM"
+              }
+            ]
+          }
+        ]
+      },
+      "wechat": {
+        "accounts": [
+          {
+            "accountId": "RQX",
+            "identifiers": [
+              {
+                "identifierType": "FQKKSS",
+                "identifierValue": "BCMSVD"
+              }
+            ]
+          }
+        ]
+      },
+      "tmall": {
+        "accounts": [
+          {
+            "accountId": "WVPMUGMXDY",
+            "identifiers": [
+              {
+                "identifierType": "RZWHRWFUR",
+                "identifierValue": "PKYXH"
+              }
+            ]
+          }
+        ]
+      },
+      "toabao": {
+        "accounts": [
+          {
+            "accountId": "NVEJI",
+            "identifiers": [
+              {
+                "identifierType": "XXUGCLJKR",
+                "identifierValue": "ELVJVDT"
+              }
+            ]
+          }
+        ]
+      },
+      "web_engage": {
+        "accounts": [
+          {
+            "accountId": "YKPBKEH",
+            "identifiers": [
+              {
+                "identifierType": "QELX",
+                "identifierValue": "UOY"
+              }
+            ]
+          }
+        ]
+      },
+      "line": {
+        "accounts": [
+          {
+            "accountId": "OFFD",
+            "identifiers": [
+              {
+                "identifierType": "UNLGFMEU",
+                "identifierValue": "JOKSJYB"
+              }
+            ]
+          }
+        ]
+      },
+      "martjack": {
+        "accounts": [
+          {
+            "accountId": "HPCTXRNY",
+            "identifiers": [
+              {
+                "identifierType": "EZEHVDB",
+                "identifierValue": "CYAP"
+              }
+            ]
+          }
+        ]
+      },
+      "customerId": 7381,
+      "jd": {
+        "accounts": [
+          {
+            "accountId": "AZDFSWDY",
+            "identifiers": [
+              {
+                "identifierType": "WXDWCCGCV",
+                "identifierValue": "IWSGRX"
+              }
+            ]
+          }
+        ]
+      },
+      "website": {
+        "accounts": [
+          {
+            "accountId": "VIG",
+            "identifiers": [
+              {
+                "identifierType": "CUQHVGFQ",
+                "identifierValue": "RMPQ"
+              }
+            ]
+          }
+        ]
+      },
+      "firstName": "YIKEO",
+      "instore": {
+        "id": 3598,
+        "mobile": "LJHL",
+        "email": "ZRNCR",
+        "externalId": "WRRZFTKP",
+        "cardnumber": "DWPGEX",
+        "cardexternalid": "RTEQKDJV",
+        "cardNumbers": [
+          "BRMAJ"
+        ]
+      }
+    },
+    "promotionStartDate": "VUSA",
+    "promotionStartDateInMillis": 1761955200000,
+    "promotionName": "KICDSJ",
+    "promotionIssuedExpiryDate": "OPZNHZE",
+    "promotionIssuedExpiryDateInMillis": 1801526399000,
+    "issualId": 3533,
+    "redemptionRestrictions": [
+      {
+        "limitOn": "EBKGCNVTO",
+        "kpi": "YKVERBVQ",
+        "restrictionType": "ZHHWFKA",
+        "periodType": "IGKLG",
+        "periodUnit": "SES",
+        "maxLimit": 5310,
+        "restrictionRefreshDate": "HTANXCMTI"
+      }
+    ],
+    "pointsOfferType": "RQCID",
+    "promotionEarnSource": "VNBHSYF",
+    "triggeringActivity": {
+      "name": "ZBDLETWOFC",
+      "identifiers": [
+        {
+          "key": "LNLHQ",
+          "value": "VZZKZZ"
+        }
+      ],
+      "enteredBy": {
+        "id": 2338,
+        "till": {
+          "code": "CGLKV",
+          "name": "IMKOSLOT"
+        },
+        "store": {
+          "code": "VHFHBJCCPQ",
+          "name": "VEMKEM",
+          "externalId": "SSQTKMNP",
+          "externalId1": "ZJZERVRL",
+          "externalId2": "ATKD"
+        }
+      },
+      "entityInformation": {
+        "entityType": "AOI",
+        "entityId": 8447
+      },
+      "additionalAttributes": [
+        {
+          "key": "VCUXTMJPX",
+          "value": "QCTBYTDQ"
+        }
+      ]
+    },
+    "loyaltyProgramId": 9741,
+    "promotionDescription": "AAPPAKV",
+    "promotionIssuedDate": "RBLGGBKKCT",
+    "promotionId": 9220
+  },
+  "refId": "WEEVUYIPK",
+  "loyaltyEventId": "JJFADZL",
+  "apiRequestId": "CMUWJUQL",
+  "eventId": "ZAASVONOST",
+  "createdAt": 6644,
+  "traceAttributes": {
+    "x-cap-lineage-id": "fbcc3a9e-fbc0-4e82-a602-dd718992f8be",
+    "x-cap-lineage-start": "1762175962100"
+  },
+  "orgId": 9577
+}
+```
+
+| Parameter                         | Data Type | Description                                                                                                                                                                                           |
+| --------------------------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| eventName                         | String    | Name of the event                                                                                                                                                                                     |
+| data                              | Object    | Contains promotion issue details                                                                                                                                                                      |
+| -customerIdentifiers              | Object    | Customer identity details                                                                                                                                                                             |
+| -- customerId                     | Integer   | Unique ID of the customer                                                                                                                                                                             |
+| -- instore                        | Object    | Instore identifiers                                                                                                                                                                                   |
+| --- mobile                        | String    | Customer’s mobile number                                                                                                                                                                              |
+| --- email                         | String    | Customer’s email address                                                                                                                                                                              |
+| --- cardNumbers                   | Array     | Loyalty card numbers                                                                                                                                                                                  |
+| -loyaltyProgramId                 | Integer   | Associated loyalty program ID                                                                                                                                                                         |
+| -promotionId                      | Integer   | ID of the promotion issued                                                                                                                                                                            |
+| -promotionName                    | String    | Name of the issued promotion                                                                                                                                                                          |
+| -promotionStartDate               | String    | Start date (YYYY-MM-DD)                                                                                                                                                                               |
+| -promotionStartDateInMillis       | String    | Start date in epoch                                                                                                                                                                                   |
+| -promotionEndDate                 | String    | End date (YYYY-MM-DD)                                                                                                                                                                                 |
+| -promotionEndDateInMillis         |           | End date in epoch. This field is introduced as part of [timezone standardisation](https://docs.capillarytech.com/reference/timezone-management).                                                      |
+| -promotionIssuedDate              | String    | Date of issue                                                                                                                                                                                         |
+| -promotionIssuedDateInMillis      | Long      | Promotion issued date in epoch. This field is introduced as part of [timezone standardisation](https://docs.capillarytech.com/reference/timezone-management).                                         |
+| -promotionIssuedExpiryDate        | String    | Expiry date of the issued promotion                                                                                                                                                                   |
+| promotionIssuedExpiryDateInMillis | String    | Expiry date of the issued promotion, represented as epoch milliseconds. This field is introduced as part of [timezone standardisation](https://docs.capillarytech.com/reference/timezone-management). |
+| -promotionDescription             | String    | Description of the promotion                                                                                                                                                                          |
+| -pointsOfferType                  | String    | Type of points offer (e.g., `GENERIC`)                                                                                                                                                                |
+| -customFields                     | Array     | Optional custom field data                                                                                                                                                                            |
+| -issueRestrictions                | Array     | Restrictions on issuing                                                                                                                                                                               |
+| -- limitOn                        | String    | The dimension the limit is applied to                                                                                                                                                                 |
+| -- kpi                            | String    | KPI used for the restriction                                                                                                                                                                          |
+| -- maxLimit                       | Integer   | Maximum number of issuances                                                                                                                                                                           |
+| -redemptionRestrictions           | Array     | Restrictions on redemption                                                                                                                                                                            |
+| -- limitOn                        | String    | Target of the restriction                                                                                                                                                                             |
+| -- kpi                            | String    | KPI for the restriction                                                                                                                                                                               |
+| -- restrictionType                | String    | Type of restriction                                                                                                                                                                                   |
+| -- maxLimit                       | Integer   | Maximum number of redemptions                                                                                                                                                                         |
+| -issualId                         | Integer   | ID of the specific issuance                                                                                                                                                                           |
+| orgId                             | Integer   | Organisation ID                                                                                                                                                                                       |
+| refId                             | String    | Unique reference for tracing                                                                                                                                                                          |
+| apiRequestId                      | String    | Unique ID of the API request                                                                                                                                                                          |
+| createdAt                         | Long      | Epoch timestamp of creation                                                                                                                                                                           |
+
+### Earned loyalty promotion (promotionEarned)
+
+Notifies when a user earns a promotion.
+
+```json Webhook payload
+{
+    "eventName": "promotionEarned",
+    "data":
+    {
+        "customerIdentifiers":
+        {
+            "customerId": 348778070,
+            "instore":
+            {
+                "mobile": "919755252000",
+                "cardNumbers":
+                []
+            }
+        },
+        "loyaltyProgramId": 1049,
+        "promotionId": 1150796,
+        "promotionName": "issue_earn promo 1",
+        "promotionStartDate": "2025-11-01",
+        "promotionStartDateInMillis": 1761955200000, //Post Timezone standardisation
+        "promotionEndDate": "2027-02-01",
+        "promotionEndDateInMillis": 1801526399000, //Post Timezone standardisation
+        "promotionEarnedDate": "2025-11-03",
+        "promotionEarnedExpiryDate": "2027-02-01",
+        "promotionEarnedExpiryDateInMillis": 1801526399000, //Post Timezone standardisation
+        "promotionDescription": "",
+        "pointsOfferType": "LOYALTY_EARNING",
+        "customFields":
+        [],
+        "issualId": 36053,
+        "earnedId": 35509,
+        "earnRestrictions":
+        [
+            {
+                "limitOn": "CUSTOMER",
+                "kpi": "MAX_NUMBER_OF_EARNS_PER_CUSTOMER",
+                "maxLimit": 1
+            },
+            {
+                "limitOn": "CUSTOMER",
+                "kpi": "MAX_POINTS_PER_EARN_PER_CUSTOMER",
+                "maxLimit": -1
+            }
+        ],
+        "redemptionRestrictions":
+        [
+            {
+                "limitOn": "",
+                "kpi": "MAX_REDEMPTIONS_PER_EARN_PER_CUSTOMER",
+                "restrictionType": "NON_PERIOD_BASED",
+                "maxLimit": 1
+            }
+        ]
+    },
+    "orgId": 50320,
+    "refId": "50320_pcdOKSPcfV",
+    "apiRequestId": "d4db3e6c437308596ac1622ce68fb9a6",
+    "createdAt": 1762178266798,
+    "traceAttributes":
+    {
+        "x-cap-lineage-id": "660658b1-e59b-489e-a5b8-35a630b172a5",
+        "x-cap-lineage-start": "1762178042548"
+    }
+}
+```
+
+```json Non webhook payload
+{
+  "eventName": "promotionEarned",
+  "eventSearchKey": "data.customerIdentifiers.customerId",
+  "eventLogId": 1251,
+  "data": {
+    "linkedTargetGroupVsTargetRuleIdMap": {
+      "1813": [
+        7957
+      ],
+      "5529": [
+        7583
+      ],
+      "7050": [
+        2331
+      ]
+    },
+    "promotionEndDate": "GFACYNA",
+    "promotionEndDateInMillis": 1801526399000,
+    "promotionEarnedDate": "EMCQKZKJ",
+    "customFields": [
+      {
+        "key": "UUEAKN",
+        "value": "HFJ"
+      }
+    ],
+    "customerIdentifiers": {
+      "loyaltyType": "DMFH",
+      "ecommerce": {
+        "accounts": [
+          {
+            "accountId": "VRDDBOYF",
+            "identifiers": [
+              {
+                "identifierType": "SHKMVRKRSE",
+                "identifierValue": "IJPZGYWTYE"
+              }
+            ]
+          }
+        ]
+      },
+      "lastName": "OBJ",
+      "facebook": {
+        "accounts": [
+          {
+            "accountId": "SMCBM",
+            "identifiers": [
+              {
+                "identifierType": "KNDWMJPTR",
+                "identifierValue": "ZNTK"
+              }
+            ]
+          }
+        ]
+      },
+      "wechat": {
+        "accounts": [
+          {
+            "accountId": "KKCRCR",
+            "identifiers": [
+              {
+                "identifierType": "ZTCL",
+                "identifierValue": "VZLKB"
+              }
+            ]
+          }
+        ]
+      },
+      "tmall": {
+        "accounts": [
+          {
+            "accountId": "XLUXLG",
+            "identifiers": [
+              {
+                "identifierType": "CUGOQ",
+                "identifierValue": "SGCVGATN"
+              }
+            ]
+          }
+        ]
+      },
+      "toabao": {
+        "accounts": [
+          {
+            "accountId": "QYBR",
+            "identifiers": [
+              {
+                "identifierType": "MBDXDEVF",
+                "identifierValue": "KJSL"
+              }
+            ]
+          }
+        ]
+      },
+      "web_engage": {
+        "accounts": [
+          {
+            "accountId": "QEBPBGH",
+            "identifiers": [
+              {
+                "identifierType": "FKP",
+                "identifierValue": "OARBKRH"
+              }
+            ]
+          }
+        ]
+      },
+      "line": {
+        "accounts": [
+          {
+            "accountId": "BENIVAOB",
+            "identifiers": [
+              {
+                "identifierType": "SNYOF",
+                "identifierValue": "ILEIF"
+              }
+            ]
+          }
+        ]
+      },
+      "martjack": {
+        "accounts": [
+          {
+            "accountId": "WLK",
+            "identifiers": [
+              {
+                "identifierType": "EHDYBTWWUH",
+                "identifierValue": "JFLWKJMENX"
+              }
+            ]
+          }
+        ]
+      },
+      "customerId": 2734,
+      "jd": {
+        "accounts": [
+          {
+            "accountId": "LAVEK",
+            "identifiers": [
+              {
+                "identifierType": "SDIXO",
+                "identifierValue": "JESSKZSHH"
+              }
+            ]
+          }
+        ]
+      },
+      "website": {
+        "accounts": [
+          {
+            "accountId": "KJYPPORFJI",
+            "identifiers": [
+              {
+                "identifierType": "ANDPKYHBN",
+                "identifierValue": "RDZKP"
+              }
+            ]
+          }
+        ]
+      },
+      "firstName": "SHVKZAGN",
+      "instore": {
+        "id": 5922,
+        "mobile": "EOHH",
+        "email": "EXTWQGVC",
+        "externalId": "SKB",
+        "cardnumber": "SOUMUMJNWK",
+        "cardexternalid": "MUXAQVICBL",
+        "cardNumbers": [
+          "RRAXILBRM"
+        ]
+      }
+    },
+    "promotionStartDate": "XHPLSWK",
+    "promotionStartDateInMillis": 1761955200000,
+    "promotionName": "SGUPKB",
+    "issualId": 9968,
+    "earnedId": 3956,
+    "redemptionRestrictions": [
+      {
+        "limitOn": "AQFBQBR",
+        "kpi": "IJHVKP",
+        "restrictionType": "QABIHVYRC",
+        "periodType": "QXQEL",
+        "periodUnit": "KXHADEMZH",
+        "maxLimit": 7851,
+        "restrictionRefreshDate": "RCN"
+      }
+    ],
+    "pointsOfferType": "QWNKWV",
+    "promotionEarnSource": "FIKAYJ",
+    "earnCriteria": "KVCKXSWTCK",
+    "triggeringActivity": {
+      "name": "UKBHU",
+      "identifiers": [
+        {
+          "key": "VYPOAKAI",
+          "value": "BGSV"
+        }
+      ],
+      "enteredBy": {
+        "id": 9092,
+        "till": {
+          "code": "DUUUUQNE",
+          "name": "BODVKAJG"
+        },
+        "store": {
+          "code": "AZZ",
+          "name": "YJHSKG",
+          "externalId": "IVGMWVCB",
+          "externalId1": "GUFSNCS",
+          "externalId2": "AQDDBTQSCK"
+        }
+      },
+      "entityInformation": {
+        "entityType": "NDGJNYZ",
+        "entityId": 6495
+      },
+      "additionalAttributes": [
+        {
+          "key": "NUCRVWKUP",
+          "value": "UVTGO"
+        }
+      ]
+    },
+    "loyaltyProgramId": 3484,
+    "promotionDescription": "YSZ",
+    "promotionEarnedExpiryDate": "TFBZLRCT",
+    "promotionEarnedExpiryDateInMillis": 1801526399000,
+    "promotionId": 8627,
+    "earnRestrictions": [
+      {
+        "limitOn": "JZHPQKFHO",
+        "kpi": "DKQWKWD",
+        "maxLimit": 7540
+      }
+    ]
+  },
+  "refId": "ZFIPHWQTIH",
+  "loyaltyEventId": "IRTZ",
+  "apiRequestId": "FENQIU",
+  "eventId": "VKLXRQHET",
+  "createdAt": 9140,
+  "traceAttributes": {
+    "x-cap-lineage-id": "660658b1-e59b-489e-a5b8-35a630b172a5",
+    "x-cap-lineage-start": "1762178042548"
+  },
+  "orgId": 2490
+}
+```
+
+### Revoke issued loyalty promotion (revokeIssuedPromotion)
+
+Notifies when an issued promotion is revoked.
+
+```json Webhook payload
+{
+    "eventName": "revokeIssuedPromotion"
+    "data":
+    {
+        "customerIdentifiers":
+        {
+            "customerId": 348778070,
+            "instore":
+            {
+                "mobile": "919755252000",
+                "cardNumbers":
+                []
+            }
+        },
+        "loyaltyProgramId": 1049,
+        "promotionId": 1150796,
+        "promotionName": "issue_earn promo 1",
+        "promotionStartDate": "2025-11-01",
+        "promotionStartDateInMillis": 1761955200000,//Post Timezone standardisation
+        "promotionEndDate": "2027-02-01",
+        "promotionEndDateInMillis": 1801526399000,//Post Timezone standardisation
+        "promotionIssuedDate": "2025-11-03",
+        "promotionIssuedExpiryDate": "2027-02-01",
+        "promotionIssuedExpiryDateInMillis": 1801526399000,//Post Timezone standardisation
+        "promotionDescription": "",
+        "customFields":
+        [],
+        "issueRestrictions":
+        [
+            {
+                "limitOn": "CUSTOMER",
+                "kpi": "MAX_NUMBER_OF_ISSUALS_PER_CUSTOMER",
+                "maxLimit": 1
+            }
+        ],
+        "redemptionRestrictions":
+        [
+            {
+                "limitOn": "",
+                "kpi": "MAX_REDEMPTIONS_PER_EARN_PER_CUSTOMER",
+                "restrictionType": "NON_PERIOD_BASED",
+                "maxLimit": 1
+            }
+        ],
+        "revokedIssualId": 36053
+    },
+    "orgId": 50320,
+    "refId": "50320_X2k4UMisb2",
+    "apiRequestId": "48f8c70757a83e94ad1b09a6c15422b3",
+    "createdAt": 1762180332783
+}
+```
+
+```json Non webhook payload
+{
+  "eventName": "revokeIssuedPromotion",
+  "eventSearchKey": "data.customerIdentifiers.customerId",
+  "eventLogId": 6338,
+  "data": {
+    "issueRestrictions": [
+      {
+        "limitOn": "ZUBB",
+        "kpi": "PSPK",
+        "maxLimit": 8363
+      }
+    ],
+    "promotionEndDate": "ZCEZLMTJU",
+    "promotionEndDateInMillis": 1801526399000,
+    "customFields": [
+      {
+        "key": "DHKTTGE",
+        "value": "JRHSJKRJGZ"
+      }
+    ],
+    "customerIdentifiers": {
+      "loyaltyType": "MQFTKOT",
+      "ecommerce": {
+        "accounts": [
+          {
+            "accountId": "UKAIV",
+            "identifiers": [
+              {
+                "identifierType": "JWWFI",
+                "identifierValue": "BGW"
+              }
+            ]
+          }
+        ]
+      },
+      "lastName": "MRZBFLP",
+      "facebook": {
+        "accounts": [
+          {
+            "accountId": "OZHIGYP",
+            "identifiers": [
+              {
+                "identifierType": "CAZ",
+                "identifierValue": "RCQ"
+              }
+            ]
+          }
+        ]
+      },
+      "wechat": {
+        "accounts": [
+          {
+            "accountId": "MUPXFJMUV",
+            "identifiers": [
+              {
+                "identifierType": "QFLH",
+                "identifierValue": "AMNV"
+              }
+            ]
+          }
+        ]
+      },
+      "tmall": {
+        "accounts": [
+          {
+            "accountId": "STVENUCHG",
+            "identifiers": [
+              {
+                "identifierType": "YZMA",
+                "identifierValue": "HAMJBP"
+              }
+            ]
+          }
+        ]
+      },
+      "toabao": {
+        "accounts": [
+          {
+            "accountId": "YMZIAHMLU",
+            "identifiers": [
+              {
+                "identifierType": "PCFXPVR",
+                "identifierValue": "KUQ"
+              }
+            ]
+          }
+        ]
+      },
+      "web_engage": {
+        "accounts": [
+          {
+            "accountId": "MEBXLT",
+            "identifiers": [
+              {
+                "identifierType": "KDWGC",
+                "identifierValue": "NZWFWEO"
+              }
+            ]
+          }
+        ]
+      },
+      "line": {
+        "accounts": [
+          {
+            "accountId": "ROP",
+            "identifiers": [
+              {
+                "identifierType": "TOPGTB",
+                "identifierValue": "RPME"
+              }
+            ]
+          }
+        ]
+      },
+      "martjack": {
+        "accounts": [
+          {
+            "accountId": "RVVDSZHH",
+            "identifiers": [
+              {
+                "identifierType": "DIEECU",
+                "identifierValue": "GMJBLPTQ"
+              }
+            ]
+          }
+        ]
+      },
+      "customerId": 4487,
+      "jd": {
+        "accounts": [
+          {
+            "accountId": "QUD",
+            "identifiers": [
+              {
+                "identifierType": "HJU",
+                "identifierValue": "HSOFPPYCMW"
+              }
+            ]
+          }
+        ]
+      },
+      "website": {
+        "accounts": [
+          {
+            "accountId": "CKRDCAGSES",
+            "identifiers": [
+              {
+                "identifierType": "OQEYQKYWE",
+                "identifierValue": "XOKOY"
+              }
+            ]
+          }
+        ]
+      },
+      "firstName": "CROG",
+      "instore": {
+        "id": 2146,
+        "mobile": "ZUH",
+        "email": "VBWZXP",
+        "externalId": "XEZFX",
+        "cardnumber": "ZZLSUX",
+        "cardexternalid": "UEAT",
+        "cardNumbers": [
+          "QFMISCBPOI"
+        ]
+      }
+    },
+    "promotionStartDate": "BVCRGKC",
+    "promotionStartDateInMillis": 1761955200000,
+    "promotionName": "VOVNJPC",
+    "promotionIssuedExpiryDate": "IJQXMHLKN",
+    "promotionIssuedExpiryDateInMillis": 1801526399000,
+    "revokedIssualId": 1620,
+    "redemptionRestrictions": [
+      {
+        "limitOn": "WORGAR",
+        "kpi": "KCMBGPYUAF",
+        "restrictionType": "LIB",
+        "periodType": "LXYRJU",
+        "periodUnit": "EJQL",
+        "maxLimit": 9723,
+        "restrictionRefreshDate": "ORYGGKVKZD"
+      }
+    ],
+    "triggeringActivity": {
+      "name": "YFPLSVOCNT",
+      "identifiers": [
+        {
+          "key": "PAJ",
+          "value": "QGVSTW"
+        }
+      ],
+      "enteredBy": {
+        "id": 2376,
+        "till": {
+          "code": "MGFWSB",
+          "name": "SUMP"
+        },
+        "store": {
+          "code": "BIWZISDOF",
+          "name": "FQNOGIFFX",
+          "externalId": "AWXPJFADNV",
+          "externalId1": "DTTFAM",
+          "externalId2": "SYWRGRLT"
+        }
+      },
+      "entityInformation": {
+        "entityType": "QXBHGWQ",
+        "entityId": 5627
+      },
+      "additionalAttributes": [
+        {
+          "key": "EJEABOEJU",
+          "value": "JSSR"
+        }
+      ]
+    },
+    "loyaltyProgramId": 8237,
+    "promotionDescription": "BZEUKYNWX",
+    "promotionIssuedDate": "QZHOI",
+    "promotionId": 9528
+  },
+  "refId": "RDJBO",
+  "loyaltyEventId": "JGQJ",
+  "apiRequestId": "JDSMNFZKYF",
+  "eventId": "VFCGA",
+  "createdAt": 953,
+  "traceAttributes": {
+    "PJUKIVWDZ": "XMICDRVHAG",
+    "SAXCA": "AYZU",
+    "MXCGPG": "RIQLW",
+    "MLVUUUM": "ICM",
+    "ENARH": "XXRZNAO"
+  },
+  "orgId": 4811
+}
+```
+
+### Revoke earned loyalty promotion (revokeEarnedPromotion)
+
+Notifies when an earned loyalty promotion has been revoked for a user.
+
+```json Webhook payload
+{
+    "eventName": "revokeEarnedPromotion"
+    "data":
+    {
+        "customerIdentifiers":
+        {
+            "customerId": 348778070,
+            "instore":
+            {
+                "mobile": "919755252000",
+                "cardNumbers":
+                []
+            }
+        },
+        "loyaltyProgramId": 1049,
+        "promotionId": 1150796,
+        "promotionName": "issue_earn promo 1",
+        "promotionStartDate": "2025-11-01", //Being replaced by promotionStartDateInMillis
+        "promotionStartDateInMillis": 1761955200000, //Post Timezone standardisation
+        "promotionEndDate": "2027-02-01", //Being replaced by promotionEndDateInMillis
+        "promotionEndDateInMillis": 1801526399000, //Post Timezone standardisation
+        "promotionDescription": "",
+        "customFields":
+        [],
+        "revokedEarnedPromotionDetails":
+        [
+            {
+                "revokedEarnedId": 35510,
+                "promotionEarnedDate": "2025-11-03",
+                "promotionEarnedExpiryDate": "2027-02-01", //Being replaced by promotionEarnedExpiryDateInMillis
+                "promotionEarnedExpiryDateInMillis": 1801526399000 //Post Timezone standardisation
+            }
+        ],
+        "earnRestrictions":
+        [
+            {
+                "limitOn": "CUSTOMER",
+                "kpi": "MAX_NUMBER_OF_EARNS_PER_CUSTOMER",
+                "maxLimit": 1
+            },
+            {
+                "limitOn": "CUSTOMER",
+                "kpi": "MAX_POINTS_PER_EARN_PER_CUSTOMER",
+                "maxLimit": -1
+            }
+        ],
+        "redemptionRestrictions":
+        [
+            {
+                "limitOn": "",
+                "kpi": "MAX_REDEMPTIONS_PER_EARN_PER_CUSTOMER",
+                "restrictionType": "NON_PERIOD_BASED",
+                "maxLimit": 1
+            }
+        ]
+    },
+    "orgId": 50320,
+    "refId": "50320_e7ShkjdBkH",
+    "apiRequestId": "7d88e3e34de3c271e3f6cbb500952c59",
+    "createdAt": 1762180658159
+}
+```
+
+```json Non webhook payload
+{
+  "eventName": "revokeEarnedPromotion",
+  "eventSearchKey": "data.customerIdentifiers.customerId",
+  "eventLogId": 3641,
+  "data": {
+    "promotionEndDate": "KLG",
+    "promotionEndDateInMillis": 1801526399000,
+    "customFields": [
+      {
+        "key": "MZTSUTHSF",
+        "value": "MOLB"
+      }
+    ],
+    "customerIdentifiers": {
+      "loyaltyType": "YYCFV",
+      "ecommerce": {
+        "accounts": [
+          {
+            "accountId": "YQKCFOF",
+            "identifiers": [
+              {
+                "identifierType": "AMJB",
+                "identifierValue": "SRWP"
+              }
+            ]
+          }
+        ]
+      },
+      "lastName": "XCPSTL",
+      "facebook": {
+        "accounts": [
+          {
+            "accountId": "UZL",
+            "identifiers": [
+              {
+                "identifierType": "ZWDBVWXV",
+                "identifierValue": "MVEESK"
+              }
+            ]
+          }
+        ]
+      },
+      "wechat": {
+        "accounts": [
+          {
+            "accountId": "CWJHDDM",
+            "identifiers": [
+              {
+                "identifierType": "IML",
+                "identifierValue": "QXNQD"
+              }
+            ]
+          }
+        ]
+      },
+      "tmall": {
+        "accounts": [
+          {
+            "accountId": "LYEKEEB",
+            "identifiers": [
+              {
+                "identifierType": "KMOPOVETMR",
+                "identifierValue": "GQIDJIJ"
+              }
+            ]
+          }
+        ]
+      },
+      "toabao": {
+        "accounts": [
+          {
+            "accountId": "FSP",
+            "identifiers": [
+              {
+                "identifierType": "EVG",
+                "identifierValue": "VXHVJYTI"
+              }
+            ]
+          }
+        ]
+      },
+      "web_engage": {
+        "accounts": [
+          {
+            "accountId": "VKPI",
+            "identifiers": [
+              {
+                "identifierType": "YRNGJRA",
+                "identifierValue": "TWBJOSVTQ"
+              }
+            ]
+          }
+        ]
+      },
+      "line": {
+        "accounts": [
+          {
+            "accountId": "ADKM",
+            "identifiers": [
+              {
+                "identifierType": "CXPB",
+                "identifierValue": "NCXOMHP"
+              }
+            ]
+          }
+        ]
+      },
+      "martjack": {
+        "accounts": [
+          {
+            "accountId": "MQTSKOUSM",
+            "identifiers": [
+              {
+                "identifierType": "MJWOHXU",
+                "identifierValue": "WCBVJGKK"
+              }
+            ]
+          }
+        ]
+      },
+      "customerId": 7767,
+      "jd": {
+        "accounts": [
+          {
+            "accountId": "LPC",
+            "identifiers": [
+              {
+                "identifierType": "XFZORYWOGI",
+                "identifierValue": "JEWJAANKKO"
+              }
+            ]
+          }
+        ]
+      },
+      "website": {
+        "accounts": [
+          {
+            "accountId": "IVJ",
+            "identifiers": [
+              {
+                "identifierType": "WCQGMGEAVN",
+                "identifierValue": "YIISAJHBX"
+              }
+            ]
+          }
+        ]
+      },
+      "firstName": "PBWABA",
+      "instore": {
+        "id": 7427,
+        "mobile": "DQQPDTSSOX",
+        "email": "JLRNMBFGJF",
+        "externalId": "HMOV",
+        "cardnumber": "XLMVZ",
+        "cardexternalid": "KDGBJOAX",
+        "cardNumbers": [
+          "BFEATKQ"
+        ]
+      }
+    },
+    "promotionStartDate": "GJCAZ",
+    "promotionStartDateInMillis": 1761955200000,
+    "promotionName": "DDSWSR",
+    "redemptionRestrictions": [
+      {
+        "limitOn": "APCDHG",
+        "kpi": "ECUVRI",
+        "restrictionType": "CNQQHS",
+        "periodType": "DKIJQQE",
+        "periodUnit": "KMKKEPJ",
+        "maxLimit": 9224,
+        "restrictionRefreshDate": "UUVPJVZX"
+      }
+    ],
+    "revokedEarnedPromotionDetails": [
+      {
+        "revokedEarnedId": 7024,
+        "promotionEarnedDate": "HUQPH",
+        "promotionEarnedExpiryDate": "PYDQEEC",
+        "promotionEarnedExpiryDateInMillis": 1801526399000
+      }
+    ],
+    "triggeringActivity": {
+      "name": "CVCIMCHHT",
+      "identifiers": [
+        {
+          "key": "ZQRJMO",
+          "value": "HDDZFKXM"
+        }
+      ],
+      "enteredBy": {
+        "id": 5134,
+        "till": {
+          "code": "ACBBSMAF",
+          "name": "QMX"
+        },
+        "store": {
+          "code": "SXCRIQFXW",
+          "name": "ZKCM",
+          "externalId": "HSTMCHEN",
+          "externalId1": "BHDWULHUH",
+          "externalId2": "UIBLGUYP"
+        }
+      },
+      "entityInformation": {
+        "entityType": "SXBG",
+        "entityId": 2544
+      },
+      "additionalAttributes": [
+        {
+          "key": "MMIHRFKEP",
+          "value": "TLDP"
+        }
+      ]
+    },
+    "loyaltyProgramId": 7833,
+    "promotionDescription": "CCWPQJDZMU",
+    "promotionId": 4136,
+    "earnRestrictions": [
+      {
+        "limitOn": "UVPCQJJJ",
+        "kpi": "QLB",
+        "maxLimit": 6032
+      }
+    ]
+  },
+  "refId": "FPK",
+  "loyaltyEventId": "TBSUNCHV",
+  "apiRequestId": "CBMPV",
+  "eventId": "JBQGN",
+  "createdAt": 6811,
+  "traceAttributes": {
+    "OLQZVWP": "MECX",
+    "JUIGUF": "FPMKRCPCU"
+  },
+  "orgId": 7175
+}
+```
+
+***
+
+## Cart Promotions
+
+A cart promotion is a type of promotion or discount that is applied to products in a customer's shopping cart, either during product search or at checkout.
+
+### Cart Promotion Issued Event (cartPromotionIssued)
+
+Notifies when a cart promotion is issued.
+
+```json Non webhook payload
+{
+    "eventName": "cartPromotionIssued",
+    "data":
+    {
+        {
+            "customerIdentifiers":
+            {
+                "customerId": 343014824
+            },
+            "promotionId": "68daa0e464fe4b71be9087da",
+            "issueId": "68daad1e1919161628bb031e",
+            "issueDate": 1759161630720, //Being replaced by issueDateInMillis
+            "issueDateInMillis": 1759161630720 //Post timezone standardisation
+        }
+    },
+    "orgId": 50583,
+    "refId": "36492ee912835749000f0a5cc3f2cdeb",
+    "apiRequestId": "50583_68dd0c3e9ec3df43fd1e275e_36492ee912835749000f0a5cc3f2cdeb",
+    "createdAt": 1759317328518
+}
+```
+
+### Cart Promotion Redeemed Event (cartPromotionRedeemed)
+
+Notifies whenever a cart promotion is redeemed by the user.
+
+```json Non webhook payload
+{
+    "eventName": "cartPromotionRedeemed",
+    "data":
+    {
+        "customerIdentifiers":
+        {
+            "customerId": 343014824
+        },
+        "addedBy":
+        {
+            "id": 50019411
+        },
+        "redemptionDateTime": "2025-10-10 12:39:48", //Being replaced by redemptionDateTimeInMillis
+        "redemptionDateTimeInMillis": 1759221588000, //Post timezone standardization
+        "transactionIdentifier": "2150010039",
+        "appliedPromotions":
+        [
+            {
+                "redemptionCount": 1,
+                "promotionId": "68daa0e464fe4b71be9087da",
+                "discount": 1.0,
+                "redemptionType": "CART"
+            }
+        ],
+        "lineItemInfo":
+        [
+            {
+                "sku": "sku_665_2",
+                "productId": "27943693",
+                "appliedPromotions":
+                [
+                    {
+                        "redemptionCount": 1,
+                        "promotionId": "68daa0e464fe4b71be9087da",
+                        "earnId": "68dab26e1919161628f13ad0",
+                        "discountAppliedOnQuantity": 1.0,
+                        "discount": 500.0,
+                        "redemptionType": "LINEITEM"
+                    }
+                ]
+            }
+        ]
+    },
+    "orgId": 50583,
+    "refId": "50583_null_6318d49e7614c3908509c44a9896d89f",
+    "apiRequestId": "6318d49e7614c3908509c44a9896d89f",
+    "createdAt": 1759236897389
+}
+```
+
+### Cart Promotion Revoked Event (cartPromotionRevoked)
+
+Notifies whenever a cart promotion is revoked from the user.
+
+```json Non webhook payload
+{
+        "eventName": "cartPromotionRevoked",
+        "data": {
+            "customerIdentifiers": {
+                "customerId": 6104,
+                "firstName": "MBTXFZD",
+                "lastName": "DAKW",
+                "loyaltyType": "FMLEMKUMD",
+                "instore": {
+                    "id": 4309,
+                    "mobile": "OVGPFLU",
+                    "email": "WKQ",
+                    "externalId": "BGQYITYA",
+                    "cardnumber": "UFVWTD",
+                    "cardexternalid": "GVOUS",
+                    "cardNumbers": [
+                        "CFZ"
+                    ]
+                },
+                "facebook": {
+                    "accounts": [
+                        {
+                            "accountId": "QDYFNYLFND",
+                            "identifiers": [
+                                {
+                                    "identifierType": "RQXQL",
+                                    "identifierValue": "LHVWANWYL"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "web_engage": {
+                    "accounts": [
+                        {
+                            "accountId": "OKBE",
+                            "identifiers": [
+                                {
+                                    "identifierType": "MGX",
+                                    "identifierValue": "ZKAMHL"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "wechat": {
+                    "accounts": [
+                        {
+                            "accountId": "OVMFKXJGVJ",
+                            "identifiers": [
+                                {
+                                    "identifierType": "BTHPNOOMYL",
+                                    "identifierValue": "XBCH"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "martjack": {
+                    "accounts": [
+                        {
+                            "accountId": "IMH",
+                            "identifiers": [
+                                {
+                                    "identifierType": "FQCZL",
+                                    "identifierValue": "RAUIRHRHV"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "tmall": {
+                    "accounts": [
+                        {
+                            "accountId": "ZWWLE",
+                            "identifiers": [
+                                {
+                                    "identifierType": "JUDOWMMXN",
+                                    "identifierValue": "LALGWJTQIA"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "toabao": {
+                    "accounts": [
+                        {
+                            "accountId": "GLTLMCZE",
+                            "identifiers": [
+                                {
+                                    "identifierType": "IKPVM",
+                                    "identifierValue": "XVMONWYDKQ"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "jd": {
+                    "accounts": [
+                        {
+                            "accountId": "OTMGM",
+                            "identifiers": [
+                                {
+                                    "identifierType": "LFQEHG",
+                                    "identifierValue": "THGZS"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "ecommerce": {
+                    "accounts": [
+                        {
+                            "accountId": "TSKD",
+                            "identifiers": [
+                                {
+                                    "identifierType": "DPYSUVYZP",
+                                    "identifierValue": "DOVT"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "website": {
+                    "accounts": [
+                        {
+                            "accountId": "LPM",
+                            "identifiers": [
+                                {
+                                    "identifierType": "IBZTAM",
+                                    "identifierValue": "IGLNS"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "line": {
+                    "accounts": [
+                        {
+                            "accountId": "HASYHRHCK",
+                            "identifiers": [
+                                {
+                                    "identifierType": "JOQGUNUU",
+                                    "identifierValue": "TLSBVOYVMF"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "promotionId": "SJRKYILE",
+            "earnId": "TXISYZVZMM"
+        },
+        "eventId": "ONGUZWFNV",
+        "orgId": 5155,
+        "refId": "WHEQ",
+        "apiRequestId": "BLJC",
+        "createdAt": 1769350000000,
+        "loyaltyEventId": "JUYQET",
+        "traceAttributes": {
+            "CGY": "FAUY",
+            "BKKS": "GYCDXOJBPM"
+        }
+    }
+```
+
+### Cart Promotion Earned Event (cartPromotionEarned)
+
+Notifies whenever the user earns the cart promotion on meeting the defined criteria for the promotion.
+
+```json Non webhook payload
+{
+    "eventName": "cartPromotionEarned",
+    "data":
+    {
+        "customerIdentifiers":
+        {
+            "customerId": 343014824
+        },
+        "promotionId": "68daa0e464fe4b71be9087da",
+        "issueId": "68daad1e1919161628bb031e",
+        "issueDate": "1759161630720",
+        "issueDateInMillis": 1759161630720, //Post timezone standardization
+        "earnId": "68dabc4819191616285b5772",
+        "earnedTime": "1759246875",
+        "earnedTimeInMillis": 1759246875000 //Post timezone standardization
+    },
+    "orgId": 50583,
+    "refId": "50583_68dabc4819191616285b5772_31018fc36eeaef6fa94cdd7ab7149eff",
+    "apiRequestId": "31018fc36eeaef6fa94cdd7ab7149eff",
+    "createdAt": 1759165512771
+}
+```

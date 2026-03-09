@@ -1,0 +1,27 @@
+---
+title: Decrypt Data
+---
+
+Configuration reference for the Decrypt Data block — decrypts encrypted source files before processing.
+
+The Decrypt Data block decrypts source files that have been encrypted before transfer. It is positioned immediately after the Connect to Source block and before any transformation steps.
+
+**Block type:** `optional_decrypt_content`
+
+Decrypts an encrypted source file using the specified algorithm and key. The block is optional and can be skipped if files are not encrypted.
+
+## Configuration fields
+
+| Field                          | Description                                                                    |
+| :----------------------------- | :----------------------------------------------------------------------------- |
+| Decryption Method *           | The decryption algorithm. Supported values: `PGP`, `AES-256`, `AES-128`, `DES` |
+| Encryption Key / Passphrase * | The decryption key or passphrase matching the key used to encrypt the file     |
+| Is Enabled                     | Toggle to enable or disable the block without removing it from the dataflow    |
+
+* Required field
+
+<Callout kind="info">
+
+This block is prefixed 'optional' in the processor name (`optional_decrypt_content`) because it can be bypassed. If decryption is not required for a dataflow, the block can be left unconfigured or the **Is Enabled** toggle can be set to false.
+
+</Callout>

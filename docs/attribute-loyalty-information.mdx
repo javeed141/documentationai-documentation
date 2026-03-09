@@ -1,0 +1,33 @@
+---
+title: Attribute - Loyalty Information
+---
+
+## **previousLoyaltytype**
+
+Profile : currentEvent\
+Attribute : previousLoyaltytype\
+Type : Boolean\
+Meaning : Checks the loyalty status of the customer before the current event. Supported only for CustomerUpdate event\
+Sub-Attribute: NA\
+Values: LOYALTY/NON_LOYALTY\
+Example:\
+currentEvent.previousLoyaltyType=="LOYALTY" or currentEvent.previousLoyaltyType=="NON_LOYALTY"
+
+| Example: Write a rule to check that the current customer loyalty before the event  was Non-loyalty customer and currently it's a loyalty customer. |
+| :------------------------------------------------------------------------------------------------------------------------------------------------- |
+| currentEvent.previousLoyaltyType.matches("NON_LOYALTY") and  and (currentEvent.currentLoyaltyType.matches("LOYALTY"))                                     |
+
+## **currentLoyaltytype**
+
+Profile : currentEvent\
+Attribute : currentLoyaltytype\
+Type : Boolean\
+Meaning : Checks the loyalty status of the customer in the current event.\
+Sub-Attribute: NA\
+Values: LOYALTY/NON_LOYALTY\
+Example:\
+currentEvent.currentLoyaltyType=="LOYALTY" or currentEvent.currentLoyaltyType=="NON_LOYALTY"
+
+| Example: Write a rule to check that the current customer loyalty before the event  was Non-loyalty customer and currently it's a loyalty customer. |
+| :------------------------------------------------------------------------------------------------------------------------------------------------- |
+| currentEvent.previousLoyaltyType.matches("NON_LOYALTY") and  and (currentEvent.currentLoyaltyType.matches("LOYALTY"))                                     |
