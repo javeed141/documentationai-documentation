@@ -483,13 +483,15 @@ This helps brands select and upload store names while creating a coupon series t
 
 To add store IDs for coupon series via Thrift,
 
-SaveCouponConfigRequest:  
-          CouponConfiguration:  
-                      redemptionOrgEntityDetails:  
-                                <orgEntityId
-                                redemptionOrgEntityType>,  
+```
+SaveCouponConfigRequest:
+          CouponConfiguration:
+                      redemptionOrgEntityDetails:
                                 <orgEntityId
                                 redemptionOrgEntityType>,
+                                <orgEntityId
+                                redemptionOrgEntityType>,
+```
 
 API based implementation details,
 
