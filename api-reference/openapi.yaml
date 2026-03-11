@@ -19,7 +19,7 @@ paths:
           required: true
           schema:
             type: string
-          example: sarah
+          example: Javeed
           description: First name to predict age for.
       responses:
         '200':
