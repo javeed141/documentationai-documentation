@@ -1,4 +1,18 @@
 {
+  "navbar": {
+    "actions": {
+      "primary": {
+        "title": "Get Started",
+        "link": "https://dashboard.example.com/signup"
+      },
+      "links": [
+        {
+          "title": "Login",
+          "link": "https://dashboard.example.com/login"
+        }
+      ]
+    }
+  },
   "navigation": {
     "tabs": [
       {
