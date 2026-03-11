@@ -16,15 +16,15 @@
       },
       {
         "group": "API Reference",
-        "openapi": "api/openapi.yaml",
+        "openapi": "api-reference/openapi.yaml",
         "pages": [
           {
             "title": "Overview",
-            "path": "api/overview"
+            "path": "api-reference/overview"
           },
           {
             "title": "Cat Facts",
-            "path": "api/cat-facts"
+            "path": "api-reference/cat-facts"
           }
         ]
       },
