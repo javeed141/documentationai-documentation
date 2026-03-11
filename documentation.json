@@ -7,8 +7,16 @@
       },
       "links": [
         {
+          "title": "Email Support",
+          "link": "mailto:javeed@documentation.ai"
+        },
+        {
           "title": "Login",
           "link": "https://dashboard.example.com/login"
+        },
+        {
+          "title": "Call Sales",
+          "link": "tel:+1-555-0123"
         }
       ]
     }
