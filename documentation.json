@@ -33,6 +33,32 @@
               {
                 "title": "Introduction",
                 "path": "docs/introduction"
+              },
+              {
+                "title": "Introduction",
+                "path": "getting-started/introduction",
+                "icon": "star"
+              },
+              {
+                "title": "API Endpoints",
+                "path": "api/endpoints",
+                "icon": "code",
+                "method": "GET",
+                "tags": "API"
+              },
+              {
+                "title": "Changelog",
+                "path": "changelog",
+                "icon": "clock",
+                "badge": "New",
+                "show-sidebar": false,
+                "show-toc": false,
+                "content-width": "wide"
+              },
+              {
+                "title": "External Resource",
+                "href": "https://github.com/company/repo",
+                "icon": "external-link"
               }
             ]
           }
