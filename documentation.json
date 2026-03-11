@@ -63,5 +63,15 @@
         ]
       }
     ]
+  },
+  "ai": {
+    "page-actions": [
+      "view",
+      "claude",
+      "chatgpt",
+      "perplexity",
+      "grok",
+      "mcp"
+    ]
   }
 }
