@@ -1,136 +1,71 @@
 openapi: 3.0.3
 info:
-  title: Free Public API Playground
-  description: Test the interactive playground with free, no-auth public APIs.
+  title: Test API
   version: 1.0.0
 
-paths:
+servers:
+  - url: https://jsonplaceholder.typicode.com
 
-  /api:
+paths:
+  /posts/{id}:
     get:
-      operationId: predictAge
-      summary: Predict age from a name
-      description: Uses the Agify API to estimate age based on a first name.
-      servers:
-        - url: https://api.agify.io
+      operationId: getPost
+      summary: Get a post by ID
       parameters:
-        - name: name
-          in: query
+        - name: id
+          in: path
           required: true
           schema:
-            type: string
-          example: Javeed
-          description: First name to predict age for.
-      responses:
-        '200':
-          description: Age prediction result
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  age:
-                    type: integer
-                  count:
-                    type: integer
-              example:
-                name: sarah
-                age: 34
-                count: 212500
-
-  /fact:
-    get:
-      operationId: getCatFact
-      summary: Get a random cat fact
-      description: Returns a random fun fact about cats.
-      servers:
-        - url: https://catfact.ninja
-      parameters:
-        - name: max_length
-          in: query
-          required: false
-          schema:
             type: integer
-          example: 100
-          description: Maximum length of the returned fact.
+          example: 1
       responses:
         '200':
-          description: A cat fact
+          description: A single post
           content:
             application/json:
               schema:
                 type: object
                 properties:
-                  fact:
-                    type: string
-                  length:
+                  userId:
                     type: integer
-
-  /random_joke:
-    get:
-      operationId: getRandomJoke
-      summary: Get a random joke
-      description: Returns a random joke with a setup and punchline.
-      servers:
-        - url: https://official-joke-api.appspot.com
-      responses:
-        '200':
-          description: A joke object
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  type:
-                    type: string
-                  setup:
-                    type: string
-                  punchline:
-                    type: string
                   id:
                     type: integer
-              example:
-                type: general
-                setup: "Why don't scientists trust atoms?"
-                punchline: "Because they make up everything!"
-                id: 42
+                  title:
+                    type: string
+                  body:
+                    type: string
 
-  /api/breeds:
-    get:
-      operationId: getDogBreeds
-      summary: List dog breeds
-      description: Returns a paginated list of dog breeds from the Dog API.
-      servers:
-        - url: https://dogapi.dog
-      parameters:
-        - name: page
-          in: query
-          required: false
-          schema:
-            type: integer
-            default: 1
-          description: Page number for pagination.
+  /posts:
+    post:
+      operationId: createPost
+      summary: Create a new post
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                body:
+                  type: string
+                userId:
+                  type: integer
+              required: [title, body, userId]
       responses:
-        '200':
-          description: List of dog breeds
+        '201':
+          description: Created post
           content:
             application/json:
               schema:
                 type: object
                 properties:
-                  data:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: string
-                        attributes:
-                          type: object
-                          properties:
-                            name:
-                              type: string
-                            description:
-                              type: string
+                  id:
+                    type: integer
+                  title:
+                    type: string
+                  body:
+                    type: string
+                  userId:
+                    type: integer
