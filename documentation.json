@@ -2,21 +2,21 @@
   "navbar": {
     "actions": {
       "primary": {
-        "title": "Get Started",
-        "link": "https://dashboard.example.com/signup"
+        "title": "Start Free Trial",
+        "link": "https://app.example.com/signup"
       },
       "links": [
         {
-          "title": "Email Support",
-          "link": "mailto:javeed@documentation.ai"
+          "title": "Sign In",
+          "link": "https://app.example.com/login"
         },
         {
-          "title": "Login",
-          "link": "https://dashboard.example.com/login"
+          "title": "Pricing",
+          "link": "https://example.com/pricing"
         },
         {
-          "title": "Call Sales",
-          "link": "tel:+1-555-0123"
+          "title": "Get Help",
+          "link": "mailto:support@example.com"
         }
       ]
     }
@@ -40,7 +40,7 @@
       }
     ]
   },
-  "template": "atlas",
+  "template": "classic",
   "logo-dark": "https://blob-cdn.documentation.ai/org-fd3ba62e-aa65-4fb1-8fb5-f9d1e0b97bd6/doc-651fa58c-2605-4de9-bb87-2f6153f72eda/1773221499203-by6phejcs3a-Screenshot-2026-03-10-154056.png?q=85&fm=auto&auto=compress%2Cformat",
   "colors": {
     "light": {
@@ -54,5 +54,8 @@
       "text": "#c1c1c1"
     }
   },
-  "initialRoute": "docs/introduction"
+  "initialRoute": "docs/introduction",
+  "seo": {
+    "sitemap:enabled": true
+  }
 }
