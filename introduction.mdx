@@ -1,112 +1,18 @@
----
-title: Introduction to Catapillar
-description: Discover Catapillar, a versatile platform for organizing and managing all your project documentation efficiently.
----
-
-<Callout kind="info" title="Starter Kit Template">
-  This documentation was generated as a starter kit template based on your brand. Please review and customize the content to accurately reflect your product's features, APIs, and capabilities.
-</Callout>
-
-## Overview
-
-Catapillar helps you organize and manage all your project documentation in one centralized space. You create, edit, and collaborate on docs effortlessly, keeping everything version-controlled and searchable. Whether you handle technical specs, user guides, or API references, Catapillar streamlines your workflow.
-
-## Key Features
-
-Catapillar offers powerful tools to enhance your documentation process.
-
-<Columns cols={3}>
-  <Card title="Centralized Organization" icon="folder-tree">
-    Group docs into projects, folders, and tags for easy navigation.
-  </Card>
-  <Card title="Real-time Collaboration" icon="users">
-    Invite team members to edit, comment, and review simultaneously.
-  </Card>
-  <Card title="Version Control" icon="git-branch">
-    Track changes with history, diffs, and rollback options.
-  </Card>
-</Columns>
-
-<Callout kind="tip">
-  Start by creating your first project to experience these features.
-</Callout>
-
-## Quick Start
-
-Get up and running with Catapillar in minutes.
-
-<Steps>
-  <Step title="Sign Up" icon="user-plus">
-    Visit `https://app.catapillar.com` and create a free account using your email.
-  </Step>
-  <Step title="Create Project" icon="plus">
-    Click the new project button and name it, like "My Docs Hub".
-  </Step>
-  <Step title="Add First Doc" icon="file-plus">
-    
-    ```markdown
-    # Welcome to My Project
-    
-    This is your first document.
-    
-    ## Next Steps
-    - Add more sections
-    - Invite collaborators
-    ```
-    
-  </Step>
-  <Step title="Publish" icon="globe">
-    Save and share the public link with your team.
-  </Step>
-</Steps>
-
-## Quick Navigation
-
-Explore key sections to dive deeper.
 
 <Columns cols={2}>
-  <Card title="Quickstart Guide" icon="zap" href="/quickstart">
-    Set up your first workspace and import existing docs.
+  <Callout kind="info">
+    This is an informational callout in the first column.
+  </Callout>
+  <Callout kind="tip">
+    This is a tip callout in the second column.
+  </Callout>
+   <Card title="Get started" icon="book-open" href="/getting-started/introduction">
+    Learn the core concepts and how Documentation.AI is structured.
   </Card>
-  <Card title="Authentication" icon="lock" href="/authentication">
-    Secure your account with API keys and OAuth.
+  <Card title="Write docs" icon="code" href="/write-and-publish/code-editor">
+    Author and maintain documentation using MDX in your codebase.
   </Card>
-  <Card title="Configuration" icon="settings" href="/configuration">
-    Customize projects, themes, and permissions.
-  </Card>
-  <Card title="Changelog" icon="git-commit" href="/changelog">
-    Stay updated with the latest releases.
+  <Card title="Add media" icon="image" href="/components/images">
+    Use images and screenshots to clarify long or complex flows.
   </Card>
 </Columns>
-
-## Why Choose Catapillar
-
-You select Catapillar for its simplicity and scalability. Unlike traditional wikis, it integrates with your Git workflow and supports MDX for rich components like tabs and cards. Teams report 40% faster doc updates.
-
-<Tabs>
-  <Tab title="For Teams" icon="users">
-    Unlimited collaborators, role-based access, and audit logs keep your docs secure.
-  </Tab>
-  <Tab title="For Solo Developers" icon="code">
-    Markdown editor with previews, search, and export to PDF or HTML.
-  </Tab>
-</Tabs>
-
-<Expandable title="Advanced Integrations" default-open="false">
-  Connect to `https://api.example.com` for webhooks or GitHub for auto-sync.
-  
-  <CodeGroup tabs="JavaScript,Bash">
-  ```javascript
-  fetch('https://api.catapillar.com/webhooks', {
-    method: 'POST',
-    headers: { 'Authorization': 'Bearer YOUR_API_KEY' },
-    body: JSON.stringify({ event: 'doc_updated' })
-  });
-  ```
-  ```bash
-  curl -X POST https://api.catapillar.com/webhooks \
-    -H "Authorization: Bearer YOUR_API_KEY" \
-    -d '{"event": "doc_updated"}'
-  ```
-  </CodeGroup>
-</Expandable>
