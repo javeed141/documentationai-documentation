@@ -1,9 +1,17 @@
-<ParamField query="token" param-type="string" show-location="false" required="true">
-  Authentication token without location badge.
-</ParamField>
+<Request tabs="JavaScript,Python">
+```javascript
+const response = await fetch('/api/docs', {
+  method: 'POST',
+  headers: { 'Authorization': 'Bearer TOKEN' },
+  body: JSON.stringify({ title: 'Getting Started' })
+});
+```
 
-
-<ParamField path="param" param-type="string" required="true" deprecated="true">
-  Parameter description...
-</ParamField>
-
+```python
+import requests
+response = requests.post('/api/docs',
+  headers={'Authorization': 'Bearer TOKEN'},
+  json={'title': 'Getting Started'}
+)
+```
+</Request>
