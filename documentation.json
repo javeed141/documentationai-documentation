@@ -3897,6 +3897,14 @@
                             "group": "hello",
                             "pages": [
                               {
+                                "title": "auth-2",
+                                "path": "auth-2"
+                              },
+                              {
+                                "title": "auth-1",
+                                "path": "auth-1"
+                              },
+                              {
                                 "title": "2",
                                 "path": "2"
                               },
