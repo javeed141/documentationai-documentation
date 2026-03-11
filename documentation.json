@@ -44,9 +44,9 @@
   "logo-dark": "https://blob-cdn.documentation.ai/org-fd3ba62e-aa65-4fb1-8fb5-f9d1e0b97bd6/doc-651fa58c-2605-4de9-bb87-2f6153f72eda/1773221499203-by6phejcs3a-Screenshot-2026-03-10-154056.png?q=85&fm=auto&auto=compress%2Cformat",
   "colors": {
     "light": {
-      "brand": "#3143e3",
-      "heading": "#d95959",
-      "text": "#3f5373"
+      "brand": "red",
+      "heading": "green",
+      "text": "blue"
     },
     "dark": {
       "brand": "#85a1ff",
