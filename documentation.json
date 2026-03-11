@@ -1,87 +1,11 @@
 {
-  "navbar": {
-    "actions": {
-      "primary": {
-        "title": "Start Free Trial",
-        "link": "https://app.example.com/signup"
-      },
-      "links": [
-        {
-          "title": "Sign In",
-          "link": "https://app.example.com/login"
-        },
-        {
-          "title": "Pricing",
-          "link": "https://example.com/pricing"
-        },
-        {
-          "title": "Get Help",
-          "link": "mailto:support@example.com"
-        }
-      ]
-    }
-  },
   "navigation": {
-    "tabs": [
+    "groups": [
       {
-        "tab": "Documentation",
-        "icon": "book",
-        "groups": [
-          {
-            "group": "Getting Started",
-            "pages": [
-              {
-                "title": "Introduction",
-                "path": "docs/introduction"
-              },
-              {
-                "title": "Introduction",
-                "path": "getting-started/introduction",
-                "icon": "star"
-              },
-              {
-                "title": "API Endpoints",
-                "path": "api/endpoints",
-                "icon": "code",
-                "method": "GET",
-                "tags": "API"
-              },
-              {
-                "title": "Changelog",
-                "path": "changelog",
-                "icon": "clock",
-                "badge": "New",
-                "show-sidebar": false,
-                "show-toc": false,
-                "content-width": "wide"
-              },
-              {
-                "title": "External Resource",
-                "href": "https://github.com/company/repo",
-                "icon": "external-link"
-              }
-            ]
-          }
-        ]
+        "group": "API Playground",
+        "openapi": "api/openapi.yaml",
+        "pages": []
       }
     ]
-  },
-  "template": "classic",
-  "logo-dark": "https://blob-cdn.documentation.ai/org-fd3ba62e-aa65-4fb1-8fb5-f9d1e0b97bd6/doc-651fa58c-2605-4de9-bb87-2f6153f72eda/1773221499203-by6phejcs3a-Screenshot-2026-03-10-154056.png?q=85&fm=auto&auto=compress%2Cformat",
-  "colors": {
-    "light": {
-      "brand": "red",
-      "heading": "green",
-      "text": "blue"
-    },
-    "dark": {
-      "brand": "#85a1ff",
-      "heading": "#f2f2f2",
-      "text": "#c1c1c1"
-    }
-  },
-  "initialRoute": "docs/introduction",
-  "seo": {
-    "sitemap:enabled": true
   }
 }
