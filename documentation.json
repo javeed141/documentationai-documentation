@@ -2,9 +2,65 @@
   "navigation": {
     "groups": [
       {
-        "group": "API Playground",
+        "group": "Getting Started",
+        "pages": [
+          {
+            "title": "Introduction",
+            "path": "introduction"
+          },
+          {
+            "title": "Quick Start",
+            "path": "quickstart"
+          }
+        ]
+      },
+      {
+        "group": "API Reference",
         "openapi": "api/openapi.yaml",
-        "pages": []
+        "pages": [
+          {
+            "title": "Overview",
+            "path": "api/overview"
+          },
+          {
+            "title": "Cat Facts",
+            "path": "api/cat-facts"
+          }
+        ]
+      },
+      {
+        "group": "Guides",
+        "pages": [
+          {
+            "title": "Authentication",
+            "path": "guides/authentication"
+          },
+          {
+            "title": "Error Handling",
+            "path": "guides/error-handling"
+          },
+          {
+            "title": "Rate Limits",
+            "path": "guides/rate-limits"
+          }
+        ]
+      },
+      {
+        "group": "Resources",
+        "pages": [
+          {
+            "title": "Changelog",
+            "path": "resources/changelog"
+          },
+          {
+            "title": "FAQ",
+            "path": "resources/faq"
+          },
+          {
+            "title": "Support",
+            "path": "resources/support"
+          }
+        ]
       }
     ]
   }
