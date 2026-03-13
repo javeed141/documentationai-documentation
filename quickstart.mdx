@@ -1,18 +1,58 @@
 ---
 title: Quickstart Guide
-description: Get up and running with Catapillar by setting up your account and creating your first documentation space in just a few minutes.
+description: >-
+  Get up and running with Catapillar by setting up your account and creating
+  your first documentation space in just a few minutes.
 ---
+
+
+### Ruby
+
+Generate idiomatic Ruby code using the `net/http` standard library:
+````ruby
+require 'net/http'
+require 'json'
+require 'uri'
+
+# POST request with JSON body
+uri = URI('/api/users')
+http = Net::HTTP.new(uri.host, uri.port)
+http.use_ssl = true
+
+request = Net::HTTP::Post.new(uri)
+request['Authorization'] = 'Bearer YOUR_TOKEN'
+request['Content-Type'] = 'application/json'
+request.body = {
+  name: 'John Doe',
+  email: 'john@example.com'
+}.to_json
+
+response = http.request(request)
+raise "HTTP #{response.code}: #{response.message}" unless response.is_a?(Net::HTTPSuccess)
+
+user = JSON.parse(response.body)
+puts "Created user: #{user['id']}"
+````
+
+Features include:
+- **Standard library `net/http`** with no external dependencies
+- **JSON serialization** using built-in `json` module
+- **Error handling** with HTTP response class checking
+- **Ruby conventions** including symbols, string interpolation, and snake_case naming
+
 
 ## Prerequisites
 
 Before you begin, ensure you have:
 
 - A modern web browser (Chrome, Firefox, Safari, or Edge)
+
 - An email address for account registration
+
 - Internet connection
 
-<Callout kind="info">
-Catapillar works entirely in the browser—no downloads required. All you need is a free account to start creating documentation spaces.
+<Callout kind="info" collapsed="false">
+  Catapillar works entirely in the browser—no downloads required. All you need is a free account to start creating documentation spaces.
 </Callout>
 
 ## Step 1: Create Your Account
@@ -20,13 +60,15 @@ Catapillar works entirely in the browser—no downloads required. All you need i
 Sign up for Catapillar in under a minute.
 
 <Steps>
-  <Step title="Visit the Dashboard" icon="globe">
+  <Step title="Visit the Dashboard" icon="globe" title-type="p">
     Navigate to `https://dashboard.catapillar.com` and click **Sign Up**.
   </Step>
-  <Step title="Enter Your Details" icon="user">
+
+  <Step title="Enter Your Details" icon="user" title-type="p">
     Provide your email, create a password, and complete the CAPTCHA.
   </Step>
-  <Step title="Verify Email" icon="mail">
+
+  <Step title="Verify Email" icon="mail" title-type="p">
     Check your inbox for a verification link from Catapillar and click it to activate your account.
   </Step>
 </Steps>
@@ -38,17 +80,20 @@ Once logged in, create your first space.
 <Tabs>
   <Tab title="From Dashboard" icon="home">
     <Steps>
-      <Step title="New Space" icon="plus">
+      <Step title="New Space" icon="plus" title-type="p">
         Click **New Documentation Space** on the dashboard.
       </Step>
-      <Step title="Name Your Space" icon="edit">
+
+      <Step title="Name Your Space" icon="edit" title-type="p">
         Enter a name like `My Project Docs` and select a visibility (public or private).
       </Step>
-      <Step title="Customize" icon="settings">
+
+      <Step title="Customize" icon="settings" title-type="p">
         Add a description and choose your brand color (`#3B82F6` for Catapillar blue).
       </Step>
     </Steps>
   </Tab>
+
   <Tab title="Quick Import" icon="upload">
     Use the import wizard for GitHub repos or Markdown files.
   </Tab>
@@ -59,55 +104,59 @@ Once logged in, create your first space.
 Publish your first page instantly.
 
 <Steps>
-  <Step title="New Document" icon="file-plus">
+  <Step title="New Document" icon="file-plus" title-type="p">
     In your space, click **New Page** and title it `Introduction`.
   </Step>
-  <Step title="Edit Content" icon="edit-3">
+
+  <Step title="Edit Content" icon="edit-3" title-type="p">
     Use the visual editor or switch to Markdown mode. Here's a simple MDX example:
-    
-    <CodeGroup tabs="Markdown,Preview">
-    ````markdown
-    # Welcome to My Docs
-    
-    This is your first document.
-    
-    ```javascript
-    console.log("Hello, Catapillar!");
-    ```
-    ````
-    
-    ````mdx
-    ## Rendered Preview
-    
-    **Bold text** and `inline code`.
-    
-    ```javascript
-    console.log("Hello, Catapillar!");
-    ```
-    ````
+
+    <CodeGroup show-lines="true" tabs={[]}>
+      ````markdown
+      # Welcome to My Docs
+
+      This is your first document.
+
+      ```javascript
+      console.log("Hello, Catapillar!");
+      ```
+      ````
+
+      ````mdx
+      ## Rendered Preview
+
+      **Bold text** and `inline code`.
+
+      ```javascript
+      console.log("Hello, Catapillar!");
+      ```
+      ````
     </CodeGroup>
   </Step>
-  <Step title="Publish" icon="upload-cloud">
+
+  <Step title="Publish" icon="upload-cloud" title-type="p">
     Click **Publish** to make it live. Share the URL: `https://docs.catapillar.com/your-space/introduction`.
   </Step>
 </Steps>
 
-<Callout kind="tip">
-Use the preview pane to see changes in real-time. MDX supports components like `<Callout>` for rich docs.
+<Callout kind="tip" collapsed="false">
+  Use the preview pane to see changes in real-time. MDX supports components like `<Callout>` for rich docs.
 </Callout>
 
 ## Basic Interface Tour
 
 Key areas of the Catapillar editor:
 
-<Columns cols={3}>
-  <Card title="Sidebar" icon="menu" horizontal>
+<Columns cols="3">
+  <Card title="Sidebar" icon="menu" horizontal="false">
     Navigation to pages, spaces, and settings.
   </Card>
-  <Card title="Editor" icon="edit" horizontal>
+
+  <Card title="Editor" icon="edit" horizontal="false">
     Visual/Markdown toggle with live preview.
   </Card>
-  <Card title="Publish Panel" icon="globe" horizontal>
+
+  <Card title="Publish Panel" icon="globe" horizontal="false">
     SEO, custom domains, and sharing options.
   </Card>
 </Columns>
@@ -115,20 +164,21 @@ Key areas of the Catapillar editor:
 ## Next Steps
 
 <Expandable title="Explore Advanced Features" default-open="false">
+  - **Customize themes**: Upload logos and set brand colors.
 
-- **Customize themes**: Upload logos and set brand colors.
-- **Collaborate**: Invite team members via email.
-- **Integrations**: Connect GitHub for version control.
+  - **Collaborate**: Invite team members via email.
 
+  - **Integrations**: Connect GitHub for version control.
 </Expandable>
 
 Dive deeper with these guides:
 
-<Columns cols={2}>
-  <Card title="Authentication" icon="shield" href="/authentication">
+<Columns cols="2">
+  <Card title="Authentication" href="/authentication" icon="shield" horizontal="false">
     Secure your spaces with API keys and SSO.
   </Card>
-  <Card title="Full Introduction" icon="book-open" href="/introduction">
+
+  <Card title="Full Introduction" href="/introduction" icon="book-open" horizontal="false">
     Learn core concepts and best practices.
   </Card>
 </Columns>
