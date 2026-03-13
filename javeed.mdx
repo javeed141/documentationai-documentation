@@ -1,3 +1,66 @@
+<Request tabs="JavaScript,Python">
+```javascript
+const response = await fetch('/api/docs', {
+  method: 'POST',
+  headers: { 'Authorization': 'Bearer TOKEN' },
+  body: JSON.stringify({ title: 'Getting Started' })
+});
+```
+
+```python
+import requests
+response = requests.post('/api/docs',
+  headers={'Authorization': 'Bearer TOKEN'},
+  json={'title': 'Getting Started'}
+)
+```
+</Request>
+
+<Response tabs="200,500">
+```json
+{
+  "id": "doc-123",
+  "status": "success"
+}
+```
+
+```json
+{
+  "error": "Internal server error",
+  "code": "INTERNAL_ERROR"
+}
+```
+</Response>
+
+
+
+
+
+
+
+
+
+
+
+<ParamField path="id" param-type="string" required="true">
+  Unique identifier for the resource.
+</ParamField>
+<ParamField path="token" param-type="string" show-location="false" required="true">
+  Authentication token without location badge.
+</ParamField>
+<ParamField query="token" param-type="string" show-location="false" required="true">
+  Authentication token without location badge.
+</ParamField>
+
+
+
+<ResponseField name="description" field-type="string">
+  Optional description text for the resource.
+</ResponseField>
+
+
+
+
 ### First 
 <Tabs>
   <Tab title="macOS" icon="apple">
