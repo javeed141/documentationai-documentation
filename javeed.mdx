@@ -4,6 +4,17 @@ graph TD
     B --> C[End]
 ```
 
+```mermaid 
+graph TD 
+   A[User Request] --> B{Authenticated?}
+    B -->|Yes| C[Process Request]
+    B -->|No| D[Redirect to Login]
+    C --> E[Return Response]
+    D --> F[Show Login Page]
+
+
+```
+
 
 
 
