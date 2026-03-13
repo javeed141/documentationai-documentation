@@ -5,6 +5,11 @@
         "group": "Getting Started",
         "pages": [
           {
+            "title": "javeed",
+            "path": "javeed",
+            "icon": "alarm-clock-check-icon"
+          },
+          {
             "title": "Introduction",
             "path": "introduction"
           },
